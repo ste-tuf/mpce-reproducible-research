@@ -1,0 +1,57 @@
+project:
+  type: website 
+  output-dir: _site
+  
+website: 
+  title: "ISEE young 2024 - WS8 - Reproducitiliby"
+  description: "Reproductible research and data science practices for young epidemiologist"
+  site-url: "https://rstudio-conf-2022.github.io/ggplot2-graphic-design/"
+  favicon: "/img/isee-young-logo.png"
+
+  # repo-url: 
+  page-navigation: true
+  
+  page-footer:
+    left: "This page is built with [Quarto](https://quarto.org/)."
+    right: "&copy; CC BY-NC, Stéphane Tuffier"
+    background: "#0b6fa1"
+
+
+  navbar: 
+    search: true
+    pinned: true
+    logo: "/img/isee-young-logo.png"
+    background: "#0b6fa1"
+    align: center
+
+    # logo-alt: 
+    # right:
+    #  - icon: github
+    #     href: https://github.com/
+    #     aria-label: GitHub
+    
+    left:
+      - text: Pre-workshop
+        menu:
+          - text: Installation
+            href: content/pre-ws.qmd#installation
+          - text: Data
+            href: content/pre-ws.qmd#data
+      - text: Part 1
+        href: session_1.qmd
+      - text: Practice 1
+        href: session_2.qmd
+      - text: Practice 2
+        href: session_3.qmd
+    right: 
+      - icon: github
+        # href: https://github.com/
+        text: GitHub
+
+format:
+  html:
+    theme: zephyr
+    # css: styles.css
+    toc: true
+    code-copy: true
+    code-overflow: wrap
