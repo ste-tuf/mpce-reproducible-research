@@ -1,0 +1,563 @@
+---
+title: "Hands-on Activity 2"
+date: 2024-06-05
+slide-format: revealjs
+---
+
+```{r setup}
+#| eval: true
+#| echo: false
+#| warning: false
+#| error: false
+
+library(tidyverse)
+library(here)
+load(here("data/nh2007.RData"))
+load(here("data/nh2009.RData"))
+
+compute_descriptive_stats <- function(variable) {
+  statistics <- NA
+
+  # For numeric
+  if (is.numeric(variable)) {
+    statistics <- compute_numeric(variable)
+  }
+  
+  # For factor or logical
+  if (is.factor(variable) || is.logical(variable)) {
+    statistics <- compute_table(variable)
+  }
+
+  statistics
+}
+
+compute_table <- function(variable) {
+  # Return frequency table as a dataframe
+  table(variable, useNA = "always")
+}
+
+compute_numeric <- function(variable) {
+  mean_value <- mean(variable, na.rm = TRUE)
+  sd_value <- sd(variable, na.rm = TRUE)
+  quantiles <- quantile(variable, na.rm = TRUE)
+
+  # Return statistics
+  list(
+    "mean" = mean_value,
+    "sd" = sd_value,
+    "quantiles" = quantiles
+  )
+}
+
+# Descriptive univariate graphs
+compute_descriptive_graph <- function(variable) {
+  # Histogram
+  if (is.numeric(variable)) {
+    p <- ggplot2::ggplot(mapping = aes(x = variable)) +
+      ggplot2::geom_histogram()
+  }
+  
+  # Barplot
+  if (is.factor(variable) || is.logical(variable)) {
+    p <- ggplot2::ggplot(mapping = aes(x = variable)) +
+      ggplot2::geom_bar()
+  }
+
+  p
+}
+```
+
+# Introduction
+
+<div>
+
+```{=html}
+<iframe class="slide-deck" src="03_slides_theory_2.html" width="100%" height="500px"></iframe>
+```
+
+</div>
+
+# Goal
+
+At the end of this exercise, you should be able to produce an HTML document containing at least one table to summarize model results using `gt` and `quarto` with the `nh2007` dataset. If we have enough time, you can reproduce the analysis with the `nh2009` dataset.
+
+# Tasks
+
+- Improve and simplify the code using functional programming
+- Create a QMD document to generate a report using Quarto
+- Make a table using `gt` to summarize model results
+- Continue to use Git to save your progress
+
+# Functional Programming
+
+## Descriptive Statistics
+
+Let's look at the script that we finished before the break. We created some functions that we now use for all the descriptive statistics. However, we still have to copy and paste the same call many times.
+
+
+```{r}
+#| eval: false
+# Numbers
+compute_descriptive_stats(nh2007$gender)
+compute_descriptive_stats(nh2007$education)
+compute_descriptive_stats(nh2007$education_child)
+compute_descriptive_stats(nh2007$asthma)
+compute_descriptive_stats(nh2007$heart_failure)
+compute_descriptive_stats(nh2007$coronary_heart_disease)
+compute_descriptive_stats(nh2007$creatinine)
+compute_descriptive_stats(nh2007$lead)
+compute_descriptive_stats(nh2007$barium)
+compute_descriptive_stats(nh2007$cadmium)
+
+
+# Graph
+compute_descriptive_graph(nh2007$creatinine)
+compute_descriptive_graph(nh2007$lead)
+compute_descriptive_graph(nh2007$barium)
+compute_descriptive_graph(nh2007$cadmium)
+```
+
+**Exercice:** Can you figure out how to use `map` to avoid copy pasting
+the call?
+
+::: {.callout-tip title="Solution" collapse="true"}
+The `map` function can take a data frame as its first argument and will apply the function to each column of the data frame:
+
+```{r}
+#| eval: false
+purrr::map(.x = nh2007, .f = compute_descriptive_stats)
+```
+
+For the descriptive graphs we can first use `dplyr::select()` to select
+the four columns of interest:
+
+```{r}
+#| eval: false
+nh2007 |>
+  dplyr::select(creatinine, lead, barium, cadmium) |>
+  purrr::map(.f = compute_descriptive_graph)
+```
+:::
+
+`map` return a list by default:
+
+```{r}
+#| eval: true
+#| echo: true
+#| include: true
+purrr::map(.x = nh2007, .f = compute_descriptive_stats) |>
+  head(3)
+```
+
+List are not so easy to work with because functions are mainly build to
+use a dataframe. However it's very easy to modify `compute_table()` and
+`compute_numeric()` to return statistics in a different format.
+
+When the two functions return a dataframe, it's will be possible to use
+`dplyr::bind_rows()` to bind all the elements of the list from `map` into a single dataframe.
+
+Let's first change the two compute functions and load them into our
+environment:
+
+```{r}
+compute_table <- function(variable) {
+  # Return frequency table as a dataframe
+  table(variable, useNA = "always", dnn = "level") |>
+    as.data.frame()
+}
+
+compute_numeric <- function(variable) {
+  mean_value <- mean(variable, na.rm = TRUE)
+  sd_value <- sd(variable, na.rm = TRUE)
+  quantiles <- quantile(variable, na.rm = TRUE)
+
+  # Return statistics as a dataframe
+  cbind(
+    data.frame(
+      "mean" = mean_value,
+      "sd" = sd_value
+    ),
+    t(quantiles)
+  )
+}
+```
+
+Then we can run the lines with `map` again:
+
+```{r}
+purrr::map(.x = nh2007, .f = compute_descriptive_stats) |>
+  dplyr::bind_rows(.id = "column") |>
+  head(5)
+```
+
+The result is already much better and easier to work with. Notice that we didn't have to change the `compute_descriptive_stats()` function, only the computation functions. This is because no calculations are happening in `compute_descriptive_stats()`: it's only calling the appropriate compute function for each type of variable.
+
+::: callout-tip
+When modifying functions, it's a good idea to commit the changes frequently so you can revert any unwanted changes if needed.
+
+Jump back in Git-gui and commit the new changes to the functions. 
+:::
+
+## Models
+
+We can also use functional programming to simplify the creation of the models. For the 4 outcomes and the 4 exposures, the models are always the same:
+
+```{r}
+#| eval: false
+
+# Creatinine
+model.1a <- glm(asthma ~ barium + age_screening + gender, data = nh2007)
+model.1.b <- glm(heart_failure ~ barium + age_screening + gender, data = nh2007)
+model.1.c <- glm(coronary_heart_disease ~ barium + age_screening + gender, data = nh2007)
+model.1.d <- glm(heart_attack ~ barium + age_screening + gender, data = nh2007)
+model.1.e <- glm(asthma ~ barium + age_screening + gender, data = nh2007) # Notice that this model is identical to 1a, but it's hard to notice
+```
+
+The custom function to create need to have at least 2 arugments: one
+argument for the outcome and another for the exposure. It's also a good
+idea to add another argument to specify the dataset to use in the model.
+
+`map2` and `pmap` are variant of `map` that can iterate over two or many
+arguments simultaneously.
+
+All the functions that we will create can be saved in `R/models.R`. Remember to add a line to source this file in your script.
+
+**Exercise:** Create a function to build the `glm` models. Use `map2` to apply the function to all combinations of outcomes and exposures.
+
+::: callout-note
+<!-- `tidyr::expand_grid()` creates a table from combinations of vectors. You should use it to get all the combinations of outcomes and exposures. -->
+:::
+
+::: {.callout-tip title="Solution" collapse="true"}
+```{r}
+build_model <- function(outcome, exposure, dataset) {
+  formula <- paste0(
+    outcome, " ~ ",
+    exposure, " + age_screening + gender"
+  ) |>
+    as.formula()
+
+  try(
+    glm(formula, data = dataset)
+  )
+}
+
+# List outcomes
+outcomes <- c("asthma", "heart_failure", "coronary_heart_disease", "heart_attack")
+exposures <- c("creatinine", "lead", "barium", "cadmium")
+
+
+models_parameters <- tidyr::expand_grid(outcomes, exposures)
+
+models <- map2(
+  .x = models_parameters$outcomes,
+  .y = models_parameters$exposures,
+  .f = \(x, y) build_model(x, y, dataset = nh2007)
+)
+```
+
+-   `try()` is used to catch any errors when the models don't run for any reason. This allows `map` to continue instead of stopping.
+-   `.f = \(x, y) build_model(x, y, dataset = nh2007)` helps pass a common element to all the models. Here, it's the dataset that we want to use for the models. Of course, this dataset can also be passed firectly by `pmap` to make the dataset vary, but it can be a little tricky.
+
+:::
+
+Once again, all the models are in a list. It's easy to access a model using indexes like `models[[1]]`, but it's a bit crude. It is possible to improve that by:
+
+-   Assigning names to each list element from the model parameters, so you can access models using a `$` sign.
+-   Putting the models in a column in the models parameters dataframe (often a better solution).
+
+
+## Extract models results
+
+**Exercice:** Create a function to extract estimates, CI, p-pvalue and
+AIC from a model. Use `map` to apply it to every model.
+
+::: callout-note
+It can be difficult to create a function from scratch, especially when working with lists. It's sometimes easier to first work with one element of the list to test the function.
+
+```{r}
+#| eval: false
+test_model <- models[[1]]
+```
+:::
+
+::: {.callout-tip title="Solution" collapse="true"}
+```{r}
+#| warning: false
+extract_model_result <- function(model) {
+  # Get coefficients
+  coefs <- coef(summary(model)) |>
+    as.data.frame()
+
+  # confidence interval
+  ci <- confint(model) |>
+    as.data.frame()
+
+  # AIC
+  aic <- model$aic
+
+  # Return a dataframe
+  cbind(
+    coefs,
+    ci,
+    aic
+  ) |>
+    rownames_to_column(var = "term")
+}
+
+# Extract model results
+models_results <- map(models, extract_model_result)
+```
+
+The `broom` package is a very nice interface to reliably extract models
+results in a consistent way. It can easily replace this custom-made
+function: https://broom.tidymodels.org/
+:::
+
+# Make a table using `gt`
+
+## Prepare the data
+
+In this section, we will focus on creating just one table because the `gt` package offers many options, which could be the topic of an entire workshop. Feel free to experiment with it later if you have time, for example, to create a table for the descriptive statistics.
+
+Before creating a `gt` table, it's best to have a clean table with only the information that we want to present. The first step is to consolidate the model parameters, models, and model results into one table.
+
+```{r}
+results <- models_parameters |>
+  dplyr::mutate(
+    models = models,
+    models_results = models_results
+  )
+```
+
+Then we can `unnest()` the `models_results` column in the dataframe, and filter
+the terms from the model results to keep only the terms matching the
+exposure of the model.
+
+```{r}
+results_short <- results |>
+  unnest(models_results) |>
+  dplyr::filter(exposures == term) |>
+  select(-models)
+
+head(results_short)
+```
+
+Now the table is simple and it's possible to create a `gt` table and to
+go handle all the formating
+
+## Create the `gt` table
+
+To create the table, follow these steps:
+
+1.  Initialize the gt table object
+
+```{r}
+library(gt)
+gt_table <- gt(
+  data = results_short,
+  groupname_col = "outcomes"
+)
+
+gt_table
+```
+
+2.  Format numbers
+
+```{r}
+gt_table <- gt_table |>
+  fmt_number(
+    columns = c("Estimate", "2.5 %", "97.5 %"),
+    decimals = 3
+  ) |>
+  fmt(
+    columns = "Pr(>|t|)",
+    fns = \(x) format.pval(x, digits = 3)
+  )
+```
+
+3.  Merge and hide columns
+
+```{r}
+gt_table <- gt_table |>
+  cols_merge(
+    columns = c("2.5 %", "97.5 %"),
+    pattern = "{1} - {2}"
+  ) |>
+  cols_hide(
+    columns = c("Std. Error", "t value", "term")
+  ) |>
+  cols_label("2.5 %" = "95% CI")
+```
+
+4.  Add table title and subtitle
+
+```{r}
+gt_table <- gt_table %>%
+  tab_header(
+    title = "Models results",
+    subtitle = "data = nh2007"
+  )
+
+gt_table
+```
+
+All these steps in the gt pipeline can be grouped into one function, for example, `gt_models()`, with only `results_clean` as an argument. This means that you can easily reapply the function to each results table and get a identical table!
+
+**Exercice:** Create this function and add it to `R/gt_models.R`.
+
+::: {.callout-tip title="Solution" collapse="true"}
+```{r}
+gt_models <- function(results_clean) {
+  library(gt)
+  # 1. Initialize the gt table object
+  gt(
+    data = results_clean,
+    groupname_col = "outcomes"
+  ) |>
+    # 2. Format numbers
+    fmt_number(
+      columns = c("Estimate", "2.5 %", "97.5 %"),
+      decimals = 3
+    ) |>
+    fmt(
+      columns = "Pr(>|t|)",
+      fns = \(x) format.pval(x, digits = 3)
+    ) |>
+    # 3. Merge and hide columns
+    cols_merge(
+      columns = c("2.5 %", "97.5 %"),
+      pattern = "{1} - {2}"
+    ) |>
+    cols_hide(
+      columns = c("Std. Error", "t value", "term")
+    ) |>
+    cols_label("2.5 %" = "95% CI") |>
+    # 4. Add table title and subtitle
+    tab_header(
+      title = "Models results"
+  )
+  
+}
+```
+
+Remember to commit this new function and to source it in your main script.
+:::
+
+# Generate the report with quarto
+
+Now that we have many functions and a nice table, we can put them in a Quarto document to generate either `HTML` or `DOCX` documents.
+
+In RStudio create a new file: `qmd/report.qmd` In the report we should
+include a `yaml` header defining some execution parameters:
+
+``` yaml
+---
+title: "NHANES Report"
+author: "Your Name"
+date: "2024-05-31"
+output: html_document # or docx
+---
+```
+
+R code can then be executed within chunks. The first chunk should load all the packages and source all your functions:
+
+````markdown
+```{{r}}
+# Load packages
+library(tidyverse)
+source("../R/descriptive.R")
+source("../R/models.R")
+source("../R/gt_models.R")
+# .. is needed to refer to the project root
+
+# Alternative using the here package
+source(here("R/descriptive.R"))
+source(here("R/models.R"))
+source(here("R/gt_models.R"))
+```
+````
+
+In between each chunk, you can add text to describe what you did, or even write some method points that you need to remember for later. The syntax in this part is done in markdown.
+
+The following chunks can contain all the lines that include map functions.
+
+**Exercise:** Convert your starting script into a Quarto document.
+
+::: {.callout-tip title="Solution" collapse="true"}
+
+- Create the file `qmd/report.qmd`
+- Open it and add the yaml header and a chunck to load all the package and library.
+- Add as many chuncks as you wish for each step of the analysis.
+
+You can check the following file to see a example: [report example](../qmd/report_example.qmd)
+:::
+
+## 2009 report
+
+Now that the functions are all created, adding the analysis for the
+`nh2009` dataset is simple, as it only requires applying the same functions to another dataset.
+
+The report can be divided into two sections:
+
+```markdown
+# 2007
+
+... 2007 analysis
+
+# 2009
+... 2009 analysis
+```
+
+The only thing that needs to be copied and pasted is the data management part. The script for the 2009 analysis can look like this:
+
+```{r}
+#| eval: false
+load(here("data/nh2009.RData"))
+
+# Descriptive stats
+purrr::map(.x = nh2009, .f = compute_descriptive_stats) |>
+  dplyr::bind_rows(.id = "column")
+
+# List outcomes
+outcomes <- c("asthma", "heart_failure", "coronary_heart_disease", "heart_attack")
+exposures <- c("creatinine", "lead", "barium", "cadmium")
+
+
+models_parameters_2009 <- tidyr::expand_grid(outcomes, exposures)
+
+models_2009 <- map2(
+  .x = models_parameters_2009$outcomes,
+  .y = models_parameters_2009$exposures,
+  .f = \(x, y) build_model(x, y, dataset = nh2009) # we need to change the dataset
+)
+
+# Extract model results
+models_results_2009 <- map(models_2009, extract_model_result)
+
+results_2009 <- models_parameters_2009 |>
+  dplyr::mutate(
+    models = models_2009,
+    models_results = models_results_2009
+  )
+
+results_model_clean_2009 <- results_2009 |>
+  unnest(models_results) |>
+  dplyr::filter(exposures == term) |>
+  select(-models)
+
+gt_models(results_model_clean_2009)
+```
+
+**Exercice:** Intergrate the following lines in the report document
+
+Check the following files to see the final state of the project: 
+
+- [report_example.qmd](../qmd/_report_example.qmd) which contains computation and results. Clicking on "Render" in RStudio or using `quarto render qmd/report_example.qmd'. The rendered report can be seen here: [report example](../qmd/report_example.qmd)
+- [R/descriptive.R](../R/descriptive.R), [R/models.R](../R/models.R), and 
+[R/gt_models.R](../R/gt_models.R) to see all the functions definitions
+
+
+----
+
+![](/img/meme_final.png){fig-align="center"}

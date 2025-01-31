@@ -1,0 +1,118 @@
+---
+title: "NHANES Report"
+author: "Your Name"
+date: "2024-05-31"
+format:
+  html: # options for html
+    toc: true
+  docx: # option for docx
+    toc: true
+    number-sections: true
+    highlight-style: github
+---
+
+
+```{r}
+# Load packages
+library(tidyverse)
+library(here)
+
+# Loading the functions, 
+# here() gets the location of the project
+source(here("R/descriptive.R"))
+source(here("R/models.R"))
+source(here("R/gt_models.R"))
+
+# Alternative is to use .. to refer to the project root
+# source("../R/descriptive.R")
+# source("../R/models.R")
+# source("../R/gt_models.R")
+```
+
+# 2007
+
+## Descriptive stats
+
+```{r}
+load(here("data/nh2007.RData"))
+
+# Descriptive stats
+purrr::map(.x = nh2007, .f = compute_descriptive_stats) |>
+  dplyr::bind_rows(.id = "column")
+```
+
+## Models
+```{r}
+# List outcomes
+outcomes <- c("asthma", "heart_failure", "coronary_heart_disease", "heart_attack")
+exposures <- c("creatinine", "lead", "barium", "cadmium")
+
+
+models_parameters_nh2007 <- tidyr::expand_grid(outcomes, exposures)
+
+models_nh2007 <- map2(
+  .x = models_parameters_nh2007$outcomes,
+  .y = models_parameters_nh2007$exposures,
+  .f = \(x, y) build_model(x, y, dataset = nh2007) # we need to change the dataset
+)
+
+# Extract model results
+models_results_nh2007 <- map(models_nh2007, extract_model_result)
+
+results_nh2007 <- models_parameters_nh2007 |>
+  dplyr::mutate(
+    models = models_nh2007,
+    models_results = models_results_nh2007
+  )
+
+results_model_clean_nh2007 <- results_nh2007 |>
+  unnest(models_results) |>
+  dplyr::filter(exposures == term) |>
+  select(-models)
+
+gt_models(results_model_clean_nh2007)
+```
+
+
+# 2009
+
+## Descriptive stats
+```{r}
+load(here("data/nh2009.RData"))
+
+# Descriptive stats
+purrr::map(.x = nh2009, .f = compute_descriptive_stats) |>
+  dplyr::bind_rows(.id = "column")
+```
+
+## Models
+```{r}
+# List outcomes
+outcomes <- c("asthma", "heart_failure", "coronary_heart_disease", "heart_attack")
+exposures <- c("creatinine", "lead", "barium", "cadmium")
+
+
+models_parameters_2009 <- tidyr::expand_grid(outcomes, exposures)
+
+models_2009 <- map2(
+  .x = models_parameters_2009$outcomes,
+  .y = models_parameters_2009$exposures,
+  .f = \(x, y) build_model(x, y, dataset = nh2009) # we need to change the dataset
+)
+
+# Extract model results
+models_results_2009 <- map(models_2009, extract_model_result)
+
+results_2009 <- models_parameters_2009 |>
+  dplyr::mutate(
+    models = models_2009,
+    models_results = models_results_2009
+  )
+
+results_model_clean_2009 <- results_2009 |>
+  unnest(models_results) |>
+  dplyr::filter(exposures == term) |>
+  select(-models)
+
+gt_models(results_model_clean_2009)
+```

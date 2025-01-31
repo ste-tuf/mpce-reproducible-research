@@ -1,0 +1,405 @@
+---
+title: "Hands-on Activity 1 - Theory"
+date: 2024-06-05
+author: "Stéphane Tuffier"
+format: 
+  revealjs:
+    chalkboard: true
+editor: visual
+bibliography: ref.bib
+execute: 
+  eval: false
+  echo: true
+---
+
+## Plan
+
+1.  Project orgnisation
+2.  R style guide
+3.  Git
+4.  Introduction to functions
+
+## Projects
+
+For this workshop : a folder on your computer
+
+There are many definitions of a project: it can be a single analysis for
+a paper or an entire cohort study with many papers.
+
+In this workshop: a project will refer to a folder on your computer.
+
+## Projects
+
+RStudio natively support project oriented wrokflow.
+
+Advantages:
+
+-   The working directory is set by RStudio to the project folder.
+-   It is easy to switch between projects from the drop-down menu.
+
+![](/img/rstudio-project.png){fig-align="center"}
+
+::: notes
+[Using RStudio
+projects](https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects)
+:::
+
+## Project organisation {.center}
+
+Not a single organization fits everybody's needs, but being consistent
+throughout different projects or within a research group helps
+collaborating.
+
+## Directories {.smaller}
+
+-   `data/`: Ready-to-analyze dataset, intermediate datasets.
+-   `data-raw/`: Data from the outside world untouched. Can contain
+    scripts to import data from the internet and prepare it.
+-   `R/`: R files containing functions. `python/` for Python.
+-   `scripts/` or `code/`: Scripts for things that need to be run once.
+-   `qmd/`, `md/`, `Rmd/`: Quarto and markdown documents.
+
+## Directories {.smaller}
+
+-   `output/`: Folder with outputs, can contain images, graphs, or other
+    stuff.
+-   `figs/`: Folder with figures produced by your scripts.
+-   `results/`: Results from the project, e.g., CSV tables.
+-   `docs/`: Documentation or rendered documents.
+-   `man/`: Documentation for R packages.
+-   `extra/`: Extra, non-code, files.
+
+::: notes
+https://rfortherestofus.com/2021/08/rstudio-project-structure
+
+https://www.stat.ubc.ca/\~jenny/STAT545A/block19_codeFormattingOrganization.html
+
+https://joshua.wilsonblack.nz/post/organising-r-projects/
+:::
+
+## Files
+
+-   `README`: Must-read file. At least one in the project directory, but
+    can be added to any folder.
+-   `LICENSE`: License file for your project.
+-   `.gitignore`: List of files that Git should ignore.
+
+## Naming files
+
+Human and machine-readable.
+
+-   Dates: YYYY-MM-DD (ISO format).
+-   Easy to order, use double digits.
+-   Separate name elements to make them easy to subset with `files`
+    functions.
+-   Name should be regular expression friendly: avoid spaces,
+    punctuation, accented characters, and case sensitivity.
+
+## Naming files
+
+Some examples
+
+``` text
+2024-04-01_air-pollution_PM25.csv 
+2024-04-01_air-pollution_NO2.csv 
+2021-04-01_air-pollution_PM25.csv 
+2021-04-01_air-pollution_NO2.csv
+```
+
+This faciliate this kind of operations:
+
+```{r}
+file.create("2024-04-01_air-pollution_PM25.csv")
+file.create("2024-04-01_air-pollution_NO2.csv")
+file.create("2021-04-01_air-pollution_PM25.csv")
+file.create("2021-04-01_air-pollution_NO2.csv")
+
+# List files with both 2024 and PM in their name
+list.files(pattern = "2024*PM")
+```
+
+## Naming files
+
+More examples
+
+::: columns
+::: {.column width="50%"}
+``` text
+# Bad
+alternative model.R
+code for exploratory analysis.r
+finalreport.qmd
+FinalReport.qmd
+Filenames Use Spaces and Punctuation.xlsx
+fig 1.png
+Figure_02.png
+figure 1.png
+fig 2.png
+JW7d^(2sl@deletethisandyourcareerisoverWx2*.txt
+model_first_try.R
+myabstract.docx
+run-first.r
+temp.txt
+```
+:::
+
+::: {.column width="50%"}
+``` text
+# Good
+other/2014-06-08_abstract-for-sla.docx
+other/filenames-are-getting-better.xlsx
+01-load-data.R
+02-exploratory-analysis.R
+03-model-approach-1.R
+04-model-approach-2.R
+fig-01.png
+fig-02.png
+fig01_scatterplot-talk-length-vs-interest.png
+fig02_histogram-talk-attendance.png
+report-2022-03-20.qmd
+report-2022-04-02.qmd
+report-draft-notes.txt
+```
+:::
+:::
+
+::: notes
+https://r4ds.hadley.nz/workflow-scripts#saving-and-naming
+
+https://rstats.wtf/source-and-blank-slates
+:::
+
+## Improve R code {.center}
+
+## Style guide
+
+Why adopt a coding style:
+
+-   Consistency
+-   Makes code easier to write (fewer decisions when typing)
+-   Easier to read
+
+::: callout-tip
+Tidyverse style guide: https://style.tidyverse.org/
+:::
+
+## Syntax {.smaller}
+
+-   Variable and function names:
+    -   Only lowercase letters and numbers.
+    -   Use `_` to separate words within a name, e.g., `day_one; day_1`.
+-   Space after a comma, e.g., `mean(x, na.rm = TRUE)`.
+-   Curly braces, `{}`:
+    -   `{` should be the last character on the line.
+    -   The contents should be indented by two spaces.
+    -   `}` should be the first character of the line.
+
+## Syntax
+
+Quickly fix the syntax of your code using `styler` package:
+
+![](/img/rstudio-styler.png){fig-align="center"}
+
+## Naming things
+
+-   Avoid changing common R functions or objects.
+
+``` r
+T <- FALSE
+c <- "true"
+sum <- function(x) mean(x)
+```
+
+-   Use verbs for functions: `do_something()`.
+-   New line after a pipe (`%>%` or `|>`).
+-   Prefer using element names to retrieve object index instead of
+    number indexing.
+
+## Naming things
+
+Bad:
+
+```{r}
+iris[, c(2,4)]
+mod <- lm(Sepal.Width ~ Petal.Width, data = iris)
+mod[[1]][2]
+```
+
+Better:
+
+```{r}
+mod$coefficients[names(mod$coefficients) == "Petal.Width"]
+iris[, c("Sepal.Width", "Petal.Width")]
+iris[, grep("Width", colnames(iris))]
+```
+
+## Naming things
+
+Comment as you code, provide as much detail as you can. Your future self
+will thank you.
+
+```{r}
+# Even better
+
+# Inspect iris data
+iris[, grep("Width", colnames(iris))]
+
+# Linear regression between sepal and petal width
+mod <- lm(Sepal.Width ~ Petal.Width, data = iris)
+
+# Beta from the regression for petal width
+#   Low correlation
+mod$coefficients[names(mod$coefficient) == "Petal.Width"]
+
+```
+
+## Classic version control
+
+![](/img/version-control.jpg){fig-align="center"}
+
+::: notes
+Manual version control system, Luke W. Johnston
+:::
+
+## Classic version control
+
+![](/img/version-nightmare.png){fig-align="center"}
+
+## Git
+
+-   Keeps track of every change to a file.
+-   Can instantly restore any previous version of a file.
+-   Allows you to split your work into different branches for testing
+    purposes.
+-   Handles merging files by comparing their modifications and resolving
+    differences if any.
+
+::: callout-important
+With Git, you only need one version of your files!
+:::
+
+## Which files
+
+Git can track text files:
+
+-   R Script
+-   .csv
+-   Markup documents like Markdown, Quarto, or LaTeX files
+
+Configure a git repository for each project.
+
+## Terms to know {.smaller}
+
+```{mermaid fig-git-states}
+%%| echo: false
+%%| eval: true
+%%{init:{'themeCSS': ".actor {stroke: DarkBlue;fill: White;stroke-width:1.5px;}", 'sequence':{'mirrorActors': false}}}%%
+
+sequenceDiagram
+
+    participant W as Working folder
+
+    participant S as Staged
+
+    participant H as History
+
+    W->>S: Add
+
+    S->>H: Commit
+
+```
+
+-   `repository`, `repo`: a folder tracked by git.
+-   `working folder`: files not tracked by Git, or contain new
+    modification not saved yet.
+-   `add`: add files of modifications to be tracked by Git
+-   `commit`: create a snapshot of changes and save it in Git `history`.
+    Commits must have a short description.
+
+## Terms to know {.smaller}
+
+```{mermaid}
+%%| echo: false
+%%| eval: true
+%%{init:{'themeCSS': ".actor {stroke: DarkBlue;fill: White;stroke-width:1.5px;}", 'sequence':{'mirrorActors': false}}}%%
+
+sequenceDiagram
+
+    participant W as Working folder
+
+    participant S as Staged
+
+    participant H as History
+
+    W->>S: Add
+
+    S->>H: Commit
+
+```
+
+-   `stage`: Files here are tracked by Git and can be put into the
+    history with a `commit`.
+-   `history`: all the changes that have been `commited`. Everything
+    that has been commited in the Git history will never be completely
+    gone.
+
+## Terms to know {.smaller}
+
+Branches and repository:
+
+-   `local`: refer to the repository that you store on your computer.
+-   `remote`: refer to the repository that are stored online like git
+    hub.
+-   `branch`: branches are parallel versions of your project. They allow
+    you to experiment things without affecting the main project until
+    you’re ready to merge them back.
+-   `merge`: merging is the process of integrating changes from one
+    branch into another. It combines the histories of both branches,
+    creating a single, unified history.
+
+## Functions
+
+::: callout-question
+Why write functions?
+:::
+
+Golden rule of programming: **DRY - Don't Repeat Yourself**
+
+Create function for actions that are often repeated:
+
+-   Import dataset
+-   Create models
+-   Extract results from a model
+-   Create tables
+
+## Functions {.smaller}
+
+::: callout-important
+A function is a bundled sequence of steps that achieve a specific
+action.
+:::
+
+For example, `+` (add) is a function, `mean()` is a function ...
+
+Functions are made of a function call, its arguments, and the function
+body:
+
+``` r
+myfunction <- function(argument1, argument2){ 
+  # body of function with R code
+}
+```
+
+::: callout-tip
+Type `sd` in R to see how `sd()` calculate standard deviation
+:::
+
+## Functions
+
+-   The output of the function depends only on the inputs. Identical inputs
+    will give identical results.
+
+-   Functions can replace loops and make your code much clearer.
+
+-   Functions are easier to share between projects and can be gathered
+    in a package.

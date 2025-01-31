@@ -1,0 +1,201 @@
+---
+title: "Hands-on Activity 2 - Theory"
+date: 2024-06-05
+author: "Stéphane Tuffier"
+format: 
+  revealjs:
+    chalkboard: true
+editor: visual
+bibliography: ref.bib
+execute: 
+  eval: false
+---
+
+## Plan {.center}
+
+1.  Functional programming with `purrr`
+2.  Report generation with Quarto
+3.  Table creation with `gt`
+4.  Bonus: Git branch and remote repo
+
+## Functional Programming in R with `purrr`
+
+Functions can be easily applied to multiple elements using
+**functional** functions: special functions that uses another function
+as one of its arguments.
+
+`purrr`:
+
+-   Part of the tidyverse
+-   Focus on functional programming
+-   Simplify complex data manipulations
+
+::: notes
+The `purrr` package is a part of the tidyverse suite of packages, which
+is designed to make data science easier and more consistent in R.
+`purrr` focuses on functional programming and helps simplify complex
+data manipulations, especially with lists and data frames.
+:::
+
+## Functional Programming in R with `purrr`
+
+-   The `map` family of functions: works by taking a vector (or list),
+    applying a function to each of those items, and outputting the
+    results from each function call.
+
+::: columns
+::: {.column width="50%"}
+![](/img/purrr_map.png){figure-align="center" height="100px"}
+:::
+
+::: {.column width="50%"}
+![](/img/purrr_map2.png){figure-align="center" height="100px"}
+:::
+:::
+
+![](/img/purrr_pmap.png){fig-align="center" height="100"}
+
+## Functional Programming in R with `purrr`
+
+```{r}
+#| eval: true
+#| echo: true
+paste_text <- function(x) { 
+  paste(x, "seconds have passed")
+}
+purrr::map(1:5, paste_text)
+```
+
+::: notes
+https://r-cubed-intermediate.rostools.org/sessions/functions
+
+The name map() doesn’t mean a geographic map, it is the mathematical
+meaning of map: To use a function on each item in a set of items.
+:::
+
+::: notes
+-   `map()`: Applies a function to each element of a list and returns a
+    list
+-   `map_lgl()`: Returns a logical vector
+-   `map_int()`: Returns an integer vector
+-   `map_dbl()`: Returns a double vector
+-   `map_chr()`: Returns a character vector
+-   `map_df()`: Applies a function to each element and returns a data
+    frame
+:::
+
+## Functional Programming in R with `purrr`
+
+Benefits of Using `purrr`
+
+-   Reduces redundancy
+    -   Write less code by avoiding repetitive loops
+-   Increases code readability
+    -   Clear and concise syntax
+-   Easier to update and debug
+
+## Dynamic Report with Quarto {.smaller}
+
+What is Quarto?
+
+-   Open-source scientific publishing system
+
+-   Supports R and Python
+
+-   Integrates code, text, and outputs in one document (HTML, DOCX)
+
+![Quarto by Allison Horst](/img/quarto.png){fig-align="center"}
+
+::: notes
+-   Produces HTML, PDF, Word documents, presentations, etc.
+
+Benefits:
+
+-   Reproducible research
+-   Automated reporting
+:::
+
+## Quarto Document Structure
+
+```` markdown
+  ---
+  title: "Descriptive Statistics Report"
+  author: "Your Name"
+  format: html # or docx 
+  ---
+  
+  # Results
+  
+  ```{{r}}
+library(purrr)
+numeric_vars <- c("creatinine", "lead", "barium", "cadmium")
+descriptive_stats <- map(numeric_vars, ~ compute_numeric_summaries(nh2007[[.x]]))
+descriptive_stats
+```
+  
+````
+
+::: notes
+-   YAML header defines document metadata.
+-   R code chunk for analysis.
+-   Results section for displaying outputs.
+:::
+
+## Markdown {.smaller}
+
+Text formatting:
+
+-   `**bold**`,
+-   `_italic_`,
+-   `# Headers 1`,
+-   `## Headers 2`
+
+Lists:
+
+-   Unordered lists with `-` or `*`
+
+-   Ordered lists with `1.`
+
+R Code chunks:
+
+```` markdown
+```{{r}}
+summary(cars)
+```
+````
+
+## Table creation with `gt`
+
+Create publication ready tables in R directly from your data.
+
+There is many functions to style and format tables to match your needs:
+
+-   Automatic number formating
+-   Nice labels with special characters
+-   Table header spanner
+-   Cells highlight
+
+Tables can be exported in many format including html or MS Word.
+
+## Table creation with `gt`
+
+![](/img/gt_parts_of_a_table.svg)
+
+## Bonus: Git branching
+
+Basic Git Workflow:
+
+-   Create a branch: `git branch new-branch-name`
+-   Switch to new branch: `git checkout new-branch-name`
+-   Commit changes: `git add .`, `git commit -m "message"`
+-   Merge branch: `git checkout main`, `git merge new-branch-name`
+
+::: notes
+-   Isolates development work
+-   Allows multiple features/bug fixes to be developed concurrently
+-   Simplifies collaboration and code review
+:::
+
+## Bonus: Git local and remote
+
+![](/img/git_local_remote.png)

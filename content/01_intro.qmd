@@ -1,0 +1,32 @@
+---
+title: "Introduction"
+date: 2024-06-05
+slide-format: revealjs
+---
+
+
+# Slides
+
+<div>
+
+```{=html}
+<iframe class="slide-deck" src="01_slides_intro.html" width="100%" height="500px"></iframe>
+```
+
+</div>
+
+# General context 
+
+The ultimate aim of this workshop is to make you able to start a data analysis projects that are: 
+
+- self-contained (within a single folder)
+- have a record of changes made to the files with git
+- make it easier to collaborate with other people
+- make it simpler to connect the analysis with a scientific output like a paper
+- to structure analysis in a more reproducible way (or at least more easily inspectable).
+
+This is will: 
+
+- improve transparency of your reseach projects
+- make it easier to share both with your research team but also public, funding agency and other researcher
+- facilitate the assessment of the quality of your work including peer review.

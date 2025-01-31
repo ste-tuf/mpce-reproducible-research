@@ -1,0 +1,137 @@
+---
+title: "Elevate your research with reproducibility science practices: a R workshop for young researcher in epidemiology"
+author: 
+  - name: "Stéphane Tuffier"
+    url: https://www.tuffier.eu/about.html
+date: 2024-06-05
+---
+
+This workshop aims to provide young epidemiology researchers knowledge
+and skills to increase reproducibility of their research.
+
+The first part of the workshop will begin by defining reproducibility
+and its importance in epidemiology, exploring associated challenges and
+opportunities. In the second part of the workshop, focus will be put on
+practical solutions and their application so that young researchers can
+implement in their analysis and writing.
+
+![](img/WS8.png)
+
+# Goals
+
+-   Explain what is a reproducibile analysis workflow
+
+-   Show how to improve the organisation of your R projects
+
+-   Show and apply simple tools to make your analysis code cleaner,
+    shorter, documented and more reproducible
+
+-   Introduce to Git to track changes in your code
+
+# Program
+
+-   **Introduction (20 minutes):**
+
+    -   Welcome
+    -   Importance of reproducibility in epidemiology research
+    -   The principles of a reproducible workflow
+        -   Creating and organizing a project structure for
+            reproducibility
+        -   Avoiding copy pasting with functions
+        -   Git basic to keep track your code
+
+-   **Hands-on Activity 1: a simple reproducible project (40 minutes)**
+
+    -   How to organize project's files
+    -   Style R scripts
+    -   First Git commit
+    -   Introduction to creating your own functions
+
+-   **Break (30 minutes)**
+
+-   **Hands-on Activity 2: create a nice report (50 minutes)**
+
+    -   Functional programming wiht `purrr`
+    -   Create a nice report with quarto
+    -   Make nice tables using `gt`
+    -   Bonus: Git branch and remote repo
+
+-   **Closing Remarks and Q&A (15 minutes)**
+
+    -   Summary of key takeaways
+    -   Resources for further learning
+    -   Open floor for questions and discussion
+
+# Requirements
+
+Computer with the following software installed:
+
+-   R (version R 4.3.0 or later)
+-   R-studio, version 2023.03 or later (other IDE like Visual code can
+    also be used)
+-   quarto (version 1.3 or later)
+-   git and git-gui (version \>= 2.40.0)
+
+All the pre-workshop instructions can be found here:
+[Pre-workshop](content/00_pre-ws.qmd).
+
+# References
+
+This workshop was created and heavily inspired by many amazing
+ressources from the R community. Here is the list of references and
+books that were usefull to create this workshop.
+
+Books:
+
+-   R for Data Science (2e) by Hadley Wickham, Mine Çetinkaya-Rundel,
+    and Garrett Grolemund. <https://r4ds.hadley.nz/>
+-   Advanced R by Hadley Wickham. <https://adv-r.hadley.nz/index.html>
+-   Intro Reproducible Research in R, An introductory workshop on modern
+    data analyses and workflows by Luke W. Johnston, Helene Baek Juel,
+    Bettina Lengger, Daniel R. Witte, Hannah Chatwin, Malene Revsbech
+    Christiansen, Anders Aasted Isaksen.
+    <https://doi.org/10.21105/jose.00122>,
+    <https://r-cubed-intro.rostools.org/>
+-   Intermediate and Advanced Reproducible Research in R by Luke W.
+    Johnston. <https://r-cubed-intermediate.rostools.org/>,
+    <https://r-cubed-advanced.rostools.org/>
+-   The carpentries. <https://carpentries.org/>
+-   What They Forgot to Teach You About R by Jennifer Bryan, Jim Hester,
+    Shannon Pileggi, E. David Aja. <https://rstats.wtf/>
+-   Happy Git and GitHub for the useR by Jennyfer Bryan.
+    <https://happygitwithr.com/>
+
+Packages:
+
+-   tidyverse: <https://www.tidyverse.org/>
+-   quarto: <https://quarto.org/>
+-   gt: <https://gt.rstudio.com/>
+-   here: <https://here.r-lib.org/>
+-   broom: <https://broom.tidymodels.org/>
+
+Git:
+
+-   Pro Git book by Scott Chacon. <https://git-scm.com/book/en/v2>
+-   <https://ohmygit.org/>
+-   <https://learngitbranching.js.org>
+
+Dataset:
+
+-   National Health and Nutrition Examination Survey (NHANES) from
+    the CDC. <https://www.cdc.gov/nchs/nhanes/index.htm>
+
+# Re-use and licensing
+
+![](img/cc-by.png){width="100"}
+
+The course material is licensed under the [Creative Commons Attribution
+4.0 International
+License](https://creativecommons.org/licenses/by/4.0/), so the material
+can be used, re-used, and modified, as long as there is attribution to
+this source.
+
+# Issues and comments
+
+In case you encounter any error or strugle with the workshop material,
+you can report an issue in the left side menu. Feel free to
+contact me by email too.

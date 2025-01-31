@@ -1,21 +1,26 @@
 project:
   type: website 
-  output-dir: _site
+  output-dir: docs
+  resources: 
+    - "google7d519ad531d20ea3.html"
   
 website: 
-  title: "ISEE young 2024 - WS8 - Reproducitiliby"
+  title: "ISEE young 2024 - WS8 - Reproducibility"
   description: "Reproductible research and data science practices for young epidemiologist"
-  site-url: "https://rstudio-conf-2022.github.io/ggplot2-graphic-design/"
+  site-url: "https://ste-tuf.github.io/isee-young-ws-reproducibility/"
   favicon: "/img/isee-young-logo.png"
+  open-graph: true
 
-  # repo-url: 
+  repo-url: https://github.com/ste-tuf/isee-young-ws-reproducibility/
+  repo-actions: [edit, issue]
+  
+  
   page-navigation: true
   
   page-footer:
     left: "This page is built with [Quarto](https://quarto.org/)."
-    right: "&copy; CC BY-NC, Stéphane Tuffier"
+    right: "&copy; CC BY-NC, Stephane Tuffier"
     background: "#0b6fa1"
-
 
   navbar: 
     search: true
@@ -24,28 +29,22 @@ website:
     background: "#0b6fa1"
     align: center
 
-    # logo-alt: 
-    # right:
-    #  - icon: github
-    #     href: https://github.com/
-    #     aria-label: GitHub
-    
     left:
       - text: Pre-workshop
         menu:
           - text: Installation
-            href: content/pre-ws.qmd#installation
+            href: content/00_pre-ws.qmd#installation
           - text: Data
-            href: content/pre-ws.qmd#data
-      - text: Part 1
-        href: session_1.qmd
-      - text: Practice 1
-        href: session_2.qmd
-      - text: Practice 2
-        href: session_3.qmd
+            href: content/00_pre-ws.qmd#data
+      - text: Introduction
+        href: content/01_intro.qmd
+      - text: Hands-on Activity 1
+        href: content/02_exercise_1.qmd
+      - text: Hands-on Activity 2
+        href: content/03_exercise_2.qmd
     right: 
       - icon: github
-        # href: https://github.com/
+        href: https://github.com/ste-tuf/isee-young-ws-reproducibility/
         text: GitHub
 
 format:

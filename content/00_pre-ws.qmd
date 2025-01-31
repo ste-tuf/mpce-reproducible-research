@@ -1,0 +1,98 @@
+---
+title: "Pre-workshop instructions"
+date: 2024-06-05
+---
+
+# Software
+
+## R (Version 4.3.0 or Later):
+
+-   **Windows:** Download the R installer from the [CRAN
+    website](https://cran.r-project.org/bin/windows/base/). Follow the
+    installation instructions.
+
+-   **Mac:** Download the R installer from the [CRAN
+    website](https://cran.r-project.org/bin/macosx/). Follow the
+    installation procedure.
+
+-   **Linux:** R is typically available through the package manager of
+    your Linux distribution. On Ubuntu you can use the following command
+    in your terminal:
+
+    ``` bash
+     sudo apt-get install r-base r-base-dev # Optional but recommended
+    ```
+
+-   For help during the installation, refer to the [R Installation and
+    Administration](https://cran.r-project.org/doc/manuals/r-release/R-admin.html)
+    documentation.
+
+##  **RStudio (Version 2023.03 or Later):** - **Windows, Mac, Linux:**
+
+Download the RStudio installer from the [RStudio
+Download](https://www.rstudio.com/products/rstudio/download/) page.
+Choose the appropriate version for your operating system and follow the
+installation instructions provided.
+
+For alternative IDEs like Visual Studio Code, download and install
+according to your preferences.
+
+## Git and Git GUI (Version \>= 2.40.0):
+
+-   **Windows:** Download the Git installer from the [Git
+    Downloads](https://gitforwindows.org/) website. Follow the
+    installation instructions provided. Ensure that the Git GUI
+    component is selected during installation.
+
+-   **Mac:** Download the installer from the [Git
+    Downloads](https://git-scm.com/downloads) page and follow the
+    installation instructions. As detailed on this page you will need to
+    install git-gui using homebrew: 
+    
+    ``` bash
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    brew install git-gui
+    ```
+
+-   **Linux:** Install Git using your package manager. On Ubuntu, use
+    the following command:
+
+    ``` R
+    sudo apt-get install git git-gui
+    ```
+
+-   For detailed installation instructions, refer to the [Git
+    Installation](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+    documentation.
+
+# R packages
+
+-   **Windows, Mac, Linux:** All the packages can be installed with R
+    package manager. Open RStudio and run the following command in the
+    console:
+
+    ``` R
+    install.packages("quarto", "tidyverse", "styler", "gt", "here")
+    ```
+
+-   For Linux, some packages might required additional compilation
+    steps, please refer to your distribution documentation.
+
+
+::: {.callout-tip}
+**Note:** Ensure that all software versions meet or exceed the specified
+requirements for better experience during the workshop.
+:::
+
+# Data
+
+Data used in the workshop is a sample of the NHANES study in particular 2007 and 2009 waves, including demographic, medical and various exposure variables. Two dataset need to be donwloaded: 
+
+- [`nh2007.Rdata`](../data/nh2007.Rdata) 
+- [`nh2009.Rdata`](../data/nh2009.Rdata)
+
+If you wish to recreate the data by yourself, please have a look at the script in `data-raw/nhanes.R` in the Github repository.
+
+# Getting scripts
+
+Please download the initail script of the workshop: [`starting_script.R`](../R/starting_script.R)

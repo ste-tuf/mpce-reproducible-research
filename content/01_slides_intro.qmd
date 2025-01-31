@@ -1,0 +1,145 @@
+---
+title: "Introduction"
+date: 2024-06-05
+author: "Stéphane Tuffier"
+bibliography: "ref.bib"
+format: 
+  revealjs:
+    chalkboard: true
+    width: 1500
+    fig-cap-location: margin
+    code-line-numbers: true
+    page-layout: full
+editor: visual
+---
+
+##  {.center background-color="#0b6fa1"}
+
+![](https://imgs.xkcd.com/comics/coronavirus_genome.png){fig-align="center"}
+
+::: footer
+https://xkcd.com/2298
+:::
+
+## ❔ {.center}
+
+**... or about open access, open data, open methods/protocols, or open
+source?**
+
+**How many of you have read a method in a paper and wondered how they
+actually did it?**
+
+**Have you ever received confusing code? Or maybe written your own
+confusing code?**
+
+## Reproducibility
+
+Reproducibility
+
+:   Obtain consistent results using the **same data and code** as the
+    original study.
+
+Replicability
+
+:   Obtain consistent results **across studies** aimed at answering the
+    same scientific question using **new data** or other new
+    computational methods.
+
+::: footer
+@nationalacademiesofsciences2019
+:::
+
+::: notes
+Unreplicability can be useful to science and help build knowledge.
+
+-   Domain of study
+-   Complex / unknown systems
+-   Researchers choices:
+    -   **Study design**
+    -   **Mistakes**
+    -   **Misconduct**
+    -   **Poor reporting and publication bias**
+
+Source of not useful non-replication:
+
+-   publication bias
+-   misaligned incentives
+-   inappropriate statistical inference
+-   poor study design
+-   errors
+-   incomplete reporting of a study
+:::
+
+## Reproducibility
+
+Related to data collection, computation, and analysis:
+
+-   Data acquisition
+-   Data management
+-   Analysis
+-   Reporting results
+
+::: callout-important
+Almost all the steps of an epidemiology study can be involved!
+:::
+
+## Reproducibility
+
+![](/img/spectrum.jpeg){fig-alt="reproducibility spectrum"
+fig-align="center"}
+
+::: footer
+@peng2011
+:::
+
+## Workshop organization
+
+A little bit of theory and lots of hands-on exercises. Each part of the
+workshop has a dedicated page where you can find slides and
+instructions.
+
+-   **Introduction (20 minutes): a little bit of theory**
+
+-   **Hands-on Activity 1: a simple reproducible project (40 minutes)**
+
+-   **Break (30 minutes)**
+
+-   **Hands-on Activity 2: create a nice report (50 minutes)**
+
+-   **Closing Remarks and Q&A (15 minutes)**
+
+## Getting help
+
+-   Maybe your teammates can help
+
+-   Put a sticker on your computer if you need assistance
+
+-   Raise your hand
+
+-   No stupid questions—we're all learning here, *including me*
+
+    -   Be open-minded
+
+    -   Be supportive
+
+    -   Be inclusive
+
+## Let's form teams of 3
+
+1.  Have you ever created and used custom functions in R?
+2.  Do you ever have use `map` functions from `purrr` package?
+3.  Have you ever created a report using RMarkdown, Quarto or Jupyter
+    notebook?
+
+If you answered "No" to all three questions: **Beginner**
+
+If you answered "Yes" to one or two questions: **Intermediate**
+
+If you answered "Yes" to all three questions: **Advanced**
+
+::: notes
+Let's mix things up and get to know each other! We'll form teams of 3
+with varying levels of R experience.
+:::
+
+## References
