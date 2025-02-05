@@ -1,1 +1,1 @@
-Sitemap: https://ste-tuf.github.io/isee-young-ws-reproducibility/sitemap.xml
+Sitemap: https://ste-tuf.github.io/mpce-reproducible-research/sitemap.xml

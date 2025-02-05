@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<link href="..//img/isee-young-logo.png" rel="icon" type="image/png">
+<link href="..//img/icon-rennes.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -9,11 +9,9 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.45">
+  <meta name="generator" content="quarto-1.5.57">
 
-  <meta name="author" content="Stéphane Tuffier">
-  <meta name="dcterms.date" content="2024-06-05">
-  <title>ISEE young 2024 - WS8 - Reproducibility – Hands-on Activity 1 - Theory</title>
+  <title>Master MPCE - R workshop – Hands-on Activity 1 - Theory</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -392,8 +390,8 @@
   <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
   <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
   <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
-<meta property="og:title" content="ISEE young 2024 - WS8 - Reproducibility - Hands-on Activity 1 - Theory">
-<meta property="og:site_name" content="ISEE young 2024 - WS8 - Reproducibility">
+<meta property="og:title" content="Hands-on Activity 1 - Theory – Master MPCE - R workshop">
+<meta property="og:site_name" content="Master MPCE - R workshop">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -403,19 +401,13 @@
   <h1 class="title">Hands-on Activity 1 - Theory</h1>
 
 <div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Stéphane Tuffier 
-</div>
-</div>
 </div>
 
-  <p class="date">2024-06-05</p>
 </section>
 <section id="plan" class="slide level2">
 <h2>Plan</h2>
 <ol type="1">
-<li>Project orgnisation</li>
+<li>Project organisation</li>
 <li>R style guide</li>
 <li>Git</li>
 <li>Introduction to functions</li>
@@ -425,7 +417,7 @@ Stéphane Tuffier
 <h2>Projects</h2>
 <p>For this workshop : a folder on your computer</p>
 <p>There are many definitions of a project: it can be a single analysis for a paper or an entire cohort study with many papers.</p>
-<p>In this workshop: a project will refer to a folder on your computer.</p>
+<p>In this workshop: a folder on your computer where we will analyse the NHANES data.</p>
 </section>
 <section id="projects-1" class="slide level2">
 <h2>Projects</h2>
@@ -561,8 +553,7 @@ Stéphane Tuffier
 <span id="cb4-12"><a></a>report-2022-03-20.qmd</span>
 <span id="cb4-13"><a></a>report-2022-04-02.qmd</span>
 <span id="cb4-14"><a></a>report-draft-notes.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+</div></div>
 <aside class="notes">
 <p>https://r4ds.hadley.nz/workflow-scripts#saving-and-naming</p>
 <p>https://rstats.wtf/source-and-blank-slates</p>
@@ -692,10 +683,10 @@ Stéphane Tuffier
 <h2>Classic version control</h2>
 
 <img data-src="..\img/version-nightmare.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="git" class="slide level2">
+<section id="git" class="slide level2 smaller">
 <h2>Git</h2>
 <ul>
-<li>Keeps track of every change to a file.</li>
+<li>Keeps track of every changes to a file.</li>
 <li>Can instantly restore any previous version of a file.</li>
 <li>Allows you to split your work into different branches for testing purposes.</li>
 <li>Handles merging files by comparing their modifications and resolving differences if any.</li>
@@ -722,7 +713,6 @@ Stéphane Tuffier
 <li>.csv</li>
 <li>Markup documents like Markdown, Quarto, or LaTeX files</li>
 </ul>
-<p>Configure a git repository for each project.</p>
 </section>
 <section id="terms-to-know" class="slide level2 smaller">
 <h2>Terms to know</h2>
@@ -754,7 +744,7 @@ sequenceDiagram
 <ul>
 <li><code>repository</code>, <code>repo</code>: a folder tracked by git.</li>
 <li><code>working folder</code>: files not tracked by Git, or contain new modification not saved yet.</li>
-<li><code>add</code>: add files of modifications to be tracked by Git</li>
+<li><code>add</code>: add files or modifications to the staged areas,</li>
 <li><code>commit</code>: create a snapshot of changes and save it in Git <code>history</code>. Commits must have a short description.</li>
 </ul>
 </section>
@@ -786,16 +776,16 @@ sequenceDiagram
 </div>
 </div>
 <ul>
-<li><code>stage</code>: Files here are tracked by Git and can be put into the history with a <code>commit</code>.</li>
-<li><code>history</code>: all the changes that have been <code>commited</code>. Everything that has been commited in the Git history will never be completely gone.</li>
+<li><code>stage</code>: Files and modification here are tracked by Git and can be put into the history with a <code>commit</code>. They still can be lost (unsafe).</li>
+<li><code>history</code>: all the changes that have been <code>commited</code>. Everything that has been commited in the Git history will never be completely gone (safe).</li>
 </ul>
 </section>
 <section id="terms-to-know-2" class="slide level2 smaller">
 <h2>Terms to know</h2>
 <p>Branches and repository:</p>
 <ul>
-<li><code>local</code>: refer to the repository that you store on your computer.</li>
-<li><code>remote</code>: refer to the repository that are stored online like git hub.</li>
+<li><code>local</code>: refer to the repository that you store on your computer. <strong>We only work locally today.</strong></li>
+<li><code>remote</code>: refer to repository stored online like in GitHub.</li>
 <li><code>branch</code>: branches are parallel versions of your project. They allow you to experiment things without affecting the main project until you’re ready to merge them back.</li>
 <li><code>merge</code>: merging is the process of integrating changes from one branch into another. It combines the histories of both branches, creating a single, unified history.</li>
 </ul>
@@ -805,12 +795,14 @@ sequenceDiagram
 <div class="callout-question">
 <p>Why write functions?</p>
 </div>
-<p>Golden rule of programming: <strong>DRY - Don’t Repeat Yourself</strong></p>
-<p>Create function for actions that are often repeated:</p>
+<div class="center">
+<p><strong>DRY - Don’t Repeat Yourself</strong></p>
+</div>
+<p>Create functions for actions that are often repeated:</p>
 <ul>
-<li>Import dataset</li>
+<li>Import datasets</li>
 <li>Create models</li>
-<li>Extract results from a model</li>
+<li>Extract results from models</li>
 <li>Create tables</li>
 </ul>
 </section>
@@ -829,8 +821,8 @@ sequenceDiagram
 </div>
 </div>
 </div>
-<p>For example, <code>+</code> (add) is a function, <code>mean()</code> is a function …</p>
-<p>Functions are made of a function call, its arguments, and the function body:</p>
+<p>For example, <code>+</code> (sum) is a function, <code>mean()</code> is a function …</p>
+<p>Functions are made of a function call, arguments, and the function body:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>myfunction <span class="ot">&lt;-</span> <span class="cf">function</span>(argument1, argument2){ </span>
 <span id="cb9-2"><a></a>  <span class="co"># body of function with R code</span></span>
 <span id="cb9-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -843,7 +835,7 @@ sequenceDiagram
 <p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
-<p>Type <code>sd</code> in R to see how <code>sd()</code> calculate standard deviation</p>
+<p>Type <code>sd</code> in R (without parenthesis) to see how <code>sd()</code> calculate standard deviation</p>
 </div>
 </div>
 </div>
@@ -1239,7 +1231,7 @@ sequenceDiagram
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/ste-tuf\.github\.io\/isee-young-ws-reproducibility\/");
+          var filterRegex = new RegExp("https:\/\/ste-tuf\.github\.io\/mpce-reproducible-research\/");
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.45">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-06-05">
+<meta name="dcterms.date" content="2025-02-12">
 
-<title>Introduction – ISEE young 2024 - WS8 - Reproducibility</title>
+<title>Introduction – Master MPCE - R workshop</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="..//img/isee-young-logo.png" rel="icon" type="image/png">
+<link href="..//img/icon-rennes.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -69,9 +69,9 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="ISEE young 2024 - WS8 - Reproducibility - Introduction">
+<meta property="og:title" content="Introduction – Master MPCE - R workshop">
 <meta property="og:description" content="Reproductible research and data science practices for young epidemiologist">
-<meta property="og:site_name" content="ISEE young 2024 - WS8 - Reproducibility">
+<meta property="og:site_name" content="Master MPCE - R workshop">
 </head>
 
 <body class="nav-fixed">
@@ -82,10 +82,10 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../img/isee-young-logo.png" alt="" class="navbar-logo">
+    <img src="../img/icon-rennes.svg" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">ISEE young 2024 - WS8 - Reproducibility</span>
+    <span class="navbar-title">Master MPCE - R workshop</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -100,12 +100,12 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-pre-workshop">    
         <li>
-    <a class="dropdown-item" href="../content/00_pre-ws.html#installation">
+    <a class="dropdown-item" href="../content/00_pre-ws.html#software">
  <span class="dropdown-text">Installation</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../content/00_pre-ws.html#data">
- <span class="dropdown-text">Data</span></a>
+ <span class="dropdown-text">Data and script</span></a>
   </li>  
     </ul>
   </li>
@@ -124,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/ste-tuf/isee-young-ws-reproducibility/"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/ste-tuf/mpce-reproducible-research"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text">GitHub</span></a>
   </li>  
@@ -147,7 +147,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a></li>
   <li><a href="#general-context" id="toc-general-context" class="nav-link" data-scroll-target="#general-context">General context</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ste-tuf/isee-young-ws-reproducibility/edit/main/content/01_intro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ste-tuf/isee-young-ws-reproducibility/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/ste-tuf/mpce-reproducible-research/edit/main/content/01_intro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ste-tuf/mpce-reproducible-research/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -165,7 +165,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 5, 2024</p>
+      <p class="date">February 12, 2025</p>
     </div>
   </div>
   
@@ -185,13 +185,13 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="general-context" class="level1">
 <h1>General context</h1>
-<p>The ultimate aim of this workshop is to make you able to start a data analysis projects that are:</p>
+<p>The ultimate aim of this workshop is to give you the key to make data analysis projects tha:</p>
 <ul>
-<li>self-contained (within a single folder)</li>
+<li>are self-contained (within a single folder)</li>
 <li>have a record of changes made to the files with git</li>
 <li>make it easier to collaborate with other people</li>
-<li>make it simpler to connect the analysis with a scientific output like a paper</li>
-<li>to structure analysis in a more reproducible way (or at least more easily inspectable).</li>
+<li>connect analysis and scientific output like a paper</li>
+<li>are more reproducible (or at least easier to review).</li>
 </ul>
 <p>This is will:</p>
 <ul>
@@ -296,7 +296,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ste-tuf\.github\.io\/isee-young-ws-reproducibility\/");
+      var filterRegex = new RegExp("https:\/\/ste-tuf\.github\.io\/mpce-reproducible-research\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -632,9 +632,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ste-tuf/isee-young-ws-reproducibility/edit/main/content/01_intro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ste-tuf/isee-young-ws-reproducibility/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ste-tuf/mpce-reproducible-research/edit/main/content/01_intro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ste-tuf/mpce-reproducible-research/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>© CC BY-NC, Stephane Tuffier</p>
+<p>© CC BY, Stephane Tuffier</p>
 </div>
   </div>
 </footer>

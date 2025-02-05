@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.45">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-06-05">
+<meta name="dcterms.date" content="2025-02-12">
 
-<title>Hands-on Activity 1 – ISEE young 2024 - WS8 - Reproducibility</title>
+<title>Hands-on Activity 1 – Master MPCE - R workshop</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="..//img/isee-young-logo.png" rel="icon" type="image/png">
+<link href="..//img/icon-rennes.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -103,9 +103,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="ISEE young 2024 - WS8 - Reproducibility - Hands-on Activity 1">
+<meta property="og:title" content="Hands-on Activity 1 – Master MPCE - R workshop">
 <meta property="og:description" content="Reproductible research and data science practices for young epidemiologist">
-<meta property="og:site_name" content="ISEE young 2024 - WS8 - Reproducibility">
+<meta property="og:site_name" content="Master MPCE - R workshop">
 </head>
 
 <body class="nav-fixed">
@@ -116,10 +116,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../img/isee-young-logo.png" alt="" class="navbar-logo">
+    <img src="../img/icon-rennes.svg" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">ISEE young 2024 - WS8 - Reproducibility</span>
+    <span class="navbar-title">Master MPCE - R workshop</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -134,12 +134,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-pre-workshop">    
         <li>
-    <a class="dropdown-item" href="../content/00_pre-ws.html#installation">
+    <a class="dropdown-item" href="../content/00_pre-ws.html#software">
  <span class="dropdown-text">Installation</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../content/00_pre-ws.html#data">
- <span class="dropdown-text">Data</span></a>
+ <span class="dropdown-text">Data and script</span></a>
   </li>  
     </ul>
   </li>
@@ -158,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/ste-tuf/isee-young-ws-reproducibility/"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/ste-tuf/mpce-reproducible-research"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text">GitHub</span></a>
   </li>  
@@ -181,12 +181,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#goal" id="toc-goal" class="nav-link" data-scroll-target="#goal">Goal</a></li>
   <li><a href="#tasks" id="toc-tasks" class="nav-link" data-scroll-target="#tasks">Tasks</a></li>
-  <li><a href="#starting-the-project" id="toc-starting-the-project" class="nav-link" data-scroll-target="#starting-the-project">Starting the project</a>
+  <li><a href="#set-up-the-project" id="toc-set-up-the-project" class="nav-link" data-scroll-target="#set-up-the-project">Set up the project</a>
   <ul class="collapse">
   <li><a href="#initialize-git-repository" id="toc-initialize-git-repository" class="nav-link" data-scroll-target="#initialize-git-repository">Initialize git repository</a></li>
   <li><a href="#create-a-rstudio-project" id="toc-create-a-rstudio-project" class="nav-link" data-scroll-target="#create-a-rstudio-project">Create a Rstudio project</a></li>
   <li><a href="#adding-folder-and-files" id="toc-adding-folder-and-files" class="nav-link" data-scroll-target="#adding-folder-and-files">Adding folder and files</a></li>
-  <li><a href="#files-added-by-git" id="toc-files-added-by-git" class="nav-link" data-scroll-target="#files-added-by-git">Files added by git</a></li>
   </ul></li>
   <li><a href="#you-first-commit" id="toc-you-first-commit" class="nav-link" data-scroll-target="#you-first-commit">You first commit</a></li>
   <li><a href="#improve-the-script" id="toc-improve-the-script" class="nav-link" data-scroll-target="#improve-the-script">Improve the script</a>
@@ -196,11 +195,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#create-a-function" id="toc-create-a-function" class="nav-link" data-scroll-target="#create-a-function">Create a function</a>
   <ul class="collapse">
-  <li><a href="#extensions-of-the-functions" id="toc-extensions-of-the-functions" class="nav-link" data-scroll-target="#extensions-of-the-functions">Extensions of the functions</a></li>
+  <li><a href="#extending-functions" id="toc-extending-functions" class="nav-link" data-scroll-target="#extending-functions">Extending functions</a></li>
   </ul></li>
   <li><a href="#before-break" id="toc-before-break" class="nav-link" data-scroll-target="#before-break">Before break</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ste-tuf/isee-young-ws-reproducibility/edit/main/content/02_exercise_1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ste-tuf/isee-young-ws-reproducibility/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/ste-tuf/mpce-reproducible-research/edit/main/content/02_exercise_1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ste-tuf/mpce-reproducible-research/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -218,7 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 5, 2024</p>
+      <p class="date">February 12, 2025</p>
     </div>
   </div>
   
@@ -238,7 +237,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="goal" class="level1">
 <h1>Goal</h1>
-<p>At the end of this exercice you should have a project folder created for the analysis. The folder should contains a git repository, th a <code>script/</code> folder containing the starting script (<code>starting_script.R</code>) and a <code>R/</code> folder containing <code>descriptive_stats.R</code> with 3 functions.</p>
+<p>At the end of this exercice you should have a project folder created for the analysis. The folder should contains a git repository, a <code>script/</code> folder containing the starting script (<code>starting_script.R</code>) and a <code>R/</code> folder containing <code>descriptive_stats.R</code> with 3 functions.</p>
 </section>
 <section id="tasks" class="level1">
 <h1>Tasks</h1>
@@ -249,66 +248,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Create two simple functions for descriptive statistics</li>
 </ul>
 </section>
-<section id="starting-the-project" class="level1">
-<h1>Starting the project</h1>
-<p>You should have downloaded the dataset and the script for this workshop if you followed the preworkshop instructions. If you didn’t please go check them and make sure that you already have git installed:</p>
+<section id="set-up-the-project" class="level1">
+<h1>Set up the project</h1>
+<p>You should have downloaded the dataset and the script for this workshop if you followed the preworkshop instructions. If you didn’t please go check them again and make sure that you already have git installed:</p>
 <ul>
 <li><a href="../data/nh2007.Rdata"><code>nh2007.Rdata</code></a></li>
 <li><a href="../data/nh2009.Rdata"><code>nh2009.Rdata</code></a></li>
 <li><a href="../R/starting_script.R"><code>starting_script.R</code></a></li>
 </ul>
-<div class="cal:out-info">
+<div class="callout-info">
 <p>If you wish to recreate the NHANES data by yourself, please have a look at the script in <code>data-raw/nhanes.R</code> in the workshop’s GitHub repository</p>
 </div>
-<p>The first step is to create a folder to gather all the files that we will create for the analysis, you can call it <code>NHANES/</code> , <code>isee-young-ws8/</code> or <code>workshop/</code> it does not matter.</p>
+<p>The first step is to create a folder to gather all the project files. You can call it <code>NHANES/</code>, <code>mpce-reproducibility/</code> or <code>workshop/</code> it does not matter. Copy the files and move to this folder.</p>
 <p>Next we should intialize <code>git</code> within the project folder.</p>
 <section id="initialize-git-repository" class="level2">
 <h2 class="anchored" data-anchor-id="initialize-git-repository">Initialize git repository</h2>
-<p>Navigate to the newly created folder, it should be all empty. You can right click in the folder and click on <code>Git GUI here</code>.</p>
-<p><img src="..\img/git_init_win.png" class="img-fluid"></p>
-<p>This will open a small widow where we can create a new git repository. The name of the workshop folder should already be there but you can add it manually if needed. You can also launch Git GUI directly from Windows start menu.</p>
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="..\img/git_gui_create.png" class="img-fluid"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="..\img/git_gui_create_2.png" class="img-fluid"></p>
-</div>
-</div>
-</div>
-<p>Once the repository is created you should see the main Git GUI interface which look like that:</p>
+<p>To do that, we will use Gitnuro (see preworkshop instructions). Open Gitnuro, click on <code>Start a local repository</code> and select the folder you just created above.</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/g9FU9muAjVE" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>This will open the main widow where we can mange the git repository. The window shoul look like that:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="..\img/git_gui_empty_text.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="..\img/gitnuro_gui.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 <p>The interface is divided in several parts:</p>
 <ol type="1">
-<li>show the files in your working folder</li>
-<li>will display modifications to file that can be staged</li>
-<li>show the files in the staged area and ready to commit</li>
-<li>is where you have tot entre the comit message before commiting the staged files</li>
+<li>the main area which show two things:</li>
 </ol>
-<p>Please note the “Rescan” button which actualise the state of the working folder in order to see any new modifications done to the files (shortcut: <code>F5</code>).</p>
-<p>We can keep this windows open and we will return to it as we advance throught the workshop and need to commit modifcations.</p>
-<p>Before adding things to git we need to configure you credentials. Click on <code>Edit &gt; Options</code> to open the following window:</p>
+<ul>
+<li>the history of the repository comit</li>
+<li>the content of a selected file with it’s modifications</li>
+</ul>
+<ol start="2" type="1">
+<li>The staged ares which list the files in the staged area and ready to commit</li>
+<li>The unstaged area show the files in your working folder and unstaged</li>
+<li>The comit message where you have tot entre the comit message before commiting (saving) the staged files</li>
+</ol>
+<p>We can keep this windows open and we will return to it as we advance throught the workshop and need to commit (save) modifcations.</p>
+<p>Before adding things, it’s a god idea to configure you credentials (especially if you are working within a team). Click on the bottom left to display the credential windows:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="..\img/git_gui_edit_option.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="..\img/gitnuro_user.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-<p>Here you can setup your User Name and Email both for the curent proejct or for all git projects</p>
-<div class="callout-info">
-<p>This step can also be done using by typing the following command in the git command line namely Git Bash.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># GIT bash</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"First Last"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"first.last@example.com</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>Here you can setup your User Name and Email both for the curent project (Repository) or for all git projects (Global).</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -319,7 +302,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You can also initialize a git repository when creating a new R Studio project.</p>
+<p>You can also initialize a git repository directly when creating a new R Studio project.</p>
 </div>
 </div>
 </section>
@@ -335,40 +318,40 @@ Tip
 <ul>
 <li>Folders:
 <ul>
-<li><code>data/</code>: the two datasets nh2007 and nh2009 can be put here</li>
+<li><code>data/</code>: copy the two datasets nh2007 and nh2009 here</li>
 <li><code>R/</code>: keep the folder empty for now</li>
-<li><code>scripts/</code>: copy starting_script.R here</li>
+<li><code>scripts/</code>: copy <code>starting_script.R</code> here</li>
 </ul></li>
 <li>Files:
 <ul>
-<li><code>README.md</code>: at the root ot the project folder. You can open it in R Studio and add a very short description of the project.
+<li><code>README.md</code>: create it at the root ot the project folder. You can open it in R Studio and add a very short description of the project.
 <ul>
 <li><code>scripts/README.md</code>, optional to add some information on the script we can find in this folder</li>
 </ul></li>
-<li><code>.gitignore</code>: at the root of the project folder. It can contain a list of files that git should ignore. You can open it in RStudio and add the following lines:</li>
+<li><code>.gitignore</code>: create this file at the root of the project folder. It can contain a list of files that git should ignore. Open it in RStudio and add the following lines:</li>
 </ul></li>
 </ul>
-<pre><code># History files
-.Rhistory
-.Rapp.history
-
-# Session Data files
-.RData
-.RDataTmp
-
-# User-specific files
-.Ruserdata
-
-# RStudio files
-.Rproj.user/
-
-# R Environment Variables
-.Renviron</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># History files</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>.Rhistory</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>.Rapp.history</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Session Data files</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>.RData</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>.RDataTmp</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu"># User-specific files</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>.Ruserdata</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu"># RStudio files</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>.Rproj.user/</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu"># R Environment Variables</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>.Renviron</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu"># R Specific file </span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>*.Rdata </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will prevent git from following the modification of these files that are only temporary and not related to the analysis.</p>
 <p>The folder should look like that:</p>
-</section>
-<section id="files-added-by-git" class="level2">
-<h2 class="anchored" data-anchor-id="files-added-by-git">Files added by git</h2>
 <pre class="text"><code>Project
 ├── .git/ &lt;-- Git repository stored here (eg data about changes), hidden folder
 ├── R/
@@ -381,21 +364,30 @@ scripts/
 ├── .gitignore 
 ├── Project.Rproj
 └── README.md</code></pre>
+<div class="callout-info">
+<p>All the steps above can be done within the command line or terminal, using git command line namely Git Bash.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> your_project_folder</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># GIT bash</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"First Last"</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"first.last@example.com</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="you-first-commit" class="level1">
 <h1>You first commit</h1>
-<p>It’s time to save in Git the initial state of the project. Switch to the Git GUI windows.</p>
-<p>Unfortunately nothing is showing up. It’s because git need to actualise the list of files in the working directory. To do so click on the “Rescan” button. Now all the files and folders should appears in the unstage part of Git Gui. Click on them to show the changes and state of each files.</p>
-<p>To commit the file, we have to put them in the staged area by clicking on “<em>Stage to commit</em>” in the “<em>Commit</em>” menu (Shortcut <code>Ctr+T</code> ). Put all the files and folder in the staged area.</p>
+<p>It’s time to save in Git the initial state of the project. Switch to the Gitnuro window. All the files and folders should appears in the unstage part of the windows. The script is no under the folder <code>script/</code>, we can see the <code>README.md</code> file and the <code>.Rdata</code> files are not apearing as we added them to the files to ignore.</p>
+<p>You can click on any file to show their content. All the lines are green as we will only add new lines to the repository.</p>
+<p>To commit the file, we have to put them in the staged area by clicking on “<em>Stage</em>” or “<em>Stage all</em>” in the unstaged area.</p>
 <p>Prepare the commit by adding a commit message like: “Initial commit” or “Create project”. Then click on the commit button.</p>
-<p>Congratulation all the modifications are now saved 🥳.</p>
-<p>If you want to see the saved modification, you can open the repository history by clicking on “<em>View all branch history</em>” in the “<em>Repository</em>” menu.</p>
+<p>Congratulation all the modifications are now saved 🥳. We can see that a new line has apear in the center, containing the details of this first commit.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="..\img/meme_commit.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/H4T41SqdYXc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </section>
 <section id="improve-the-script" class="level1">
 <h1>Improve the script</h1>
@@ -406,12 +398,24 @@ scripts/
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/folder/isee-analysis/"</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>nh2007 <span class="ot">&lt;-</span> <span class="fu">load</span>(<span class="st">"C:/folder/isee-analysis/nh2007.Rdata"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/folder/nhanes-analysis/"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>nh2007 <span class="ot">&lt;-</span> <span class="fu">load</span>(<span class="st">"C:/folder/nhanes-analysis/nh2007.Rdata"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="callout callout-style-default callout-important callout-titled" title="Exercice">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercice
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p><strong>Exercice:</strong> Can you spot the issue there? How can we improve the loading of the data within the project directory?</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -420,7 +424,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Since we have setup RStudio and we are working within a project and the working directory is the project folder. Therefore we can just specify the path to load the data as a relative pathe (e.g.&nbsp;path within the project):</p>
 <div class="cell">
@@ -433,11 +437,23 @@ Solution
 </section>
 <section id="script-style" class="level2">
 <h2 class="anchored" data-anchor-id="script-style">Script style</h2>
+<div class="callout callout-style-default callout-important callout-titled" title="Exercice">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercice
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p><strong>Question</strong>: What can you notice regarding the coding style used in the script?</p>
 <ul>
 <li>Is it consistent?</li>
 <li>Does it match the tidyverse style guidelines?</li>
 </ul>
+</div>
+</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>nh2007<span class="sc">$</span>id<span class="ot">&lt;-</span><span class="fu">factor</span>(nh2007<span class="sc">$</span>id)</span>
@@ -453,7 +469,7 @@ Solution
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>lead2a <span class="ot">&lt;-</span> <span class="fu">glm</span>(asthma<span class="sc">~</span>lead <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -462,7 +478,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>We can notice:</p>
 <ul>
@@ -474,7 +490,7 @@ Solution
 </div>
 </div>
 </div>
-<p>First, we can use <code>styler</code> to reformat the whole code:</p>
+<p>First, we can use <code>styler</code> Rstudio addin to reformat the whole code. Look for the <code>Addins</code> menu in Rstudio toolbar and search for <code>styler</code> addon. Click on <code>Style active file</code>:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="..\img/rstudio-styler.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
@@ -506,23 +522,28 @@ Solution
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>model_barium_chd <span class="ot">&lt;-</span> <span class="fu">glm</span>(coronary_heart_disease <span class="sc">~</span> barium <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007)</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>model_lead_asthma <span class="ot">&lt;-</span> <span class="fu">glm</span>(asthma <span class="sc">~</span> lead <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This steps is actually optionnal as we will see how to avoid this in the second activity. Now the script should work and is a cleaner. Instead of saving the script as a new file we can save the modifications in git: let’s do a second comit!</p>
+<p>This steps is actually optionnal as we will see how to avoid this in the second activity. Now the script should work and is a cleaner. Instead of saving the script as a new one we can save the modifications in git: let’s do a second comit!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="..\img/meme_commit.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-<p>First save the script, then switch to Git Gui, click on rescan (or <code>F5</code>). Now <code>starting_script.r</code> should appear as unstaged file and you can see the modification you just made to the file on the right side. If you like the modifications, you can add the modified script to the staged area (see <a href="#you-first-commit">You first commit</a>). Add a commit message like “Apply tidyverse style guide” and commit. In the history you will see that you second commit has been added on top of the first one.</p>
+<p>First save the script, then switch to Gitnuro window: <code>starting_script.r</code> should appear as unstaged file and you can see the modification you just made to the file by clicking on it. If you like the modifications, you can add the modified script to the staged area (see <a href="#you-first-commit">You first commit</a>). Add a commit message like “Apply tidyverse style guide” and commit. In the history you will see that you second commit has been added on top of the first one.</p>
 <p>Notice that if you right click on the first commit you have many options like: navigate in your history, change the copy of the files you are working on, revert change, etc. This is outside of the topic of this workshop, but you can read more about it on the following page: <a href="https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things" class="uri">https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things</a></p>
 </section>
 </section>
 <section id="create-a-function" class="level1">
 <h1>Create a function</h1>
-<p>Let’s move on the final step of this exercice. As we notice, many steps in this script are repetitives. This is probably fine for this small script, but not so much when you will have 1 000+ lines to modify.</p>
-<p>Form lines 41 to 76, the script is doing some simple summary statistics, let’s create functions to simplify theses lines.</p>
+<p>Let’s move on the final step of this exercice. As we notice, many steps in this script are repetitives. This is probably fine for this small script, but not so much when you will have 1000+ lines to modify.</p>
+<p>Form lines 41 to 76, the script is doing some simple summary statistics. We can create 3 functions to simplify theses lines:</p>
+<ul>
+<li>one function for the qualitative variables</li>
+<li>one function for the quantitative variables</li>
+<li>one function which will decide which function to apply.</li>
+</ul>
 <p><strong>Question</strong>: Look at the provided R code. What patterns or repetitive tasks do you notice?</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -531,7 +552,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>Frequency tables and bar plots for factors and logical</li>
@@ -540,15 +561,30 @@ Solution
 </div>
 </div>
 </div>
-<p><strong>Exercise</strong>: Write a simple function to compute a frequency table with NA values included.</p>
-<p>To find the steps that you need to put in the body of the function, you can first try to do a frequency table on one variable of the dataset. When it’s working, copy paste the steps in the function’s body and replace the variable names wiht <code>variable</code>. Before testing the function, you need to run the lines with the function definition to load the function in R memory.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Exercice">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercice
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Exercise</strong>: Write a function to compute a frequency table with NA values included.</p>
+<p>To find the steps that you need to put in the body of the function, you can first try to do a frequency table on one variable of the dataset. When it’s working, copy paste the steps in the function’s body and replace the variable names with <code>variable</code> instead. Before testing the function, you need to run the lines with the function definition to load the function in R memory.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>compute_table <span class="ot">&lt;-</span> <span class="cf">function</span>(variable) {</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Steps to do on variable</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Testing the table function </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(nh2007<span class="sc">$</span>gender, <span class="at">useNA =</span> <span class="st">"always"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>compute_table <span class="ot">&lt;-</span> <span class="cf">function</span>(variable) {</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Steps to do on variable</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -557,7 +593,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the function</span></span>
@@ -572,9 +608,22 @@ Solution
 </div>
 </div>
 </div>
+<p>Good we have the first function, created, let’s move to the second one!</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Exercice">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercice
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p><strong>Exercise</strong>: Create a similar function for numeric variables. The function need to return the mean, standard deviation, and quantiles.</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -583,7 +632,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>compute_numeric <span class="ot">&lt;-</span> <span class="cf">function</span>(variable) {</span>
@@ -598,21 +647,39 @@ Solution
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sd"</span> <span class="ot">=</span> sd_value,</span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"quantiles"</span> <span class="ot">=</span> quantiles</span>
 <span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the function</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_numeric</span>(nh2007<span class="sc">$</span>age_screening)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this case, we need to return multiple results. To do so, all the results need to be regrouped in a list or a dataframe because functions can only return one object.</p>
 </div>
 </div>
 </div>
-<p><strong>Exercise</strong>: Join together the two functions in one function that can handle both categorical and numerical variables.</p>
-<p>To test variable type you can use the following code:</p>
+<p>To join together the two functions, we need additional helpers. Within a fucntion we can use logic operators to perform operation only when a statement is true. <code>if (statement) {}</code> is particulary usefull to test variable type using one of the following code:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(variable)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.factor</span>(variable)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.logical</span>(variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.logical</span>(variable)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">is.logical</span>(nh2007<span class="sc">$</span>age_screening)) {<span class="fu">compute_numeric</span>(nh2007<span class="sc">$</span>age_screening) }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Exercice">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercice
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Exercise</strong>: Join together the two functions in one function that can handle both categorical and numerical variables.</p>
+</div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -621,7 +688,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>compute_descriptive_stats <span class="ot">&lt;-</span> <span class="cf">function</span>(variable) {</span>
@@ -658,26 +725,10 @@ Solution
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>barium)</span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>cadmium)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="extensions-of-the-functions" class="level2">
-<h2 class="anchored" data-anchor-id="extensions-of-the-functions">Extensions of the functions</h2>
-<p>Discuss which possible extensions and modifications are possible:</p>
-<ul>
-<li>create plots for each type of variable using ggplot2</li>
-<li>adding other statistical measures</li>
-</ul>
-<p><strong>Exercise</strong>: create a new function that create plots for each type of variable using ggplot2.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+<section id="extending-functions" class="level2">
+<h2 class="anchored" data-anchor-id="extending-functions">Extending functions</h2>
+<p>Is quite easy to modify the functions we created an to add fucntion to do more sutff! For example, we can for each variable, create plots to describe the distribution of them using ggplot2.</p>
+<p>This new function create plots for each type of variable: a histogram for the numeric variables and a barplot for the discrete variables.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Descriptive univariate graphs</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>compute_descriptive_graph <span class="ot">&lt;-</span> <span class="cf">function</span>(variable) {</span>
@@ -702,21 +753,50 @@ Solution
 <span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_graph</span>(nh2007<span class="sc">$</span>barium)</span>
 <span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_graph</span>(nh2007<span class="sc">$</span>cadmium)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The little <code>p</code> is needed at the of the function to return the graph. If you remove it you will see that nothing will be return. This is because a function return the last output from it’s body.</p>
+<p>The little <code>p</code> is needed at the end of the function to return the graph. If you remove it you will see that nothing will be return. This is because a function return the last output from it’s body.</p>
+<p>You can add this function the starting script, and also update the lines 72-75:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(nh2007<span class="sc">$</span>creatinine)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(nh2007<span class="sc">$</span>lead)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(nh2007<span class="sc">$</span>barium)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(nh2007<span class="sc">$</span>cadmium)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace by</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_graph</span>(nh2007<span class="sc">$</span>creatinine)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_graph</span>(nh2007<span class="sc">$</span>lead)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_graph</span>(nh2007<span class="sc">$</span>barium)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_graph</span>(nh2007<span class="sc">$</span>cadmium)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Exercice">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercice
 </div>
 </div>
-</div>
+<div class="callout-body-container callout-body">
 <p><strong>Optionnal exercise</strong>: create a new descriptive statistics function that includes at least one additional calculation not covered previously.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="before-break" class="level1">
 <h1>Before break</h1>
-<p>Move all the new functions to a file in the R folder “descriptive_stats.R”.</p>
-<p>Add a line to source “R/descriptive_stats.R” in “starting_script.R”:</p>
+<p>The <code>starting_script.R</code> is starting to be messy, with a mix of fucntion and lines to execute, we need to tidy that up! Move all the new functions (compute_table, compute_numeric, compute_descriptive_stats, compute_descriptive_graph) to a file in the R folder named “descriptive_stats.R”.</p>
+<p>Add the following line at the top of <code>starting_script.R</code> to source all the function in <code>R/descriptive_stats.R</code> each time the script is run:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/descriptive_stats.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># As we are working in a project R studio, know where to look</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/descriptive_stats.R"</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A safer way is to use the `here` package</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"R/descriptive_stats.R"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Save the change in git and commit the newly created functions.</p>
+<p>Save the change in git by creating a commit with the newly created functions and modifications done in the starting script.</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/PH3MqaMrdSU" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Not that we can clearly see which line have been deleted or created by just clicking on a file!</p>
 <hr>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -820,7 +900,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ste-tuf\.github\.io\/isee-young-ws-reproducibility\/");
+      var filterRegex = new RegExp("https:\/\/ste-tuf\.github\.io\/mpce-reproducible-research\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -1156,9 +1236,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ste-tuf/isee-young-ws-reproducibility/edit/main/content/02_exercise_1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ste-tuf/isee-young-ws-reproducibility/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ste-tuf/mpce-reproducible-research/edit/main/content/02_exercise_1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ste-tuf/mpce-reproducible-research/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>© CC BY-NC, Stephane Tuffier</p>
+<p>© CC BY, Stephane Tuffier</p>
 </div>
   </div>
 </footer>

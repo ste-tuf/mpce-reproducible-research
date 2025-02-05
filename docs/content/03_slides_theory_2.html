@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<link href="..//img/isee-young-logo.png" rel="icon" type="image/png">
+<link href="..//img/icon-rennes.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -9,11 +9,9 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.45">
+  <meta name="generator" content="quarto-1.5.57">
 
-  <meta name="author" content="Stéphane Tuffier">
-  <meta name="dcterms.date" content="2024-06-05">
-  <title>ISEE young 2024 - WS8 - Reproducibility – Hands-on Activity 2 - Theory</title>
+  <title>Master MPCE - R workshop – Hands-on Activity 2 - Theory</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -389,8 +387,8 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="ISEE young 2024 - WS8 - Reproducibility - Hands-on Activity 2 - Theory">
-<meta property="og:site_name" content="ISEE young 2024 - WS8 - Reproducibility">
+<meta property="og:title" content="Hands-on Activity 2 - Theory – Master MPCE - R workshop">
+<meta property="og:site_name" content="Master MPCE - R workshop">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -400,14 +398,8 @@
   <h1 class="title">Hands-on Activity 2 - Theory</h1>
 
 <div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Stéphane Tuffier 
-</div>
-</div>
 </div>
 
-  <p class="date">2024-06-05</p>
 </section>
 <section id="plan" class="slide level2 center">
 <h2>Plan</h2>
@@ -421,7 +413,6 @@ Stéphane Tuffier
 <section id="functional-programming-in-r-with-purrr" class="slide level2">
 <h2>Functional Programming in R with <code>purrr</code></h2>
 <p>Functions can be easily applied to multiple elements using <strong>functional</strong> functions: special functions that uses another function as one of its arguments.</p>
-<p><code>purrr</code>:</p>
 <ul>
 <li>Part of the tidyverse</li>
 <li>Focus on functional programming</li>
@@ -451,8 +442,7 @@ Stéphane Tuffier
 <p><img data-src="..\img/purrr_map.png" data-figure-align="center" height="100"></p>
 </div><div class="column" style="width:50%;">
 <p><img data-src="..\img/purrr_map2.png" data-figure-align="center" height="100"></p>
-</div>
-</div>
+</div></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="..\img/purrr_pmap.png" class="quarto-figure quarto-figure-center" height="100"></p>
@@ -465,7 +455,7 @@ Stéphane Tuffier
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>paste_text <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { </span>
 <span id="cb1-2"><a></a>  <span class="fu">paste</span>(x, <span class="st">"seconds have passed"</span>)</span>
 <span id="cb1-3"><a></a>}</span>
-<span id="cb1-4"><a></a>purrr<span class="sc">::</span><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, paste_text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a></a>purrr<span class="sc">::</span><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, paste_text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] "1 seconds have passed"
@@ -474,13 +464,7 @@ Stéphane Tuffier
 [1] "2 seconds have passed"
 
 [[3]]
-[1] "3 seconds have passed"
-
-[[4]]
-[1] "4 seconds have passed"
-
-[[5]]
-[1] "5 seconds have passed"</code></pre>
+[1] "3 seconds have passed"</code></pre>
 </div>
 </div>
 <aside class="notes">
@@ -565,21 +549,23 @@ Stéphane Tuffier
 </section>
 <section id="quarto-document-structure" class="slide level2">
 <h2>Quarto Document Structure</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a></a>  ---</span>
-<span id="cb3-2"><a></a>  title: "Descriptive Statistics Report"</span>
-<span id="cb3-3"><a></a>  author: "Your Name"</span>
-<span id="cb3-4"><a></a>  format: html # or docx </span>
-<span id="cb3-5"><a></a>  ---</span>
-<span id="cb3-6"><a></a>  </span>
-<span id="cb3-7"><a></a>  # Results</span>
-<span id="cb3-8"><a></a>  </span>
-<span id="cb3-9"><a></a>  <span class="in">```{r}</span></span>
-<span id="cb3-10"><a></a><span class="in">library(purrr)</span></span>
-<span id="cb3-11"><a></a><span class="in">numeric_vars &lt;- c("creatinine", "lead", "barium", "cadmium")</span></span>
-<span id="cb3-12"><a></a><span class="in">descriptive_stats &lt;- map(numeric_vars, ~ compute_numeric_summaries(nh2007[[.x]]))</span></span>
-<span id="cb3-13"><a></a><span class="in">descriptive_stats</span></span>
-<span id="cb3-14"><a></a><span class="in">```</span></span>
-<span id="cb3-15"><a></a>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a></a><span class="co">---</span></span>
+<span id="cb3-2"><a></a><span class="an">title:</span><span class="co"> "Descriptive Statistics Report"</span></span>
+<span id="cb3-3"><a></a><span class="an">author:</span><span class="co"> "Your Name"</span></span>
+<span id="cb3-4"><a></a><span class="an">format:</span><span class="co"> html # or docx </span></span>
+<span id="cb3-5"><a></a><span class="co">---</span></span>
+<span id="cb3-6"><a></a></span>
+<span id="cb3-7"><a></a>Blabla</span>
+<span id="cb3-8"><a></a></span>
+<span id="cb3-9"><a></a><span class="fu"># Results</span></span>
+<span id="cb3-10"><a></a>  </span>
+<span id="cb3-11"><a></a><span class="in">```{r}</span></span>
+<span id="cb3-12"><a></a><span class="in">library(purrr)</span></span>
+<span id="cb3-13"><a></a><span class="in">numeric_vars &lt;- c("creatinine", "lead", "barium", "cadmium")</span></span>
+<span id="cb3-14"><a></a><span class="in">descriptive_stats &lt;- map(numeric_vars, ~ compute_numeric(nh2007[[.x]]))</span></span>
+<span id="cb3-15"><a></a><span class="in">descriptive_stats</span></span>
+<span id="cb3-16"><a></a><span class="in">```</span></span>
+<span id="cb3-17"><a></a>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
 <ul>
 <li>YAML header defines document metadata.</li>
@@ -602,10 +588,8 @@ Stéphane Tuffier
 <h2>Markdown</h2>
 <p>Text formatting:</p>
 <ul>
-<li><code>**bold**</code>,</li>
-<li><code>_italic_</code>,</li>
-<li><code># Headers 1</code>,</li>
-<li><code>## Headers 2</code></li>
+<li><code>**bold**</code>, <code>_italic_</code>,</li>
+<li><code># Headers 1</code>, <code>## Headers 2</code></li>
 </ul>
 <p>Lists:</p>
 <ul>
@@ -637,7 +621,7 @@ Stéphane Tuffier
 <h2>Bonus: Git branching</h2>
 <p>Basic Git Workflow:</p>
 <ul>
-<li>Create a branch: <code>git branch new-branch-name</code></li>
+<li>Create a branch (test new things): <code>git branch new-branch-name</code></li>
 <li>Switch to new branch: <code>git checkout new-branch-name</code></li>
 <li>Commit changes: <code>git add .</code>, <code>git commit -m "message"</code></li>
 <li>Merge branch: <code>git checkout main</code>, <code>git merge new-branch-name</code></li>
@@ -1047,7 +1031,7 @@ Stéphane Tuffier
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/ste-tuf\.github\.io\/isee-young-ws-reproducibility\/");
+          var filterRegex = new RegExp("https:\/\/ste-tuf\.github\.io\/mpce-reproducible-research\/");
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

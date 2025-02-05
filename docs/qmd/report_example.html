@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.45">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Your Name">
 <meta name="dcterms.date" content="2024-05-31">
 
-<title>NHANES Report – ISEE young 2024 - WS8 - Reproducibility</title>
+<title>NHANES Report – Master MPCE - R workshop</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="..//img/isee-young-logo.png" rel="icon" type="image/png">
+<link href="..//img/icon-rennes.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -104,8 +104,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="ISEE young 2024 - WS8 - Reproducibility - NHANES Report">
-<meta property="og:site_name" content="ISEE young 2024 - WS8 - Reproducibility">
+<meta property="og:title" content="NHANES Report – Master MPCE - R workshop">
+<meta property="og:site_name" content="Master MPCE - R workshop">
 </head>
 
 <body class="nav-fixed">
@@ -116,10 +116,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../img/isee-young-logo.png" alt="" class="navbar-logo">
+    <img src="../img/icon-rennes.svg" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">ISEE young 2024 - WS8 - Reproducibility</span>
+    <span class="navbar-title">Master MPCE - R workshop</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -134,12 +134,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-pre-workshop">    
         <li>
-    <a class="dropdown-item" href="../content/00_pre-ws.html#installation">
+    <a class="dropdown-item" href="../content/00_pre-ws.html#software">
  <span class="dropdown-text">Installation</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../content/00_pre-ws.html#data">
- <span class="dropdown-text">Data</span></a>
+ <span class="dropdown-text">Data and script</span></a>
   </li>  
     </ul>
   </li>
@@ -158,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/ste-tuf/isee-young-ws-reproducibility/"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/ste-tuf/mpce-reproducible-research"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text">GitHub</span></a>
   </li>  
@@ -189,7 +189,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#models-1" id="toc-models-1" class="nav-link" data-scroll-target="#models-1">Models</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ste-tuf/isee-young-ws-reproducibility/edit/main/qmd/report_example.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ste-tuf/isee-young-ws-reproducibility/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="report_example.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/ste-tuf/mpce-reproducible-research/edit/main/qmd/report_example.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ste-tuf/mpce-reproducible-research/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="report_example.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -229,25 +229,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.3.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyr' was built under R version 4.3.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'readr' was built under R version 4.3.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'dplyr' was built under R version 4.3.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'stringr' was built under R version 4.3.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.0     ✔ tibble    3.2.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
 ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
 ✔ purrr     1.0.2     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
@@ -255,31 +240,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at C:/Users/csz400/Documents/1 - Projects/2024_Workshop-reproducible-research</code></pre>
+<pre><code>here() starts at C:/Users/csz400/Documents/03_Teaching/2025_MPCE_Reproducible_Research</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loading the functions, </span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># here() gets the location of the project</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">"R/descriptive.R"</span>))</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">"R/models.R"</span>))</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">"R/gt_models.R"</span>))</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative is to use .. to refer to the project root</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># source("../R/descriptive.R")</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># source("../R/models.R")</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># source("../R/gt_models.R")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loading the functions, </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># here() gets the location of the project</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">"R/descriptive.R"</span>))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">"R/models.R"</span>))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">"R/gt_models.R"</span>))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative is to use .. to refer to the project root</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># source("../R/descriptive.R")</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># source("../R/models.R")</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># source("../R/gt_models.R")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="section" class="level1">
 <h1>2007</h1>
 <section id="descriptive-stats" class="level2">
 <h2 class="anchored" data-anchor-id="descriptive-stats">Descriptive stats</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">here</span>(<span class="st">"data/nh2007.RData"</span>))</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Descriptive stats</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(<span class="at">.x =</span> nh2007, <span class="at">.f =</span> compute_descriptive_stats) <span class="sc">|&gt;</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">"column"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">here</span>(<span class="st">"data/nh2007.RData"</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Descriptive stats</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(<span class="at">.x =</span> nh2007, <span class="at">.f =</span> compute_descriptive_stats) <span class="sc">|&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">"column"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                   column         mean           sd       0%         25%
 1                      id 4.656261e+04 2966.3258794 41477.00 44060.75000
@@ -361,21 +346,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="models" class="level2">
 <h2 class="anchored" data-anchor-id="models">Models</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List outcomes</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>outcomes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"asthma"</span>, <span class="st">"heart_failure"</span>, <span class="st">"coronary_heart_disease"</span>, <span class="st">"heart_attack"</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>exposures <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"creatinine"</span>, <span class="st">"lead"</span>, <span class="st">"barium"</span>, <span class="st">"cadmium"</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>models_parameters_nh2007 <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">expand_grid</span>(outcomes, exposures)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>models_nh2007 <span class="ot">&lt;-</span> <span class="fu">map2</span>(</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">.x =</span> models_parameters_nh2007<span class="sc">$</span>outcomes,</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">.y =</span> models_parameters_nh2007<span class="sc">$</span>exposures,</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">.f =</span> \(x, y) <span class="fu">build_model</span>(x, y, <span class="at">dataset =</span> nh2007) <span class="co"># we need to change the dataset</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract model results</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>models_results_nh2007 <span class="ot">&lt;-</span> <span class="fu">map</span>(models_nh2007, extract_model_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List outcomes</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>outcomes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"asthma"</span>, <span class="st">"heart_failure"</span>, <span class="st">"coronary_heart_disease"</span>, <span class="st">"heart_attack"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>exposures <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"creatinine"</span>, <span class="st">"lead"</span>, <span class="st">"barium"</span>, <span class="st">"cadmium"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>models_parameters_nh2007 <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">expand_grid</span>(outcomes, exposures)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>models_nh2007 <span class="ot">&lt;-</span> <span class="fu">map2</span>(</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">.x =</span> models_parameters_nh2007<span class="sc">$</span>outcomes,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">.y =</span> models_parameters_nh2007<span class="sc">$</span>exposures,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">.f =</span> \(x, y) <span class="fu">build_model</span>(x, y, <span class="at">dataset =</span> nh2007) <span class="co"># we need to change the dataset</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract model results</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>models_results_nh2007 <span class="ot">&lt;-</span> <span class="fu">map</span>(models_nh2007, extract_model_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Waiting for profiling to be done...
 Waiting for profiling to be done...
@@ -394,39 +379,36 @@ Waiting for profiling to be done...
 Waiting for profiling to be done...
 Waiting for profiling to be done...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>results_nh2007 <span class="ot">&lt;-</span> models_parameters_nh2007 <span class="sc">|&gt;</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">models =</span> models_nh2007,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">models_results =</span> models_results_nh2007</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>results_model_clean_nh2007 <span class="ot">&lt;-</span> results_nh2007 <span class="sc">|&gt;</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(models_results) <span class="sc">|&gt;</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(exposures <span class="sc">==</span> term) <span class="sc">|&gt;</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>models)</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="fu">gt_models</span>(results_model_clean_nh2007)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'gt' was built under R version 4.3.3</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>results_nh2007 <span class="ot">&lt;-</span> models_parameters_nh2007 <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">models =</span> models_nh2007,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">models_results =</span> models_results_nh2007</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>results_model_clean_nh2007 <span class="ot">&lt;-</span> results_nh2007 <span class="sc">|&gt;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(models_results) <span class="sc">|&gt;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(exposures <span class="sc">==</span> term) <span class="sc">|&gt;</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>models)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="fu">gt_models</span>(results_model_clean_nh2007)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="ukqwnlxxxw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ukqwnlxxxw table {
+<div id="zaqlyevztt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zaqlyevztt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ukqwnlxxxw thead, #ukqwnlxxxw tbody, #ukqwnlxxxw tfoot, #ukqwnlxxxw tr, #ukqwnlxxxw td, #ukqwnlxxxw th {
+#zaqlyevztt thead, #zaqlyevztt tbody, #zaqlyevztt tfoot, #zaqlyevztt tr, #zaqlyevztt td, #zaqlyevztt th {
   border-style: none;
 }
 
-#ukqwnlxxxw p {
+#zaqlyevztt p {
   margin: 0;
   padding: 0;
 }
 
-#ukqwnlxxxw .gt_table {
+#zaqlyevztt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -452,12 +434,12 @@ Waiting for profiling to be done...</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#ukqwnlxxxw .gt_caption {
+#zaqlyevztt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ukqwnlxxxw .gt_title {
+#zaqlyevztt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -469,7 +451,7 @@ Waiting for profiling to be done...</code></pre>
   border-bottom-width: 0;
 }
 
-#ukqwnlxxxw .gt_subtitle {
+#zaqlyevztt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -481,7 +463,7 @@ Waiting for profiling to be done...</code></pre>
   border-top-width: 0;
 }
 
-#ukqwnlxxxw .gt_heading {
+#zaqlyevztt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -493,13 +475,13 @@ Waiting for profiling to be done...</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ukqwnlxxxw .gt_bottom_border {
+#zaqlyevztt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ukqwnlxxxw .gt_col_headings {
+#zaqlyevztt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -514,7 +496,7 @@ Waiting for profiling to be done...</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ukqwnlxxxw .gt_col_heading {
+#zaqlyevztt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -534,7 +516,7 @@ Waiting for profiling to be done...</code></pre>
   overflow-x: hidden;
 }
 
-#ukqwnlxxxw .gt_column_spanner_outer {
+#zaqlyevztt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -546,15 +528,15 @@ Waiting for profiling to be done...</code></pre>
   padding-right: 4px;
 }
 
-#ukqwnlxxxw .gt_column_spanner_outer:first-child {
+#zaqlyevztt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ukqwnlxxxw .gt_column_spanner_outer:last-child {
+#zaqlyevztt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ukqwnlxxxw .gt_column_spanner {
+#zaqlyevztt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -566,11 +548,11 @@ Waiting for profiling to be done...</code></pre>
   width: 100%;
 }
 
-#ukqwnlxxxw .gt_spanner_row {
+#zaqlyevztt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ukqwnlxxxw .gt_group_heading {
+#zaqlyevztt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -596,7 +578,7 @@ Waiting for profiling to be done...</code></pre>
   text-align: left;
 }
 
-#ukqwnlxxxw .gt_empty_group_heading {
+#zaqlyevztt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -611,15 +593,15 @@ Waiting for profiling to be done...</code></pre>
   vertical-align: middle;
 }
 
-#ukqwnlxxxw .gt_from_md > :first-child {
+#zaqlyevztt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ukqwnlxxxw .gt_from_md > :last-child {
+#zaqlyevztt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ukqwnlxxxw .gt_row {
+#zaqlyevztt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -638,7 +620,7 @@ Waiting for profiling to be done...</code></pre>
   overflow-x: hidden;
 }
 
-#ukqwnlxxxw .gt_stub {
+#zaqlyevztt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -651,7 +633,7 @@ Waiting for profiling to be done...</code></pre>
   padding-right: 5px;
 }
 
-#ukqwnlxxxw .gt_stub_row_group {
+#zaqlyevztt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -665,15 +647,15 @@ Waiting for profiling to be done...</code></pre>
   vertical-align: top;
 }
 
-#ukqwnlxxxw .gt_row_group_first td {
+#zaqlyevztt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ukqwnlxxxw .gt_row_group_first th {
+#zaqlyevztt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ukqwnlxxxw .gt_summary_row {
+#zaqlyevztt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -683,16 +665,16 @@ Waiting for profiling to be done...</code></pre>
   padding-right: 5px;
 }
 
-#ukqwnlxxxw .gt_first_summary_row {
+#zaqlyevztt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ukqwnlxxxw .gt_first_summary_row.thick {
+#zaqlyevztt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ukqwnlxxxw .gt_last_summary_row {
+#zaqlyevztt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -702,7 +684,7 @@ Waiting for profiling to be done...</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ukqwnlxxxw .gt_grand_summary_row {
+#zaqlyevztt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -712,7 +694,7 @@ Waiting for profiling to be done...</code></pre>
   padding-right: 5px;
 }
 
-#ukqwnlxxxw .gt_first_grand_summary_row {
+#zaqlyevztt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -722,7 +704,7 @@ Waiting for profiling to be done...</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#ukqwnlxxxw .gt_last_grand_summary_row_top {
+#zaqlyevztt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -732,11 +714,11 @@ Waiting for profiling to be done...</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ukqwnlxxxw .gt_striped {
+#zaqlyevztt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ukqwnlxxxw .gt_table_body {
+#zaqlyevztt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -745,7 +727,7 @@ Waiting for profiling to be done...</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ukqwnlxxxw .gt_footnotes {
+#zaqlyevztt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -759,7 +741,7 @@ Waiting for profiling to be done...</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ukqwnlxxxw .gt_footnote {
+#zaqlyevztt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -768,7 +750,7 @@ Waiting for profiling to be done...</code></pre>
   padding-right: 5px;
 }
 
-#ukqwnlxxxw .gt_sourcenotes {
+#zaqlyevztt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -782,7 +764,7 @@ Waiting for profiling to be done...</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ukqwnlxxxw .gt_sourcenote {
+#zaqlyevztt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -790,64 +772,73 @@ Waiting for profiling to be done...</code></pre>
   padding-right: 5px;
 }
 
-#ukqwnlxxxw .gt_left {
+#zaqlyevztt .gt_left {
   text-align: left;
 }
 
-#ukqwnlxxxw .gt_center {
+#zaqlyevztt .gt_center {
   text-align: center;
 }
 
-#ukqwnlxxxw .gt_right {
+#zaqlyevztt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ukqwnlxxxw .gt_font_normal {
+#zaqlyevztt .gt_font_normal {
   font-weight: normal;
 }
 
-#ukqwnlxxxw .gt_font_bold {
+#zaqlyevztt .gt_font_bold {
   font-weight: bold;
 }
 
-#ukqwnlxxxw .gt_font_italic {
+#zaqlyevztt .gt_font_italic {
   font-style: italic;
 }
 
-#ukqwnlxxxw .gt_super {
+#zaqlyevztt .gt_super {
   font-size: 65%;
 }
 
-#ukqwnlxxxw .gt_footnote_marks {
+#zaqlyevztt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ukqwnlxxxw .gt_asterisk {
+#zaqlyevztt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ukqwnlxxxw .gt_indent_1 {
+#zaqlyevztt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ukqwnlxxxw .gt_indent_2 {
+#zaqlyevztt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ukqwnlxxxw .gt_indent_3 {
+#zaqlyevztt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ukqwnlxxxw .gt_indent_4 {
+#zaqlyevztt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ukqwnlxxxw .gt_indent_5 {
+#zaqlyevztt .gt_indent_5 {
   text-indent: 25px;
+}
+
+#zaqlyevztt .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#zaqlyevztt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
 }
 </style>
 
@@ -859,8 +850,8 @@ Waiting for profiling to be done...</code></pre>
 <tr class="odd gt_col_headings">
 <th id="exposures" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">exposures</th>
 <th id="Estimate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Estimate</th>
-<th id="Pr(&amp;gt;|t|)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Pr(&gt;|t|)</th>
-<th id="95% CI" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">95% CI</th>
+<th id="Pr(>|t|)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Pr(&gt;|t|)</th>
+<th id="a2.5-%" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">95% CI</th>
 <th id="aic" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">aic</th>
 </tr>
 </thead>
@@ -1002,11 +993,11 @@ Waiting for profiling to be done...</code></pre>
 <section id="descriptive-stats-1" class="level2">
 <h2 class="anchored" data-anchor-id="descriptive-stats-1">Descriptive stats</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">here</span>(<span class="st">"data/nh2009.RData"</span>))</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Descriptive stats</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(<span class="at">.x =</span> nh2009, <span class="at">.f =</span> compute_descriptive_stats) <span class="sc">|&gt;</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">"column"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">here</span>(<span class="st">"data/nh2009.RData"</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Descriptive stats</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(<span class="at">.x =</span> nh2009, <span class="at">.f =</span> compute_descriptive_stats) <span class="sc">|&gt;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">"column"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                   column         mean          sd       0%       25%
 1                      id 5.685692e+04 3025.145830 51630.00 54224.750
@@ -1092,21 +1083,21 @@ Waiting for profiling to be done...</code></pre>
 <section id="models-1" class="level2">
 <h2 class="anchored" data-anchor-id="models-1">Models</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List outcomes</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>outcomes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"asthma"</span>, <span class="st">"heart_failure"</span>, <span class="st">"coronary_heart_disease"</span>, <span class="st">"heart_attack"</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>exposures <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"creatinine"</span>, <span class="st">"lead"</span>, <span class="st">"barium"</span>, <span class="st">"cadmium"</span>)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>models_parameters_2009 <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">expand_grid</span>(outcomes, exposures)</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>models_2009 <span class="ot">&lt;-</span> <span class="fu">map2</span>(</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">.x =</span> models_parameters_2009<span class="sc">$</span>outcomes,</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">.y =</span> models_parameters_2009<span class="sc">$</span>exposures,</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">.f =</span> \(x, y) <span class="fu">build_model</span>(x, y, <span class="at">dataset =</span> nh2009) <span class="co"># we need to change the dataset</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract model results</span></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>models_results_2009 <span class="ot">&lt;-</span> <span class="fu">map</span>(models_2009, extract_model_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List outcomes</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>outcomes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"asthma"</span>, <span class="st">"heart_failure"</span>, <span class="st">"coronary_heart_disease"</span>, <span class="st">"heart_attack"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>exposures <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"creatinine"</span>, <span class="st">"lead"</span>, <span class="st">"barium"</span>, <span class="st">"cadmium"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>models_parameters_2009 <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">expand_grid</span>(outcomes, exposures)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>models_2009 <span class="ot">&lt;-</span> <span class="fu">map2</span>(</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">.x =</span> models_parameters_2009<span class="sc">$</span>outcomes,</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">.y =</span> models_parameters_2009<span class="sc">$</span>exposures,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">.f =</span> \(x, y) <span class="fu">build_model</span>(x, y, <span class="at">dataset =</span> nh2009) <span class="co"># we need to change the dataset</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract model results</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>models_results_2009 <span class="ot">&lt;-</span> <span class="fu">map</span>(models_2009, extract_model_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Waiting for profiling to be done...
 Waiting for profiling to be done...
@@ -1125,36 +1116,36 @@ Waiting for profiling to be done...
 Waiting for profiling to be done...
 Waiting for profiling to be done...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>results_2009 <span class="ot">&lt;-</span> models_parameters_2009 <span class="sc">|&gt;</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">models =</span> models_2009,</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">models_results =</span> models_results_2009</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>results_model_clean_2009 <span class="ot">&lt;-</span> results_2009 <span class="sc">|&gt;</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(models_results) <span class="sc">|&gt;</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(exposures <span class="sc">==</span> term) <span class="sc">|&gt;</span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>models)</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="fu">gt_models</span>(results_model_clean_2009)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>results_2009 <span class="ot">&lt;-</span> models_parameters_2009 <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">models =</span> models_2009,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">models_results =</span> models_results_2009</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>results_model_clean_2009 <span class="ot">&lt;-</span> results_2009 <span class="sc">|&gt;</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(models_results) <span class="sc">|&gt;</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(exposures <span class="sc">==</span> term) <span class="sc">|&gt;</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>models)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="fu">gt_models</span>(results_model_clean_2009)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="xawyennnwv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xawyennnwv table {
+<div id="uyxmohezmk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uyxmohezmk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xawyennnwv thead, #xawyennnwv tbody, #xawyennnwv tfoot, #xawyennnwv tr, #xawyennnwv td, #xawyennnwv th {
+#uyxmohezmk thead, #uyxmohezmk tbody, #uyxmohezmk tfoot, #uyxmohezmk tr, #uyxmohezmk td, #uyxmohezmk th {
   border-style: none;
 }
 
-#xawyennnwv p {
+#uyxmohezmk p {
   margin: 0;
   padding: 0;
 }
 
-#xawyennnwv .gt_table {
+#uyxmohezmk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1180,12 +1171,12 @@ Waiting for profiling to be done...</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#xawyennnwv .gt_caption {
+#uyxmohezmk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xawyennnwv .gt_title {
+#uyxmohezmk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1197,7 +1188,7 @@ Waiting for profiling to be done...</code></pre>
   border-bottom-width: 0;
 }
 
-#xawyennnwv .gt_subtitle {
+#uyxmohezmk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1209,7 +1200,7 @@ Waiting for profiling to be done...</code></pre>
   border-top-width: 0;
 }
 
-#xawyennnwv .gt_heading {
+#uyxmohezmk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1221,13 +1212,13 @@ Waiting for profiling to be done...</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#xawyennnwv .gt_bottom_border {
+#uyxmohezmk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xawyennnwv .gt_col_headings {
+#uyxmohezmk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1242,7 +1233,7 @@ Waiting for profiling to be done...</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#xawyennnwv .gt_col_heading {
+#uyxmohezmk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1262,7 +1253,7 @@ Waiting for profiling to be done...</code></pre>
   overflow-x: hidden;
 }
 
-#xawyennnwv .gt_column_spanner_outer {
+#uyxmohezmk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1274,15 +1265,15 @@ Waiting for profiling to be done...</code></pre>
   padding-right: 4px;
 }
 
-#xawyennnwv .gt_column_spanner_outer:first-child {
+#uyxmohezmk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xawyennnwv .gt_column_spanner_outer:last-child {
+#uyxmohezmk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xawyennnwv .gt_column_spanner {
+#uyxmohezmk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1294,11 +1285,11 @@ Waiting for profiling to be done...</code></pre>
   width: 100%;
 }
 
-#xawyennnwv .gt_spanner_row {
+#uyxmohezmk .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xawyennnwv .gt_group_heading {
+#uyxmohezmk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1324,7 +1315,7 @@ Waiting for profiling to be done...</code></pre>
   text-align: left;
 }
 
-#xawyennnwv .gt_empty_group_heading {
+#uyxmohezmk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1339,15 +1330,15 @@ Waiting for profiling to be done...</code></pre>
   vertical-align: middle;
 }
 
-#xawyennnwv .gt_from_md > :first-child {
+#uyxmohezmk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xawyennnwv .gt_from_md > :last-child {
+#uyxmohezmk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xawyennnwv .gt_row {
+#uyxmohezmk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1366,7 +1357,7 @@ Waiting for profiling to be done...</code></pre>
   overflow-x: hidden;
 }
 
-#xawyennnwv .gt_stub {
+#uyxmohezmk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1379,7 +1370,7 @@ Waiting for profiling to be done...</code></pre>
   padding-right: 5px;
 }
 
-#xawyennnwv .gt_stub_row_group {
+#uyxmohezmk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1393,15 +1384,15 @@ Waiting for profiling to be done...</code></pre>
   vertical-align: top;
 }
 
-#xawyennnwv .gt_row_group_first td {
+#uyxmohezmk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xawyennnwv .gt_row_group_first th {
+#uyxmohezmk .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xawyennnwv .gt_summary_row {
+#uyxmohezmk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1411,16 +1402,16 @@ Waiting for profiling to be done...</code></pre>
   padding-right: 5px;
 }
 
-#xawyennnwv .gt_first_summary_row {
+#uyxmohezmk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xawyennnwv .gt_first_summary_row.thick {
+#uyxmohezmk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xawyennnwv .gt_last_summary_row {
+#uyxmohezmk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1430,7 +1421,7 @@ Waiting for profiling to be done...</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#xawyennnwv .gt_grand_summary_row {
+#uyxmohezmk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1440,7 +1431,7 @@ Waiting for profiling to be done...</code></pre>
   padding-right: 5px;
 }
 
-#xawyennnwv .gt_first_grand_summary_row {
+#uyxmohezmk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1450,7 +1441,7 @@ Waiting for profiling to be done...</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#xawyennnwv .gt_last_grand_summary_row_top {
+#uyxmohezmk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1460,11 +1451,11 @@ Waiting for profiling to be done...</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#xawyennnwv .gt_striped {
+#uyxmohezmk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xawyennnwv .gt_table_body {
+#uyxmohezmk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1473,7 +1464,7 @@ Waiting for profiling to be done...</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#xawyennnwv .gt_footnotes {
+#uyxmohezmk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1487,7 +1478,7 @@ Waiting for profiling to be done...</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#xawyennnwv .gt_footnote {
+#uyxmohezmk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1496,7 +1487,7 @@ Waiting for profiling to be done...</code></pre>
   padding-right: 5px;
 }
 
-#xawyennnwv .gt_sourcenotes {
+#uyxmohezmk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1510,7 +1501,7 @@ Waiting for profiling to be done...</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#xawyennnwv .gt_sourcenote {
+#uyxmohezmk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1518,64 +1509,73 @@ Waiting for profiling to be done...</code></pre>
   padding-right: 5px;
 }
 
-#xawyennnwv .gt_left {
+#uyxmohezmk .gt_left {
   text-align: left;
 }
 
-#xawyennnwv .gt_center {
+#uyxmohezmk .gt_center {
   text-align: center;
 }
 
-#xawyennnwv .gt_right {
+#uyxmohezmk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xawyennnwv .gt_font_normal {
+#uyxmohezmk .gt_font_normal {
   font-weight: normal;
 }
 
-#xawyennnwv .gt_font_bold {
+#uyxmohezmk .gt_font_bold {
   font-weight: bold;
 }
 
-#xawyennnwv .gt_font_italic {
+#uyxmohezmk .gt_font_italic {
   font-style: italic;
 }
 
-#xawyennnwv .gt_super {
+#uyxmohezmk .gt_super {
   font-size: 65%;
 }
 
-#xawyennnwv .gt_footnote_marks {
+#uyxmohezmk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xawyennnwv .gt_asterisk {
+#uyxmohezmk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xawyennnwv .gt_indent_1 {
+#uyxmohezmk .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xawyennnwv .gt_indent_2 {
+#uyxmohezmk .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xawyennnwv .gt_indent_3 {
+#uyxmohezmk .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xawyennnwv .gt_indent_4 {
+#uyxmohezmk .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xawyennnwv .gt_indent_5 {
+#uyxmohezmk .gt_indent_5 {
   text-indent: 25px;
+}
+
+#uyxmohezmk .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#uyxmohezmk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
 }
 </style>
 
@@ -1587,8 +1587,8 @@ Waiting for profiling to be done...</code></pre>
 <tr class="odd gt_col_headings">
 <th id="exposures" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">exposures</th>
 <th id="Estimate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Estimate</th>
-<th id="Pr(&amp;gt;|t|)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Pr(&gt;|t|)</th>
-<th id="95% CI" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">95% CI</th>
+<th id="Pr(>|t|)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Pr(&gt;|t|)</th>
+<th id="a2.5-%" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">95% CI</th>
 <th id="aic" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">aic</th>
 </tr>
 </thead>
@@ -1821,7 +1821,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ste-tuf\.github\.io\/isee-young-ws-reproducibility\/");
+      var filterRegex = new RegExp("https:\/\/ste-tuf\.github\.io\/mpce-reproducible-research\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -2157,9 +2157,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ste-tuf/isee-young-ws-reproducibility/edit/main/qmd/report_example.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ste-tuf/isee-young-ws-reproducibility/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ste-tuf/mpce-reproducible-research/edit/main/qmd/report_example.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ste-tuf/mpce-reproducible-research/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>© CC BY-NC, Stephane Tuffier</p>
+<p>© CC BY, Stephane Tuffier</p>
 </div>
   </div>
 </footer>
