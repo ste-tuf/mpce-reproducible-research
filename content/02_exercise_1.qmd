@@ -1,6 +1,6 @@
 ---
 title: "Hands-on Activity 1"
-date: 2024-06-05
+date: 2025-02-12
 slide-format: revealjs
 execute:
   eval: false
@@ -19,9 +19,9 @@ execute:
 # Goal
 
 At the end of this exercice you should have a project folder created for
-the analysis. The folder should contains a git repository, th a
-`script/` folder containing the starting script (`starting_script.R`)
-and a `R/` folder containing `descriptive_stats.R` with 3 functions.
+the analysis. The folder should contains a git repository, a `script/`
+folder containing the starting script (`starting_script.R`) and a `R/`
+folder containing `descriptive_stats.R` with 3 functions.
 
 # Tasks
 
@@ -30,87 +30,68 @@ and a `R/` folder containing `descriptive_stats.R` with 3 functions.
 -   Make your first git commit
 -   Create two simple functions for descriptive statistics
 
-# Starting the project
+# Set up the project
 
 You should have downloaded the dataset and the script for this workshop
 if you followed the preworkshop instructions. If you didn't please go
-check them and make sure that you already have git installed:
+check them again and make sure that you already have git installed:
 
 -   [`nh2007.Rdata`](../data/nh2007.Rdata)
 -   [`nh2009.Rdata`](../data/nh2009.Rdata)
 -   [`starting_script.R`](../R/starting_script.R)
 
-::: cal:out-info
+::: callout-info
 If you wish to recreate the NHANES data by yourself, please have a look
 at the script in `data-raw/nhanes.R` in the workshop's GitHub repository
 :::
 
-The first step is to create a folder to gather all the files that we
-will create for the analysis, you can call it `NHANES/` ,
-`isee-young-ws8/` or `workshop/` it does not matter.
+The first step is to create a folder to gather all the project files.
+You can call it `NHANES/`, `mpce-reproducibility/` or `workshop/` it
+does not matter. Copy the files and move to this folder.
 
 Next we should intialize `git` within the project folder.
 
 ## Initialize git repository
 
-Navigate to the newly created folder, it should be all empty. You can
-right click in the folder and click on `Git GUI here`.
+To do that, we will use Gitnuro (see preworkshop instructions). Open
+Gitnuro, click on `Start a local repository` and select the folder you
+just created above.
 
-![](/img/git_init_win.png)
+{{< video https://www.youtube.com/embed/g9FU9muAjVE >}}
 
-This will open a small widow where we can create a new git repository.
-The name of the workshop folder should already be there but you can add
-it manually if needed. You can also launch Git GUI directly from Windows
-start menu.
+This will open the main widow where we can mange the git repository. The
+window shoul look like that:
 
-::: {layout-ncol="2"}
-![](/img/git_gui_create.png)
-
-![](/img/git_gui_create_2.png)
-:::
-
-Once the repository is created you should see the main Git GUI interface
-which look like that:
-
-![](/img/git_gui_empty_text.png){fig-align="center"}
+![](/img/gitnuro_gui.png){fig-align="center"}
 
 The interface is divided in several parts:
 
-1.  show the files in your working folder
-2.  will display modifications to file that can be staged
-3.  show the files in the staged area and ready to commit
-4.  is where you have tot entre the comit message before commiting the
-    staged files
+1.  the main area which show two things:
 
-Please note the "Rescan" button which actualise the state of the
-working folder in order to see any new modifications done to the files (shortcut: `F5`).
+-   the history of the repository comit
+-   the content of a selected file with it's modifications
+
+2.  The staged ares which list the files in the staged area and ready to
+    commit
+3.  The unstaged area show the files in your working folder and unstaged
+4.  The comit message where you have tot entre the comit message before
+    commiting (saving) the staged files
 
 We can keep this windows open and we will return to it as we advance
-throught the workshop and need to commit modifcations.
+throught the workshop and need to commit (save) modifcations.
 
-Before adding things to git we need to configure you credentials. Click
-on `Edit > Options` to open the following window:
+Before adding things, it's a god idea to configure you credentials
+(especially if you are working within a team). Click on the bottom left
+to display the credential windows:
 
-![](/img/git_gui_edit_option.png){fig-align="center"}
+![](/img/gitnuro_user.png){fig-align="center"}
 
-Here you can setup your User Name and Email both for the curent proejct
-or for all git projects
-
-::: callout-info
-This step can also be done using by typing the following command in the
-git command line namely Git Bash.
-
-``` bash
-
-# GIT bash
-git config --global user.name "First Last"
-git config --global user.email "first.last@example.com
-```
-:::
+Here you can setup your User Name and Email both for the curent project
+(Repository) or for all git projects (Global).
 
 ::: callout-tip
-You can also initialize a git repository when creating a new R Studio
-project.
+You can also initialize a git repository directly when creating a new R
+Studio project.
 :::
 
 ## Create a Rstudio project
@@ -124,10 +105,10 @@ Each RStudio project can be configured. You can either click on the
 `.Rproj` file within RStudio or click on "*Project option*" in the
 "*Tools*" menu.
 
-It's usally better to turn off the saving of the workspace to `.Rdata` as this
-prevent old data from previous computations to be loaded automatically
-each time you open the project which can cause a lot of issues. It's
-always better to rerun the scripts form scratch.
+It's usally better to turn off the saving of the workspace to `.Rdata`
+as this prevent old data from previous computations to be loaded
+automatically each time you open the project which can cause a lot of
+issues. It's always better to rerun the scripts form scratch.
 
 ## Adding folder and files
 
@@ -135,19 +116,20 @@ Now that we have setup both Git and RStudio, let's organise the project
 by creating folders and files within the project folder.
 
 -   Folders:
-    -   `data/`: the two datasets nh2007 and nh2009 can be put here
+    -   `data/`: copy the two datasets nh2007 and nh2009 here
     -   `R/`: keep the folder empty for now
-    -   `scripts/`: copy starting_script.R here
+    -   `scripts/`: copy `starting_script.R` here
 -   Files:
-    -   `README.md`: at the root ot the project folder. You can open it
-        in R Studio and add a very short description of the project.
+    -   `README.md`: create it at the root ot the project folder. You
+        can open it in R Studio and add a very short description of the
+        project.
         -   `scripts/README.md`, optional to add some information on the
             script we can find in this folder
-    -   `.gitignore`: at the root of the project folder. It can contain
-        a list of files that git should ignore. You can open it in
-        RStudio and add the following lines:
+    -   `.gitignore`: create this file at the root of the project
+        folder. It can contain a list of files that git should ignore.
+        Open it in RStudio and add the following lines:
 
-```         
+```markdown       
 # History files
 .Rhistory
 .Rapp.history
@@ -164,14 +146,15 @@ by creating folders and files within the project folder.
 
 # R Environment Variables
 .Renviron
+
+# R Specific file 
+*.Rdata 
 ```
 
 This will prevent git from following the modification of these files
 that are only temporary and not related to the analysis.
 
 The folder should look like that:
-
-## Files added by git
 
 ``` text
 Project
@@ -188,29 +171,44 @@ scripts/
 └── README.md
 ```
 
+::: callout-info
+All the steps above can be done within the command line or terminal,
+using git command line namely Git Bash.
+
+``` bash
+cd your_project_folder
+git init
+
+# GIT bash
+git config --global user.name "First Last"
+git config --global user.email "first.last@example.com
+```
+:::
+
 # You first commit
 
 It's time to save in Git the initial state of the project. Switch to the
-Git GUI windows.
+Gitnuro window. All the files and folders should appears in the unstage
+part of the windows. The script is no under the folder `script/`, we can
+see the `README.md` file and the `.Rdata` files are not apearing as we
+added them to the files to ignore.
 
-Unfortunately nothing is showing up. It's because git need to actualise
-the list of files in the working directory. To do so click on the "Rescan" button. Now
-all the files and folders should appears in the unstage part of Git Gui.
-Click on them to show the changes and state of each files.
+You can click on any file to show their content. All the lines are green
+as we will only add new lines to the repository.
 
-To commit the file, we have to put them in the staged area by clicking on
-"*Stage to commit*" in the "*Commit*" menu (Shortcut `Ctr+T` ). Put all
-the files and folder in the staged area.
+To commit the file, we have to put them in the staged area by clicking
+on "*Stage*" or "*Stage all*" in the unstaged area.
 
 Prepare the commit by adding a commit message like: "Initial commit" or
 "Create project". Then click on the commit button.
 
-Congratulation all the modifications are now saved 🥳.
-
-If you want to see the saved modification, you can open the repository history
-by clicking on "*View all branch history*" in the "*Repository*" menu.
+Congratulation all the modifications are now saved 🥳. We can see that a
+new line has apear in the center, containing the details of this first
+commit.
 
 ![](/img/meme_commit.jpg){fig-align="center"}
+
+{{< video https://www.youtube.com/embed/H4T41SqdYXc >}}
 
 # Improve the script
 
@@ -224,17 +222,20 @@ The first 3 lines look like that:
 ```{r}
 library(tidyverse)
 
-setwd("C:/folder/isee-analysis/")
-nh2007 <- load("C:/folder/isee-analysis/nh2007.Rdata")
+setwd("C:/folder/nhanes-analysis/")
+nh2007 <- load("C:/folder/nhanes-analysis/nh2007.Rdata")
 ```
 
+::: {.callout-important title="Exercice"}
 **Exercice:** Can you spot the issue there? How can we improve the
 loading of the data within the project directory?
+:::
 
 ::: {.callout-tip title="Solution" collapse="true"}
 Since we have setup RStudio and we are working within a project and the
 working directory is the project folder. Therefore we can just specify
-the path to load the data as a relative pathe (e.g. path within the project):
+the path to load the data as a relative pathe (e.g. path within the
+project):
 
 ```{r}
 load("data/nh2007.Rdata")
@@ -246,11 +247,13 @@ paths can also used for any files, including to source R scripts.
 
 ## Script style
 
+::: {.callout-important title="Exercice"}
 **Question**: What can you notice regarding the coding style used in the
 script?
 
 -   Is it consistent?
 -   Does it match the tidyverse style guidelines?
+:::
 
 ```{r}
 # ...
@@ -273,11 +276,12 @@ We can notice:
 -   Inconsistent spacing in the formulas
 -   Variations in the names of the models
 -   General lack of comments
--   A lot of copy pasting to repeat the same actions for many
-    variables
+-   A lot of copy pasting to repeat the same actions for many variables
 :::
 
-First, we can use `styler` to reformat the whole code:
+First, we can use `styler` Rstudio addin to reformat the whole code.
+Look for the `Addins` menu in Rstudio toolbar and search for `styler`
+addon. Click on `Style active file`:
 
 ![](/img/rstudio-styler.png){fig-align="center"}
 
@@ -312,20 +316,20 @@ model_barium_chd <- glm(coronary_heart_disease ~ barium + age_screening + gender
 model_lead_asthma <- glm(asthma ~ lead + age_screening + gender, data = nh2007)
 ```
 
-This steps is actually optionnal as we will see how to avoid this in the second activity.
-Now the script should work and is a cleaner. Instead of
-saving the script as a new file we can save the modifications in git:
+This steps is actually optionnal as we will see how to avoid this in the
+second activity. Now the script should work and is a cleaner. Instead of
+saving the script as a new one we can save the modifications in git:
 let's do a second comit!
 
 ![](/img/meme_commit.jpg){fig-align="center"}
 
-First save the script, then switch to Git Gui, click on rescan (or
-`F5`). Now `starting_script.r` should appear as unstaged file and you
-can see the modification you just made to the file on the right side. If
-you like the modifications, you can add the modified script to the
-staged area (see [You first commit]). Add a commit message like "Apply
-tidyverse style guide" and commit. In the history you will see that you
-second commit has been added on top of the first one.
+First save the script, then switch to Gitnuro window:
+`starting_script.r` should appear as unstaged file and you can see the
+modification you just made to the file by clicking on it. If you like
+the modifications, you can add the modified script to the staged area
+(see [You first commit]). Add a commit message like "Apply tidyverse
+style guide" and commit. In the history you will see that you second
+commit has been added on top of the first one.
 
 Notice that if you right click on the first commit you have many options
 like: navigate in your history, change the copy of the files you are
@@ -337,10 +341,14 @@ workshop, but you can read more about it on the following page:
 
 Let's move on the final step of this exercice. As we notice, many steps
 in this script are repetitives. This is probably fine for this small
-script, but not so much when you will have 1 000+ lines to modify.
+script, but not so much when you will have 1000+ lines to modify.
 
-Form lines 41 to 76, the script is doing some simple summary statistics,
-let's create functions to simplify theses lines.
+Form lines 41 to 76, the script is doing some simple summary statistics. We
+can create 3 functions to simplify theses lines:
+  
+  - one function for the qualitative variables
+  - one function for the quantitative variables
+  - one function which will decide which function to apply. 
 
 **Question**: Look at the provided R code. What patterns or repetitive
 tasks do you notice?
@@ -350,21 +358,26 @@ tasks do you notice?
 -   Means, standard deviations, quantiles, and histograms for numerical.
 :::
 
-**Exercise**: Write a simple function to compute a frequency table with
+::: {.callout-important title="Exercice"}
+**Exercise**: Write a function to compute a frequency table with
 NA values included.
 
 To find the steps that you need to put in the body of the function, you
 can first try to do a frequency table on one variable of the dataset.
 When it's working, copy paste the steps in the function's body and
-replace the variable names wiht `variable`. Before testing the function,
-you need to run the lines with the function definition to load the
-function in R memory.
+replace the variable names with `variable` instead. Before testing the
+function, you need to run the lines with the function definition to load
+the function in R memory.
 
 ```{r}
+# Testing the table function 
+table(nh2007$gender, useNA = "always")
+
 compute_table <- function(variable) {
   # Steps to do on variable
 }
 ```
+:::
 
 ::: {.callout-tip title="Solution" collapse="true"}
 ```{r}
@@ -379,8 +392,12 @@ compute_table(variable = nh2007$gender)
 ```
 :::
 
-**Exercise**: Create a similar function for numeric variables. The function need to return the
-mean, standard deviation, and quantiles.
+Good we have the first function, created, let's move to the second one!
+
+::: {.callout-important title="Exercice"}
+**Exercise**: Create a similar function for numeric variables. The
+function need to return the mean, standard deviation, and quantiles.
+:::
 
 ::: {.callout-tip title="Solution" collapse="true"}
 ```{r}
@@ -397,23 +414,37 @@ compute_numeric <- function(variable) {
     "quantiles" = quantiles
   )
 }
+
+# Test the function
+compute_numeric(nh2007$age_screening)
+
 ```
 
-In this case, we need to return multiple results. To do so, all the results need 
-to be regrouped in a list or a dataframe because functions can only return one object.
-
+In this case, we need to return multiple results. To do so, all the
+results need to be regrouped in a list or a dataframe because functions
+can only return one object.
 :::
 
-**Exercise**: Join together the two functions in one function that can
-handle both categorical and numerical variables.
-
-To test variable type you can use the following code:
+To join together the two functions, we need additional helpers. Within a fucntion
+we can use logic operators to perform operation only when a statement is true.
+`if (statement) {}` is particulary usefull to test variable type using one 
+of the following code:
 
 ```{r}
 is.numeric(variable)
 is.factor(variable)
 is.logical(variable)
+
+
+if (is.logical(nh2007$age_screening)) {compute_numeric(nh2007$age_screening) }
+
 ```
+
+
+::: {.callout-important title="Exercice"}
+**Exercise**: Join together the two functions in one function that can
+handle both categorical and numerical variables.
+:::
 
 ::: {.callout-tip title="Solution" collapse="true"}
 ```{r}
@@ -452,17 +483,15 @@ compute_descriptive_stats(nh2007$barium)
 compute_descriptive_stats(nh2007$cadmium)
 ```
 
-## Extensions of the functions
+## Extending functions
 
-Discuss which possible extensions and modifications are possible:
+Is quite easy to modify the functions we created an to add fucntion to do more 
+sutff! For example, we can for each variable, create plots to describe the 
+distribution of them using ggplot2. 
 
--   create plots for each type of variable using ggplot2
--   adding other statistical measures
+This new function create plots for each type of variable: a histogram for the
+numeric variables and a barplot for the discrete variables.
 
-**Exercise**: create a new function that create plots for each type of
-variable using ggplot2.
-
-::: {.callout-tip title="Solution" collapse="true"}
 ```{r}
 # Descriptive univariate graphs
 compute_descriptive_graph <- function(variable) {
@@ -489,28 +518,59 @@ compute_descriptive_graph(nh2007$cadmium)
 
 ```
 
-The little `p` is needed at the of the function to return the graph. If
+The little `p` is needed at the end of the function to return the graph. If
 you remove it you will see that nothing will be return. This is because
 a function return the last output from it's body.
-:::
 
+You can add this function the starting script, and also update the
+lines 72-75: 
+
+```{r}
+hist(nh2007$creatinine)
+hist(nh2007$lead)
+hist(nh2007$barium)
+hist(nh2007$cadmium)
+
+# Replace by
+
+compute_descriptive_graph(nh2007$creatinine)
+compute_descriptive_graph(nh2007$lead)
+compute_descriptive_graph(nh2007$barium)
+compute_descriptive_graph(nh2007$cadmium)
+```
+
+::: {.callout-important title="Exercice"}
 **Optionnal exercise**: create a new descriptive statistics function
 that includes at least one additional calculation not covered
 previously.
+:::
 
 # Before break
 
-Move all the new functions to a file in the R folder
-"descriptive_stats.R".
+The `starting_script.R` is starting to be messy, with a mix of fucntion and 
+lines to execute, we need to tidy that up! Move all the new functions (compute_table, compute_numeric, compute_descriptive_stats, compute_descriptive_graph)
+to a file in the R folder named "descriptive_stats.R".
 
-Add a line to source "R/descriptive_stats.R" in "starting_script.R":
+Add the following line at the top of `starting_script.R` to source all the function
+in `R/descriptive_stats.R` each time the script is run:
 
 ```{r}
+# As we are working in a project R studio, know where to look
 source("R/descriptive_stats.R")
+
+# A safer way is to use the `here` package
+source(here::here("R/descriptive_stats.R"))
 ```
 
-Save the change in git and commit the newly created functions.
+Save the change in git by creating a commit with the newly created functions and
+modifications done in the starting script. 
 
-----
+{{< video https://www.youtube.com/embed/PH3MqaMrdSU >}}
+
+Not that we can clearly see which line have been deleted or created by just 
+clicking on a file!
+
+
+------------------------------------------------------------------------
 
 ![](/img/meme_break.jpg){fig-align="center"}

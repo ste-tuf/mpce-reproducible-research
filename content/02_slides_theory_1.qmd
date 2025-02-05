@@ -1,7 +1,5 @@
 ---
 title: "Hands-on Activity 1 - Theory"
-date: 2024-06-05
-author: "Stéphane Tuffier"
 format: 
   revealjs:
     chalkboard: true
@@ -14,7 +12,7 @@ execute:
 
 ## Plan
 
-1.  Project orgnisation
+1.  Project organisation
 2.  R style guide
 3.  Git
 4.  Introduction to functions
@@ -26,7 +24,8 @@ For this workshop : a folder on your computer
 There are many definitions of a project: it can be a single analysis for
 a paper or an entire cohort study with many papers.
 
-In this workshop: a project will refer to a folder on your computer.
+In this workshop: a folder on your computer where we will analyse the
+NHANES data.
 
 ## Projects
 
@@ -122,7 +121,7 @@ list.files(pattern = "2024*PM")
 
 More examples
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ``` text
 # Bad
@@ -161,7 +160,7 @@ report-2022-04-02.qmd
 report-draft-notes.txt
 ```
 :::
-:::
+:::::
 
 ::: notes
 https://r4ds.hadley.nz/workflow-scripts#saving-and-naming
@@ -265,9 +264,9 @@ Manual version control system, Luke W. Johnston
 
 ![](/img/version-nightmare.png){fig-align="center"}
 
-## Git
+## Git {.smaller}
 
--   Keeps track of every change to a file.
+-   Keeps track of every changes to a file.
 -   Can instantly restore any previous version of a file.
 -   Allows you to split your work into different branches for testing
     purposes.
@@ -285,8 +284,6 @@ Git can track text files:
 -   R Script
 -   .csv
 -   Markup documents like Markdown, Quarto, or LaTeX files
-
-Configure a git repository for each project.
 
 ## Terms to know {.smaller}
 
@@ -312,7 +309,7 @@ sequenceDiagram
 -   `repository`, `repo`: a folder tracked by git.
 -   `working folder`: files not tracked by Git, or contain new
     modification not saved yet.
--   `add`: add files of modifications to be tracked by Git
+-   `add`: add files or modifications to the staged areas,
 -   `commit`: create a snapshot of changes and save it in Git `history`.
     Commits must have a short description.
 
@@ -337,19 +334,20 @@ sequenceDiagram
 
 ```
 
--   `stage`: Files here are tracked by Git and can be put into the
-    history with a `commit`.
+-   `stage`: Files and modification here are tracked by Git and can be
+    put into the history with a `commit`. They still can be lost
+    (unsafe).
 -   `history`: all the changes that have been `commited`. Everything
     that has been commited in the Git history will never be completely
-    gone.
+    gone (safe).
 
 ## Terms to know {.smaller}
 
 Branches and repository:
 
 -   `local`: refer to the repository that you store on your computer.
--   `remote`: refer to the repository that are stored online like git
-    hub.
+    **We only work locally today.**
+-   `remote`: refer to repository stored online like in GitHub.
 -   `branch`: branches are parallel versions of your project. They allow
     you to experiment things without affecting the main project until
     you’re ready to merge them back.
@@ -363,13 +361,15 @@ Branches and repository:
 Why write functions?
 :::
 
-Golden rule of programming: **DRY - Don't Repeat Yourself**
+::: center
+**DRY - Don't Repeat Yourself**
+:::
 
-Create function for actions that are often repeated:
+Create functions for actions that are often repeated:
 
--   Import dataset
+-   Import datasets
 -   Create models
--   Extract results from a model
+-   Extract results from models
 -   Create tables
 
 ## Functions {.smaller}
@@ -379,10 +379,9 @@ A function is a bundled sequence of steps that achieve a specific
 action.
 :::
 
-For example, `+` (add) is a function, `mean()` is a function ...
+For example, `+` (sum) is a function, `mean()` is a function ...
 
-Functions are made of a function call, its arguments, and the function
-body:
+Functions are made of a function call, arguments, and the function body:
 
 ``` r
 myfunction <- function(argument1, argument2){ 
@@ -391,13 +390,14 @@ myfunction <- function(argument1, argument2){
 ```
 
 ::: callout-tip
-Type `sd` in R to see how `sd()` calculate standard deviation
+Type `sd` in R (without parenthesis) to see how `sd()` calculate
+standard deviation
 :::
 
 ## Functions
 
--   The output of the function depends only on the inputs. Identical inputs
-    will give identical results.
+-   The output of the function depends only on the inputs. Identical
+    inputs will give identical results.
 
 -   Functions can replace loops and make your code much clearer.
 

@@ -5,13 +5,13 @@ project:
     - "google7d519ad531d20ea3.html"
   
 website: 
-  title: "ISEE young 2024 - WS8 - Reproducibility"
+  title: "Master MPCE - R workshop"
   description: "Reproductible research and data science practices for young epidemiologist"
-  site-url: "https://ste-tuf.github.io/isee-young-ws-reproducibility/"
-  favicon: "/img/isee-young-logo.png"
+  site-url: "https://ste-tuf.github.io/mpce-reproducible-research/"
+  favicon: "/img/icon-rennes.svg"
   open-graph: true
 
-  repo-url: https://github.com/ste-tuf/isee-young-ws-reproducibility/
+  repo-url: https://github.com/ste-tuf/mpce-reproducible-research/
   repo-actions: [edit, issue]
   
   
@@ -19,22 +19,22 @@ website:
   
   page-footer:
     left: "This page is built with [Quarto](https://quarto.org/)."
-    right: "&copy; CC BY-NC, Stephane Tuffier"
-    background: "#0b6fa1"
+    right: "&copy; CC BY, Stephane Tuffier"
+    background: "#ffffff"
 
   navbar: 
     search: true
     pinned: true
-    logo: "/img/isee-young-logo.png"
-    background: "#0b6fa1"
+    logo: "/img/icon-rennes.svg"
+    background: "#ffffff"
     align: center
 
     left:
       - text: Pre-workshop
         menu:
           - text: Installation
-            href: content/00_pre-ws.qmd#installation
-          - text: Data
+            href: content/00_pre-ws.qmd#software
+          - text: Data and script
             href: content/00_pre-ws.qmd#data
       - text: Introduction
         href: content/01_intro.qmd
@@ -44,13 +44,19 @@ website:
         href: content/03_exercise_2.qmd
     right: 
       - icon: github
-        href: https://github.com/ste-tuf/isee-young-ws-reproducibility/
+        href: https://github.com/ste-tuf/mpce-reproducible-research
         text: GitHub
 
 format:
   html:
-    theme: zephyr
+    theme: simplex
+    fontcolor: "#000000"
     # css: styles.css
     toc: true
     code-copy: true
     code-overflow: wrap
+
+# zephyr    
+# minty – A fresh green/teal theme that complements your colors well.
+# flatly – A modern and clean theme with strong green/blue accents.
+# materia – A Material Design-inspired theme with teal highlights that could blend well with your #007852.

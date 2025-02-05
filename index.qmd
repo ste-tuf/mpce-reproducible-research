@@ -3,7 +3,7 @@ title: "Elevate your research with reproducibility science practices: a R worksh
 author: 
   - name: "Stéphane Tuffier"
     url: https://www.tuffier.eu/about.html
-date: 2024-06-05
+date: 2025-02-12
 ---
 
 This workshop aims to provide young epidemiology researchers knowledge
@@ -15,7 +15,7 @@ opportunities. In the second part of the workshop, focus will be put on
 practical solutions and their application so that young researchers can
 implement in their analysis and writing.
 
-![](img/WS8.png)
+The workshop will be held on Zoom, link should have been send to you.
 
 # Goals
 
@@ -42,12 +42,12 @@ implement in their analysis and writing.
 
 -   **Hands-on Activity 1: a simple reproducible project (40 minutes)**
 
-    -   How to organize project's files
+    -   How to organize project's filess
     -   Style R scripts
     -   First Git commit
     -   Introduction to creating your own functions
 
--   **Break (30 minutes)**
+-   **Break (15 minutes)**
 
 -   **Hands-on Activity 2: create a nice report (50 minutes)**
 
@@ -64,13 +64,14 @@ implement in their analysis and writing.
 
 # Requirements
 
-Computer with the following software installed:
+A computer with zoom and the following softwares installed:
 
 -   R (version R 4.3.0 or later)
 -   R-studio, version 2023.03 or later (other IDE like Visual code can
     also be used)
 -   quarto (version 1.3 or later)
--   git and git-gui (version \>= 2.40.0)
+-   git (version \>= 2.40.0)
+-   Gitnuro, a GUI (graphic interface) to git
 
 All the pre-workshop instructions can be found here:
 [Pre-workshop](content/00_pre-ws.qmd).
@@ -79,7 +80,7 @@ All the pre-workshop instructions can be found here:
 
 This workshop was created and heavily inspired by many amazing
 ressources from the R community. Here is the list of references and
-books that were usefull to create this workshop.
+books that were use to create this workshop.
 
 Books:
 
@@ -112,8 +113,8 @@ Packages:
 Git:
 
 -   Pro Git book by Scott Chacon. <https://git-scm.com/book/en/v2>
--   <https://ohmygit.org/>
--   <https://learngitbranching.js.org>
+-   Oh My git! <https://ohmygit.org/>
+-   Learn Git Branching <https://learngitbranching.js.org>
 
 Dataset:
 

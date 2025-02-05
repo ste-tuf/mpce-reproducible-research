@@ -1,6 +1,6 @@
 ---
 title: "Hands-on Activity 2"
-date: 2024-06-05
+date: 2025-02-12
 slide-format: revealjs
 ---
 
@@ -79,21 +79,25 @@ compute_descriptive_graph <- function(variable) {
 
 # Goal
 
-At the end of this exercise, you should be able to produce an HTML document containing at least one table to summarize model results using `gt` and `quarto` with the `nh2007` dataset. If we have enough time, you can reproduce the analysis with the `nh2009` dataset.
+At the end of this exercise, you should be able to produce an HTML
+document containing at least one table to summarize model results using
+`gt` and `quarto` with the `nh2007` dataset. If we have enough time, you
+can reproduce the analysis with the `nh2009` dataset.
 
 # Tasks
 
-- Improve and simplify the code using functional programming
-- Create a QMD document to generate a report using Quarto
-- Make a table using `gt` to summarize model results
-- Continue to use Git to save your progress
+-   Improve and simplify the code using functional programming
+-   Create a QMD document to generate a report using Quarto
+-   Make a table using `gt` to summarize model results
+-   Continue to use Git to save your progress
 
 # Functional Programming
 
-## Descriptive Statistics
+## First use of `map()`
 
-Let's look at the script that we finished before the break. We created some functions that we now use for all the descriptive statistics. However, we still have to copy and paste the same call many times.
-
+Let's look at the script that we finished before the break. We created
+some functions that we now use for all the descriptive statistics.
+However, we still have to copy and paste the same line many times.
 
 ```{r}
 #| eval: false
@@ -117,53 +121,72 @@ compute_descriptive_graph(nh2007$barium)
 compute_descriptive_graph(nh2007$cadmium)
 ```
 
-**Exercice:** Can you figure out how to use `map` to avoid copy pasting
-the call?
+::: {.callout-important title="Exercice"}
+**Exercice:** Try to to use `map()`, from the `purrr::` package, to avoid copy
+pasting?
+:::
 
 ::: {.callout-tip title="Solution" collapse="true"}
-The `map` function can take a data frame as its first argument and will apply the function to each column of the data frame:
+`map()` can take a data frame as its first argument `.x` and it will
+apply the function to each column of the data frame:
 
 ```{r}
 #| eval: false
 purrr::map(.x = nh2007, .f = compute_descriptive_stats)
 ```
 
-For the descriptive graphs we can first use `dplyr::select()` to select
-the four columns of interest:
-
-```{r}
-#| eval: false
-nh2007 |>
-  dplyr::select(creatinine, lead, barium, cadmium) |>
-  purrr::map(.f = compute_descriptive_graph)
-```
-:::
-
-`map` return a list by default:
+This will output a list which look like this:
 
 ```{r}
 #| eval: true
 #| echo: true
-#| include: true
+#| include: false
 purrr::map(.x = nh2007, .f = compute_descriptive_stats) |>
   head(3)
 ```
 
-List are not so easy to work with because functions are mainly build to
+If we replace the `.f` argument by another function, like `compute_numeric()` or
+`compute_descriptive_graph()` this will work but, only if the column is of the right
+type. The following will fail, as `mean` cannot be calculated for categorical variables:
+
+```{r}
+#| eval: false
+purrr::map(.x = nh2007, .f = compute_numeric)
+```
+
+To make it work, we need to restrict to a subset of columns using `dplyr::select()`:
+
+```{r}
+#| eval: false
+
+nh2007 |>
+  # Retrict to numeric variables
+  dplyr::select(dplyr::where(fn = is.numeric)) |>
+  purrr::map(.f = compute_numeric)
+
+nh2007 |>
+  # Restrict to variables of interest for graphs
+  dplyr::select(creatinine, lead, barium, cadmium) |>
+  purrr::map(.f = compute_descriptive_graph)
+```
+
+:::
+
+The list that `map()` return are not so easy to work with because functions are mainly build to
 use a dataframe. However it's very easy to modify `compute_table()` and
-`compute_numeric()` to return statistics in a different format.
+`compute_numeric()` to return the results in a different format.
 
 When the two functions return a dataframe, it's will be possible to use
-`dplyr::bind_rows()` to bind all the elements of the list from `map` into a single dataframe.
+`dplyr::bind_rows()` to bind all the elements of the list from `map`
+into a single dataframe.
 
-Let's first change the two compute functions and load them into our
-environment:
+Let's modify the two compute functions:
 
 ```{r}
 compute_table <- function(variable) {
   # Return frequency table as a dataframe
   table(variable, useNA = "always", dnn = "level") |>
-    as.data.frame()
+    as.data.frame() 
 }
 
 compute_numeric <- function(variable) {
@@ -182,7 +205,9 @@ compute_numeric <- function(variable) {
 }
 ```
 
-Then we can run the lines with `map` again:
+Save the function file, and source it to load the updated version of the
+function into our environment. Then we can try the following lines and combine
+`map()` results with `bind_rows()`:
 
 ```{r}
 purrr::map(.x = nh2007, .f = compute_descriptive_stats) |>
@@ -190,17 +215,26 @@ purrr::map(.x = nh2007, .f = compute_descriptive_stats) |>
   head(5)
 ```
 
-The result is already much better and easier to work with. Notice that we didn't have to change the `compute_descriptive_stats()` function, only the computation functions. This is because no calculations are happening in `compute_descriptive_stats()`: it's only calling the appropriate compute function for each type of variable.
+The result is already much better and easier to work with. Notice that
+we didn't had to change the `compute_descriptive_stats()` function,
+only the computation functions,  `compute_table()` and
+`compute_numeric()`. This is because no calculations are
+happening in `compute_descriptive_stats()`, it is only calling the
+appropriate compute function for each type of variable.
 
 ::: callout-tip
-When modifying functions, it's a good idea to commit the changes frequently so you can revert any unwanted changes if needed.
+We have done some modification to our function  it's a good idea to commit the changes
+so you can revert to the previous version of the function if needed.
 
-Jump back in Git-gui and commit the new changes to the functions. 
+Jump back in Gitnuro, verify the modifications you just introduce, 
+stage them, find a good name for the commit and press the commit button 😊
 :::
 
-## Models
+## Create models with `map()`
 
-We can also use functional programming to simplify the creation of the models. For the 4 outcomes and the 4 exposures, the models are always the same:
+We can also use functional programming to simplify the creation of the
+models. For the 4 outcomes and the 4 exposures, the models are always
+the same:
 
 ```{r}
 #| eval: false
@@ -213,19 +247,54 @@ model.1.d <- glm(heart_attack ~ barium + age_screening + gender, data = nh2007)
 model.1.e <- glm(asthma ~ barium + age_screening + gender, data = nh2007) # Notice that this model is identical to 1a, but it's hard to notice
 ```
 
-The custom function to create need to have at least 2 arugments: one
-argument for the outcome and another for the exposure. It's also a good
-idea to add another argument to specify the dataset to use in the model.
+We can create a new function! This function need to have at least 2
+arugments: one argument for the outcome and another for the exposure.
+It's also a good idea to add another argument to specify the dataset to
+use in the model. The function can look like that 
+`r build_model <- function(outcome, exposure, dataset) { glm()}`.
 
-`map2` and `pmap` are variant of `map` that can iterate over two or many
+`map2()` and `pmap()` are variant of `map()` that can iterate over two or many
 arguments simultaneously.
 
-All the functions that we will create can be saved in `R/models.R`. Remember to add a line to source this file in your script.
+All the functions that we will create for the models can be saved in a
+new file `R/models.R`. This will help to quickly find functions based on their type when
+we need to modify them. Remember to add a line to source this file in the starting
+script.
 
-**Exercise:** Create a function to build the `glm` models. Use `map2` to apply the function to all combinations of outcomes and exposures.
+::: {.callout-important title="Exercice"}
 
-::: callout-note
-<!-- `tidyr::expand_grid()` creates a table from combinations of vectors. You should use it to get all the combinations of outcomes and exposures. -->
+**Exercise:** Create a function to build the `glm` models. Use `map2()` to
+apply the function to all combinations of outcomes and exposures. Here as some
+usefull pieces of code that you can use:
+
+By looking at the code, we can see that the outcomes and exposures are the 
+following one:
+
+```{r}
+outcomes <- c("asthma", "heart_failure", "coronary_heart_disease", "heart_attack")
+exposures <- c("creatinine", "lead", "barium", "cadmium")
+```
+
+We can create a formula using `paste()` and `as.formula()`: 
+
+```{r}
+#| eval: true
+formula <- paste0("asthma", " ~ ", "creatinine", " + age_screening + gender" ) |>
+    as.formula()
+
+formula
+```
+
+`tidyr::expand_grid()` creates a table from combinations of vectors. 
+You can use it to get all the combinations of outcomes and exposures.
+
+```{r}
+tidyr::expand_grid(outcomes, exposures)
+```
+
+With these three things, you can create a table containing the combination
+of outcomes and exposures and create a function that take every row of the table to
+build all the models from it.
 :::
 
 ::: {.callout-tip title="Solution" collapse="true"}
@@ -252,32 +321,70 @@ models_parameters <- tidyr::expand_grid(outcomes, exposures)
 models <- map2(
   .x = models_parameters$outcomes,
   .y = models_parameters$exposures,
-  .f = \(x, y) build_model(x, y, dataset = nh2007)
+  .f = function(x, y) build_model(x, y, dataset = nh2007)
 )
 ```
 
--   `try()` is used to catch any errors when the models don't run for any reason. This allows `map` to continue instead of stopping.
--   `.f = \(x, y) build_model(x, y, dataset = nh2007)` helps pass a common element to all the models. Here, it's the dataset that we want to use for the models. Of course, this dataset can also be passed firectly by `pmap` to make the dataset vary, but it can be a little tricky.
-
+-   `try()` is used to catch any errors when the models don't run for
+    any reason. This allows `map` to continue instead of stopping.
+-   `.f = function(x, y) build_model(x, y, dataset = nh2007)` is a anonymous function.     It helps pass a common element to all the models.
+    Here, it's the dataset that we
+    want to use for the models. Of course, this dataset can also be
+    passed firectly by `pmap` to make the dataset vary, or written in the 
+    build model function, but it can be a little tricky.
 :::
 
-Once again, all the models are in a list. It's easy to access a model using indexes like `models[[1]]`, but it's a bit crude. It is possible to improve that by:
+Once again, all the models are in a list. It's easy to access a model
+using indexes like `models[[1]]`, but it's a bit crude. It is possible
+to improve that by:
 
--   Assigning names to each list element from the model parameters, so you can access models using a `$` sign.
--   Putting the models in a column in the models parameters dataframe (often a better solution).
+-   Assigning names to each list element from the model parameters, so
+    you can access models using a `$` sign.
+-   Putting the models in a column in the models parameters dataframe
+    (often a better solution).
+    
+  
+::: callout-tip
+This is a big modification, take some time to move `build_model()` to the `R/models.R` file,
+rewrite the code in the starting script and commit the changes in Gitnuro!
+:::
 
+## Extract models results with `map()`
 
-## Extract models results
+We have seen how to use the `map()` function family to loop through columns
+of a dataframe and to create many models from a dataframe. Their use is 
+not limited to that. It's possible to extract the results of many models too.
 
-**Exercice:** Create a function to extract estimates, CI, p-pvalue and
-AIC from a model. Use `map` to apply it to every model.
-
-::: callout-note
-It can be difficult to create a function from scratch, especially when working with lists. It's sometimes easier to first work with one element of the list to test the function.
+In the `starting-script.R`, many line just print the `summary` of each model. 
+A simple solution would be to replace them with the following code:
 
 ```{r}
 #| eval: false
+map(models, summary)
+```
+
+This will print the summary of all the models created at the previous steps.
+The inconvenient of the summary function is that it's not easy to export as a table.
+
+::: {.callout-important title="Exercice"}
+**Exercice:** Create a function to extract estimates, CI, p-value and
+AIC from a model. Use `map` to apply it to every model.
+
+It can be difficult to create a function from scratch, especially when
+working with lists. It's sometimes easier to first work with one element
+of the list to test the function.
+
+```{r}
 test_model <- models[[1]]
+```
+
+Check the following functions to help you:
+
+```{r}
+coef(summary(test_model))
+confint(test_model)
+test_model$aic
+cbind(confint(test_model), test_model$aic)
 ```
 :::
 
@@ -302,27 +409,52 @@ extract_model_result <- function(model) {
     ci,
     aic
   ) |>
+    # Get model variables in a column
     rownames_to_column(var = "term")
 }
 
-# Extract model results
+# Test the function with one model
+extract_model_result(test_model)
+
+# Extract all model results
 models_results <- map(models, extract_model_result)
 ```
 
-The `broom` package is a very nice interface to reliably extract models
-results in a consistent way. It can easily replace this custom-made
+The `broom:` package is a very nice interface to reliably extract models
+results in a consistent way. The `tidy()` function can easily replace this custom-made
 function: https://broom.tidymodels.org/
 :::
 
-# Make a table using `gt`
+::: callout-tip
+It's time to do another commit! Move `extract_model_result()` to the `R/models.R` file, 
+rewrite the code in the starting script and commit the changes!
+:::
+
+# Present the model results with a table using `gt`
+
+In this section, we will focus on creating just one table because the
+`gt` package offers many options, which could be the topic of an entire
+workshop. 
+
+The `gt` package is a powerful tool for creating presentation-ready tables in R, 
+allowing for extensive customization and styling. With gt, you can easily format
+numbers, add headers and footers, apply conditional formatting, 
+and even integrate visual elements directly into your tables.
+Unlike manual formatting in Excel, which is time-consuming, `gt automates the process, 
+ensuring consistency and saving time.
+
+Feel free to experiment with it later if you have time, for
+example, to create a table for the descriptive statistics.
 
 ## Prepare the data
 
-In this section, we will focus on creating just one table because the `gt` package offers many options, which could be the topic of an entire workshop. Feel free to experiment with it later if you have time, for example, to create a table for the descriptive statistics.
-
-Before creating a `gt` table, it's best to have a clean table with only the information that we want to present. The first step is to consolidate the model parameters, models, and model results into one table.
+Before creating a `gt` table, it's best to have a clean table with only
+the information that we want to present. The first step is to
+clean the model parameters, models, and model results into one
+table.
 
 ```{r}
+# Add models and results to the models_parameter dataframe
 results <- models_parameters |>
   dplyr::mutate(
     models = models,
@@ -330,9 +462,9 @@ results <- models_parameters |>
   )
 ```
 
-Then we can `unnest()` the `models_results` column in the dataframe, and filter
-the terms from the model results to keep only the terms matching the
-exposure of the model.
+Then we can `unnest()` the `models_results` column in the dataframe, and
+filter the `terms` from the model results to keep only the terms matching
+the `exposure` of the model.
 
 ```{r}
 results_short <- results |>
@@ -343,8 +475,7 @@ results_short <- results |>
 head(results_short)
 ```
 
-Now the table is simple and it's possible to create a `gt` table and to
-go handle all the formating
+Now the table is simpler. Let's create a `gt` table and apply all the formating
 
 ## Create the `gt` table
 
@@ -358,8 +489,6 @@ gt_table <- gt(
   data = results_short,
   groupname_col = "outcomes"
 )
-
-gt_table
 ```
 
 2.  Format numbers
@@ -372,7 +501,7 @@ gt_table <- gt_table |>
   ) |>
   fmt(
     columns = "Pr(>|t|)",
-    fns = \(x) format.pval(x, digits = 3)
+    fns = function(x) format.pval(x, digits = 3)
   )
 ```
 
@@ -380,13 +509,16 @@ gt_table <- gt_table |>
 
 ```{r}
 gt_table <- gt_table |>
+  # Merge confidence interval values together
   cols_merge(
     columns = c("2.5 %", "97.5 %"),
     pattern = "{1} - {2}"
   ) |>
+  # Hide non essential columns
   cols_hide(
-    columns = c("Std. Error", "t value", "term")
+    columns = c("Std. Error", "t value", "term", "aic")
   ) |>
+  # Change column label
   cols_label("2.5 %" = "95% CI")
 ```
 
@@ -402,9 +534,13 @@ gt_table <- gt_table %>%
 gt_table
 ```
 
-All these steps in the gt pipeline can be grouped into one function, for example, `gt_models()`, with only `results_clean` as an argument. This means that you can easily reapply the function to each results table and get a identical table!
+All these steps in the gt pipeline can be grouped into one function, for
+example, `gt_models()`, with only a results table  as an argument. This
+means that you can easily reapply the function to new model results and
+get a identical table! 
 
-**Exercice:** Create this function and add it to `R/gt_models.R`.
+**Exercice:** Create this function, add it to `R/gt_models.R` and 
+add a line to source the file in your maim script.
 
 ::: {.callout-tip title="Solution" collapse="true"}
 ```{r}
@@ -430,23 +566,28 @@ gt_models <- function(results_clean) {
       pattern = "{1} - {2}"
     ) |>
     cols_hide(
-      columns = c("Std. Error", "t value", "term")
+      columns = c("Std. Error", "t value", "term", "aic")
     ) |>
     cols_label("2.5 %" = "95% CI") |>
     # 4. Add table title and subtitle
     tab_header(
       title = "Models results"
   )
-  
 }
+
+# Testing the function
+gt_models(results_short)
 ```
 
-Remember to commit this new function and to source it in your main script.
+Remember to commit the new changes.
 :::
 
-# Generate the report with quarto
+# Generate a report with quarto
 
-Now that we have many functions and a nice table, we can put them in a Quarto document to generate either `HTML` or `DOCX` documents.
+## 2007 report
+
+Now we can put the nice table in a Quarto document to generate directly 
+`HTML` or `DOCX` documents.
 
 In RStudio create a new file: `qmd/report.qmd` In the report we should
 include a `yaml` header defining some execution parameters:
@@ -455,52 +596,67 @@ include a `yaml` header defining some execution parameters:
 ---
 title: "NHANES Report"
 author: "Your Name"
-date: "2024-05-31"
+date: "date"
 output: html_document # or docx
 ---
 ```
 
-R code can then be executed within chunks. The first chunk should load all the packages and source all your functions:
+R code can then be executed within chunks. The first chunk should load
+all the packages and source all the functions:
 
-````markdown
+```` markdown
 ```{{r}}
 # Load packages
 library(tidyverse)
-source("../R/descriptive.R")
-source("../R/models.R")
-source("../R/gt_models.R")
-# .. is needed to refer to the project root
+library(here)
 
-# Alternative using the here package
+# Loading the functions
+# here() gets the location of the project
 source(here("R/descriptive.R"))
 source(here("R/models.R"))
 source(here("R/gt_models.R"))
+
+# Alternative is to use .. to refer to the project root
+# source("../R/descriptive.R")
+# source("../R/models.R")
+# source("../R/gt_models.R")
+# ..  refer to the project root (one folder above the current one)
+
 ```
 ````
 
-In between each chunk, you can add text to describe what you did, or even write some method points that you need to remember for later. The syntax in this part is done in markdown.
+In between each chunk, you can add text to describe what you did, or
+even write some method points that you need to remember for later. The
+syntax in this part is done in markdown.
 
-The following chunks can contain all the lines that include map functions.
+The following chunks can contain all the lines that include map
+functions.
 
+::: {.callout-important title="Excercie"}
 **Exercise:** Convert your starting script into a Quarto document.
 
-::: {.callout-tip title="Solution" collapse="true"}
-
-- Create the file `qmd/report.qmd`
-- Open it and add the yaml header and a chunck to load all the package and library.
-- Add as many chuncks as you wish for each step of the analysis.
-
-You can check the following file to see a example: [report example](../qmd/report_example.qmd)
+-   Create the file `qmd/report.qmd`
+-   Open it and add the yaml header and a chunck to load all the package
+    and library.
+-   Add as many chuncks as you wish for each step of the analysis.
 :::
+
+::: {.callout-tip title="Solution" collapse="true"}
+You can check the following file to see a example: [report
+example](../qmd/_report_example.qmd)
+:::
+
 
 ## 2009 report
 
-Now that the functions are all created, adding the analysis for the
-`nh2009` dataset is simple, as it only requires applying the same functions to another dataset.
+This report is only based on the 2007 seven data. 
+Since the 2009 data in the `nh2009` dataset is very similar, we can re-use
+the functions with it. It's very easy to replicate the analysis with new dataa:
+it only requires applying the same functions to the new dataset.
 
-The report can be divided into two sections:
+Let's create a new section in the report:
 
-```markdown
+``` markdown
 # 2007
 
 ... 2007 analysis
@@ -509,7 +665,7 @@ The report can be divided into two sections:
 ... 2009 analysis
 ```
 
-The only thing that needs to be copied and pasted is the data management part. The script for the 2009 analysis can look like this:
+The script for the 2009 analysis can look like this:
 
 ```{r}
 #| eval: false
@@ -549,15 +705,21 @@ results_model_clean_2009 <- results_2009 |>
 gt_models(results_model_clean_2009)
 ```
 
-**Exercice:** Intergrate the following lines in the report document
+**Exercice:** Intergrate the following lines in the report document, and render
+the document (Button in RStudio toolbar).
 
-Check the following files to see the final state of the project: 
+Congratulation, you finished the whole workshop!
 
-- [report_example.qmd](../qmd/_report_example.qmd) which contains computation and results. Clicking on "Render" in RStudio or using `quarto render qmd/report_example.qmd'. The rendered report can be seen here: [report example](../qmd/report_example.qmd)
-- [R/descriptive.R](../R/descriptive.R), [R/models.R](../R/models.R), and 
-[R/gt_models.R](../R/gt_models.R) to see all the functions definitions
+You can check the following files to see the final files of the project:
 
+-   [report_example.qmd](../qmd/_report_example.qmd) which contains
+    the code of the report. Click on "Render" in RStudio or type
+    `quarto render qmd/report_example.qmd` in the terminal. The rendered report can be
+    seen here: [report example](../qmd/report_example.qmd)
+-   [R/descriptive.R](../R/descriptive.R), [R/models.R](../R/models.R),
+    and [R/gt_models.R](../R/gt_models.R) to see all the functions
+    definitions
 
-----
+------------------------------------------------------------------------
 
 ![](/img/meme_final.png){fig-align="center"}

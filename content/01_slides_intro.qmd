@@ -1,7 +1,5 @@
 ---
 title: "Introduction"
-date: 2024-06-05
-author: "Stéphane Tuffier"
 bibliography: "ref.bib"
 format: 
   revealjs:
@@ -13,7 +11,7 @@ format:
 editor: visual
 ---
 
-##  {.center background-color="#0b6fa1"}
+##  {.center background-color="#b51f1f"}
 
 ![](https://imgs.xkcd.com/comics/coronavirus_genome.png){fig-align="center"}
 
@@ -23,14 +21,14 @@ https://xkcd.com/2298
 
 ## ❔ {.center}
 
-**... or about open access, open data, open methods/protocols, or open
-source?**
-
 **How many of you have read a method in a paper and wondered how they
 actually did it?**
 
 **Have you ever received confusing code? Or maybe written your own
 confusing code?**
+
+**... or about open access, open data, open methods/protocols, or open
+source?**
 
 ## Reproducibility
 
@@ -95,14 +93,14 @@ fig-align="center"}
 ## Workshop organization
 
 A little bit of theory and lots of hands-on exercises. Each part of the
-workshop has a dedicated page where you can find slides and
-instructions.
+workshop has a dedicated page where you can find slides and instructions
+to follow in your breakout rooms.
 
 -   **Introduction (20 minutes): a little bit of theory**
 
 -   **Hands-on Activity 1: a simple reproducible project (40 minutes)**
 
--   **Break (30 minutes)**
+-   **Break (15 minutes)**
 
 -   **Hands-on Activity 2: create a nice report (50 minutes)**
 
@@ -112,9 +110,7 @@ instructions.
 
 -   Maybe your teammates can help
 
--   Put a sticker on your computer if you need assistance
-
--   Raise your hand
+-   Put a comment in the chat if you are strugling
 
 -   No stupid questions—we're all learning here, *including me*
 

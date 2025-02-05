@@ -2,9 +2,7 @@
 
 A R workshop for young researcher in epidemiology
 
-This repository contains material used for the ISEE Young 2024 in Rennes.
+This repository contains material used for a course in the MPCE master at the University of Rennes.
+It's a fork of a work done at ISEE Young in Rennes: https://github.com/ste-tuf/isee-young-ws-reproducibility
 
-Workshop website is accessible at https://ste-tuf.github.io/isee-young-ws-reproducibility/
-
-![](WS8.png)
-
+Workshop website is accessible at https://ste-tuf.github.io/mpce-reproducible-research/
