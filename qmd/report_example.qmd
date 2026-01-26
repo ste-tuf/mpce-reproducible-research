@@ -53,7 +53,7 @@ models_parameters_nh2007 <- tidyr::expand_grid(outcomes, exposures)
 models_nh2007 <- map2(
   .x = models_parameters_nh2007$outcomes,
   .y = models_parameters_nh2007$exposures,
-  .f = \(x, y) build_model(x, y, dataset = nh2007) # we need to change the dataset
+  .f = \(x, y) build_model(x, y, dataset = nh2007)
 )
 
 # Extract model results
@@ -91,13 +91,12 @@ purrr::map(.x = nh2009, .f = compute_descriptive_stats) |>
 outcomes <- c("asthma", "heart_failure", "coronary_heart_disease", "heart_attack")
 exposures <- c("creatinine", "lead", "barium", "cadmium")
 
-
 models_parameters_2009 <- tidyr::expand_grid(outcomes, exposures)
 
 models_2009 <- map2(
   .x = models_parameters_2009$outcomes,
   .y = models_parameters_2009$exposures,
-  .f = \(x, y) build_model(x, y, dataset = nh2009) # we need to change the dataset
+  .f = function(x, y) build_model(x, y, dataset = nh2009)
 )
 
 # Extract model results

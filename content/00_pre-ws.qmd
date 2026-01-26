@@ -113,5 +113,5 @@ Please download the initial script of the workshop: [`starting_script.R`](../R/s
 Go through the first section of the hand-on exercise 1 where you can setup the
 course folder and populate it with a RStudio project and a git repository.
 
-[Hands-On Activity 1 - Set up you project](02_exercise_1.qmd)
+[Hands-On Activity 1 - Set up you project](02_exercise_1.qmd#set-up-the-project)
 

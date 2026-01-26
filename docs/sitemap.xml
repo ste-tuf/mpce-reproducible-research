@@ -2,42 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ste-tuf.github.io/mpce-reproducible-research/index.html</loc>
-    <lastmod>2026-01-26T16:14:08.746Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ste-tuf.github.io/mpce-reproducible-research/qmd/report_example.html</loc>
-    <lastmod>2026-01-26T17:02:18.278Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ste-tuf.github.io/mpce-reproducible-research/content/03_exercise_2.html</loc>
-    <lastmod>2026-01-26T16:48:26.540Z</lastmod>
+    <lastmod>2026-01-26T17:09:26.885Z</lastmod>
   </url>
   <url>
     <loc>https://ste-tuf.github.io/mpce-reproducible-research/content/00_pre-ws.html</loc>
-    <lastmod>2026-01-26T16:10:32.690Z</lastmod>
+    <lastmod>2026-01-26T17:19:54.853Z</lastmod>
   </url>
   <url>
-    <loc>https://ste-tuf.github.io/mpce-reproducible-research/content/02_slides_theory_1.html</loc>
-    <lastmod>2026-01-26T16:10:32.610Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ste-tuf.github.io/mpce-reproducible-research/content/01_slides_intro.html</loc>
-    <lastmod>2026-01-26T16:10:32.610Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ste-tuf.github.io/mpce-reproducible-research/content/03_slides_theory_2.html</loc>
-    <lastmod>2026-01-26T16:10:32.610Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ste-tuf.github.io/mpce-reproducible-research/content/01_intro.html</loc>
-    <lastmod>2026-01-26T16:10:32.690Z</lastmod>
+    <loc>https://ste-tuf.github.io/mpce-reproducible-research/content/03_exercise_2.html</loc>
+    <lastmod>2026-01-26T17:09:26.857Z</lastmod>
   </url>
   <url>
     <loc>https://ste-tuf.github.io/mpce-reproducible-research/content/02_exercise_1.html</loc>
-    <lastmod>2026-01-26T16:58:38.489Z</lastmod>
+    <lastmod>2026-01-26T17:09:26.856Z</lastmod>
   </url>
   <url>
-    <loc>https://ste-tuf.github.io/mpce-reproducible-research/AGENTS.html</loc>
-    <lastmod>2026-01-26T14:17:46.450Z</lastmod>
+    <loc>https://ste-tuf.github.io/mpce-reproducible-research/content/01_intro.html</loc>
+    <lastmod>2026-01-26T17:09:26.856Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ste-tuf.github.io/mpce-reproducible-research/content/01_slides_intro.html</loc>
+    <lastmod>2026-01-26T17:09:26.856Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ste-tuf.github.io/mpce-reproducible-research/content/02_slides_theory_1.html</loc>
+    <lastmod>2026-01-26T17:09:26.857Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ste-tuf.github.io/mpce-reproducible-research/content/03_slides_theory_2.html</loc>
+    <lastmod>2026-01-26T17:09:26.857Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ste-tuf.github.io/mpce-reproducible-research/qmd/report_example.html</loc>
+    <lastmod>2026-01-26T17:09:26.885Z</lastmod>
   </url>
 </urlset>
