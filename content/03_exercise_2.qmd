@@ -1,6 +1,6 @@
 ---
 title: "Hands-on Activity 2"
-date: 2025-02-12
+date: 2026-02-03
 slide-format: revealjs
 ---
 
@@ -122,7 +122,7 @@ compute_descriptive_graph(nh2007$cadmium)
 ```
 
 ::: {.callout-important title="Exercice"}
-**Exercice:** Try to to use `map()`, from the `purrr::` package, to avoid copy
+**Exercise:** Try to use `map()`, from the `purrr::` package, to avoid copy
 pasting?
 :::
 
@@ -222,7 +222,7 @@ only the computation functions,  `compute_table()` and
 happening in `compute_descriptive_stats()`, it is only calling the
 appropriate compute function for each type of variable.
 
-::: callout-tip
+::: {.callout-tip}
 We have done some modification to our function  it's a good idea to commit the changes
 so you can revert to the previous version of the function if needed.
 
@@ -264,11 +264,10 @@ script.
 ::: {.callout-important title="Exercice"}
 
 **Exercise:** Create a function to build the `glm` models. Use `map2()` to
-apply the function to all combinations of outcomes and exposures. Here as some
-usefull pieces of code that you can use:
+apply the function to all combinations of outcomes and exposures. Here are some
+useful pieces of code that you can use:
 
-By looking at the code, we can see that the outcomes and exposures are the 
-following one:
+By looking at the code, we can see that the outcomes and exposures are the
 
 ```{r}
 outcomes <- c("asthma", "heart_failure", "coronary_heart_disease", "heart_attack")
@@ -327,10 +326,10 @@ models <- map2(
 
 -   `try()` is used to catch any errors when the models don't run for
     any reason. This allows `map` to continue instead of stopping.
--   `.f = function(x, y) build_model(x, y, dataset = nh2007)` is a anonymous function.     It helps pass a common element to all the models.
-    Here, it's the dataset that we
-    want to use for the models. Of course, this dataset can also be
-    passed firectly by `pmap` to make the dataset vary, or written in the 
+-   `.f = function(x, y) build_model(x, y, dataset = nh2007)` is an anonymous function.     It helps pass a common element to all the models.
+     Here, it's the dataset that we
+     want to use for the models. Of course, this dataset can also be
+     passed directly by `pmap` to make the dataset vary, or written in the
     build model function, but it can be a little tricky.
 :::
 
@@ -535,8 +534,8 @@ gt_table
 ```
 
 All these steps in the gt pipeline can be grouped into one function, for
-example, `gt_models()`, with only a results table  as an argument. This
-means that you can easily reapply the function to new model results and
+example, `gt_models()`, with only a results table as an argument. This
+means that you can easily apply the function to new model results and
 get a identical table! 
 
 **Exercice:** Create this function, add it to `R/gt_models.R` and 
@@ -632,7 +631,7 @@ syntax in this part is done in markdown.
 The following chunks can contain all the lines that include map
 functions.
 
-::: {.callout-important title="Excercie"}
+::: {.callout-important title="Exercise"}
 **Exercise:** Convert your starting script into a Quarto document.
 
 -   Create the file `qmd/report.qmd`
@@ -649,9 +648,9 @@ example](../qmd/_report_example.qmd)
 
 ## 2009 report
 
-This report is only based on the 2007 seven data. 
-Since the 2009 data in the `nh2009` dataset is very similar, we can re-use
-the functions with it. It's very easy to replicate the analysis with new dataa:
+This report is only based on the 2007 data. 
+Since the 2009 data in the `nh2009` dataset is very similar, we can reuse
+the functions with it. It's very easy to replicate the analysis with new data:
 it only requires applying the same functions to the new dataset.
 
 Let's create a new section in the report:
@@ -705,7 +704,7 @@ results_model_clean_2009 <- results_2009 |>
 gt_models(results_model_clean_2009)
 ```
 
-**Exercice:** Intergrate the following lines in the report document, and render
+**Exercice:** Integrate the following lines in the report document, and render
 the document (Button in RStudio toolbar).
 
 Congratulation, you finished the whole workshop!
@@ -722,4 +721,5 @@ You can check the following files to see the final files of the project:
 
 ------------------------------------------------------------------------
 
-![](/img/meme_final.png){fig-align="center"}
+![](img/meme_final.png){fig-align="center")
+

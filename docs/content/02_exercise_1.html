@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-02-12">
+<meta name="dcterms.date" content="2026-02-03">
 
 <title>Hands-on Activity 1 – Master MPCE - R workshop</title>
 <style>
@@ -22,8 +22,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -65,15 +66,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="..//img/icon-rennes.svg" rel="icon" type="image/svg+xml">
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-50124644685ec7c7595682278d293586.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -105,10 +108,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta property="og:title" content="Hands-on Activity 1 – Master MPCE - R workshop">
 <meta property="og:description" content="Reproductible research and data science practices for young epidemiologist">
+<meta property="og:image" content="https://ste-tuf.github.io/mpce-reproducible-research/img/gitnuro_gui.png">
 <meta property="og:site_name" content="Master MPCE - R workshop">
+<meta property="og:image:height" content="842">
+<meta property="og:image:width" content="1107">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -116,7 +122,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../img/icon-rennes.svg" alt="" class="navbar-logo">
+    <img src="../img/icon-rennes.svg" alt="" class="navbar-logo light-content">
+    <img src="../img/icon-rennes.svg" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Master MPCE - R workshop</span>
@@ -179,7 +186,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#goal" id="toc-goal" class="nav-link" data-scroll-target="#goal">Goal</a></li>
+  <li><a href="#goal" id="toc-goal" class="nav-link" data-scroll-target="#goal">Goal</a>
+  <ul class="collapse">
+  <li><a href="#your-activity-1-checklist" id="toc-your-activity-1-checklist" class="nav-link" data-scroll-target="#your-activity-1-checklist">Your Activity 1 Checklist</a></li>
+  </ul></li>
   <li><a href="#tasks" id="toc-tasks" class="nav-link" data-scroll-target="#tasks">Tasks</a></li>
   <li><a href="#set-up-the-project" id="toc-set-up-the-project" class="nav-link" data-scroll-target="#set-up-the-project">Set up the project</a>
   <ul class="collapse">
@@ -191,13 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#improve-the-script" id="toc-improve-the-script" class="nav-link" data-scroll-target="#improve-the-script">Improve the script</a>
   <ul class="collapse">
   <li><a href="#loading-the-data" id="toc-loading-the-data" class="nav-link" data-scroll-target="#loading-the-data">Loading the data</a></li>
-  <li><a href="#script-style" id="toc-script-style" class="nav-link" data-scroll-target="#script-style">Script style</a></li>
   </ul></li>
-  <li><a href="#create-a-function" id="toc-create-a-function" class="nav-link" data-scroll-target="#create-a-function">Create a function</a>
-  <ul class="collapse">
-  <li><a href="#extending-functions" id="toc-extending-functions" class="nav-link" data-scroll-target="#extending-functions">Extending functions</a></li>
-  </ul></li>
-  <li><a href="#before-break" id="toc-before-break" class="nav-link" data-scroll-target="#before-break">Before break</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ste-tuf/mpce-reproducible-research/edit/main/content/02_exercise_1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ste-tuf/mpce-reproducible-research/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -217,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 12, 2025</p>
+      <p class="date">February 3, 2026</p>
     </div>
   </div>
   
@@ -237,19 +241,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="goal" class="level1">
 <h1>Goal</h1>
-<p>At the end of this exercice you should have a project folder created for the analysis. The folder should contains a git repository, a <code>script/</code> folder containing the starting script (<code>starting_script.R</code>) and a <code>R/</code> folder containing <code>descriptive_stats.R</code> with 3 functions.</p>
+<p>At the end of this exercise you should have a project folder created for the analysis. The folder should contains a git repository, a <code>script/</code> folder containing the starting script (<code>starting_script.R</code>) and a <code>R/</code> folder containing <code>descriptive_stats.R</code> with 3 functions.</p>
+<section id="your-activity-1-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="your-activity-1-checklist">Your Activity 1 Checklist</h2>
+<div class="callout callout-style-default callout-tip callout-titled" title="What You'll Accomplish Today">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>What You’ll Accomplish Today
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Estimated total time: 40 minutes</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>Quick project check</strong> (2 min)</label></li>
+<li><label><input type="checkbox"><strong>Fix data loading approach</strong> (2-3 min)</label></li>
+<li><label><input type="checkbox"><strong>Apply code style with styler</strong> (5 min)</label></li>
+<li><label><input type="checkbox"><strong>Make your 2nd git commit</strong> (3 min)</label></li>
+<li><label><input type="checkbox"><strong>Write 3 descriptive functions</strong> (15-20 min)</label></li>
+<li><label><input type="checkbox"><strong>Refactor and save final work</strong> (5 min)</label></li>
+</ul>
+<p>→ <strong>You’ll have a clean, documented, version-controlled project!</strong></p>
+</div>
+</div>
+</section>
 </section>
 <section id="tasks" class="level1">
 <h1>Tasks</h1>
 <ul>
-<li>Setup a reproducible project for the analysis</li>
+<li>Setup a reproducible project for the analysis (completed in pre-workshop)</li>
 <li>Use <code>styler::</code> to improve the script</li>
-<li>Make your first git commit</li>
-<li>Create two simple functions for descriptive statistics</li>
+<li>Make your first commit after styling</li>
+<li>Create three simple functions for descriptive statistics</li>
 </ul>
 </section>
 <section id="set-up-the-project" class="level1">
 <h1>Set up the project</h1>
+<div class="callout-info" title="Section 1: Quick Setup Check">
+<p>This section needs to be done prior to the course time, in order to save time. We will only review it quickly during the course.</p>
+<p><strong>Progress</strong>: Section 1 of 3 | <strong>Time</strong>: 2 min</p>
+<p>Your git and RStudio setup should already be complete from the pre-workshop instructions. Let’s quickly verify everything is ready.</p>
+<p>You should have downloaded the dataset and the script for this workshop if you followed the pre-workshop instructions. If you didn’t, please go check them again and make sure that you already have git initialized:</p>
+<ul>
+<li>Git repository initialized in your project folder</li>
+<li>RStudio project created (<code>.Rproj</code> file)</li>
+<li>Data files: <a href="../data/nh2007.Rdata"><code>nh2007.Rdata</code></a>, <a href="../data/nh2009.Rdata"><code>nh2009.Rdata</code></a></li>
+<li>Script: <a href="../R/starting_script.R"><code>starting_script.R</code></a></li>
+<li>Folder structure created: <code>data/</code>, <code>scripts/</code>, <code>R/</code></li>
+</ul>
+</div>
 <p>You should have downloaded the dataset and the script for this workshop if you followed the preworkshop instructions. If you didn’t please go check them again and make sure that you already have git installed:</p>
 <ul>
 <li><a href="../data/nh2007.Rdata"><code>nh2007.Rdata</code></a></li>
@@ -260,15 +302,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If you wish to recreate the NHANES data by yourself, please have a look at the script in <code>data-raw/nhanes.R</code> in the workshop’s GitHub repository</p>
 </div>
 <p>The first step is to create a folder to gather all the project files. You can call it <code>NHANES/</code>, <code>mpce-reproducibility/</code> or <code>workshop/</code> it does not matter. Copy the files and move to this folder.</p>
-<p>Next we should intialize <code>git</code> within the project folder.</p>
+<p>Next we should initialize <code>git</code> within the project folder.</p>
 <section id="initialize-git-repository" class="level2">
 <h2 class="anchored" data-anchor-id="initialize-git-repository">Initialize git repository</h2>
-<p>To do that, we will use Gitnuro (see preworkshop instructions). Open Gitnuro, click on <code>Start a local repository</code> and select the folder you just created above.</p>
+<p>To do that, we will use <strong>Gitnuro</strong> (see pre-workshop instructions). Open Gitnuro, click on <code>Start a local repository</code> and select the folder you just created above.</p>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/g9FU9muAjVE" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>This will open the main widow where we can mange the git repository. The window shoul look like that:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="..\img/gitnuro_gui.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="../img/gitnuro_gui.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 <p>The interface is divided in several parts:</p>
@@ -276,19 +318,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>the main area which show two things:</li>
 </ol>
 <ul>
-<li>the history of the repository comit</li>
+<li>the history of the repository commit</li>
 <li>the content of a selected file with it’s modifications</li>
 </ul>
 <ol start="2" type="1">
 <li>The staged ares which list the files in the staged area and ready to commit</li>
 <li>The unstaged area show the files in your working folder and unstaged</li>
-<li>The comit message where you have tot entre the comit message before commiting (saving) the staged files</li>
+<li>The commit message where you have to enter the commit message before commiting (saving) the staged files</li>
 </ol>
-<p>We can keep this windows open and we will return to it as we advance throught the workshop and need to commit (save) modifcations.</p>
+<p>We can keep this windows open and we will return to it as we advance through the workshop and need to commit (save) modifications.</p>
 <p>Before adding things, it’s a god idea to configure you credentials (especially if you are working within a team). Click on the bottom left to display the credential windows:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="..\img/gitnuro_user.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="../img/gitnuro_user.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 <p>Here you can setup your User Name and Email both for the curent project (Repository) or for all git projects (Global).</p>
@@ -308,9 +350,9 @@ Tip
 </section>
 <section id="create-a-rstudio-project" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-rstudio-project">Create a Rstudio project</h2>
-<p>Now let’s open RStudio to also initiate a Rproject. Click on “<em>New project</em>” in the project menu on the top right corner. Then select “<em>Project in existing directory</em>” and indicate the path of the workshop folder. The project should open itself.</p>
+<p>Now let’s open RStudio to also initiate a R Studio project. Click on “<em>New project</em>” in the project menu on the top right corner. Then select “<em>Project in existing directory</em>” and indicate the path of the workshop folder. The project should open itself.</p>
 <p>Each RStudio project can be configured. You can either click on the <code>.Rproj</code> file within RStudio or click on “<em>Project option</em>” in the “<em>Tools</em>” menu.</p>
-<p>It’s usally better to turn off the saving of the workspace to <code>.Rdata</code> as this prevent old data from previous computations to be loaded automatically each time you open the project which can cause a lot of issues. It’s always better to rerun the scripts form scratch.</p>
+<p>It’s usually better to turn off the saving of the workspace to <code>.Rdata</code> as this prevent old data from previous computations to be loaded automatically each time you open the project which can cause a lot of issues. It’s always better to rerun the scripts form scratch.</p>
 </section>
 <section id="adding-folder-and-files" class="level2">
 <h2 class="anchored" data-anchor-id="adding-folder-and-files">Adding folder and files</h2>
@@ -331,7 +373,7 @@ Tip
 <li><code>.gitignore</code>: create this file at the root of the project folder. It can contain a list of files that git should ignore. Open it in RStudio and add the following lines:</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># History files</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># History files</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>.Rhistory</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>.Rapp.history</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -348,8 +390,8 @@ Tip
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu"># R Environment Variables</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>.Renviron</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu"># R Specific file </span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>*.Rdata </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu"># R Specific file</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>.Rdata</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This will prevent git from following the modification of these files that are only temporary and not related to the analysis.</p>
 <p>The folder should look like that:</p>
 <pre class="text"><code>Project
@@ -364,77 +406,79 @@ scripts/
 ├── .gitignore 
 ├── Project.Rproj
 └── README.md</code></pre>
-<div class="callout-info">
+<div class="{callout-info}">
 <p>All the steps above can be done within the command line or terminal, using git command line namely Git Bash.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> your_project_folder</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> your_project_folder</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># GIT bash</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"First Last"</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"first.last@example.com</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"first.last@example.com</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
 <section id="you-first-commit" class="level1">
 <h1>You first commit</h1>
-<p>It’s time to save in Git the initial state of the project. Switch to the Gitnuro window. All the files and folders should appears in the unstage part of the windows. The script is no under the folder <code>script/</code>, we can see the <code>README.md</code> file and the <code>.Rdata</code> files are not apearing as we added them to the files to ignore.</p>
+<p>It’s time to save in Git the initial state of the project. Switch to the Gitnuro window. All the files and folders should appears in the unstage part of the windows. The script is no under the folder <code>script/</code>, we can see the <code>README.md</code> file and the <code>.Rdata</code> files are not appearing as we added them to the files to ignore.</p>
 <p>You can click on any file to show their content. All the lines are green as we will only add new lines to the repository.</p>
 <p>To commit the file, we have to put them in the staged area by clicking on “<em>Stage</em>” or “<em>Stage all</em>” in the unstaged area.</p>
 <p>Prepare the commit by adding a commit message like: “Initial commit” or “Create project”. Then click on the commit button.</p>
-<p>Congratulation all the modifications are now saved 🥳. We can see that a new line has apear in the center, containing the details of this first commit.</p>
+<p>Congratulation all the modifications are now saved 🥳. We can see that a new line has appeared in the center, containing the details of this first commit.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="..\img/meme_commit.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="../img/meme_commit.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/H4T41SqdYXc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </section>
 <section id="improve-the-script" class="level1">
 <h1>Improve the script</h1>
+<div class="callout-info" title="Section 2: Code Style &amp; First Commit">
+<p><strong>Progress</strong>: Section 2 of 3 | <strong>Time</strong>: 15 min</p>
+<p>You’ll now review, fix, and commit your analysis script. This section teaches why consistent code style matters for reproducibility.</p>
+<p><strong>Your goals this section:</strong> - Fix the data loading approach - Identify and fix code style issues - Make your 2nd commit - Understand why consistency matters</p>
+</div>
 <section id="loading-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="loading-the-data">Loading the data</h2>
 <p>It’s time to look at the analysis script. You can try to make it run as it is.</p>
 <p>The first 3 lines look like that:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/folder/nhanes-analysis/"</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>nh2007 <span class="ot">&lt;-</span> <span class="fu">load</span>(<span class="st">"C:/folder/nhanes-analysis/nh2007.Rdata"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>nh2007 <span class="ot">&lt;-</span> <span class="fu">load</span>(<span class="st">"C:/folder/nhanes-analysis/nh2007.Rdata"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-default callout-important callout-titled" title="Exercice">
+<div class="callout callout-style-default callout-important callout-titled" title="Exercise">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercice
+<span class="screen-reader-only">Important</span>Exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Exercice:</strong> Can you spot the issue there? How can we improve the loading of the data within the project directory?</p>
+<p><strong>Exercise</strong>: Can you spot the issue there? How can we improve the loading of the data within the project directory?</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution
+<span class="screen-reader-only">Tip</span>Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Since we have setup RStudio and we are working within a project and the working directory is the project folder. Therefore we can just specify the path to load the data as a relative pathe (e.g.&nbsp;path within the project):</p>
+<p>Since we have setup RStudio and we are working within a project and the working directory is the project folder. Therefore we can just specify the path to load the data as a relative path (e.g.&nbsp;path within the project):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/nh2007.Rdata"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/nh2007.Rdata"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>This will work on any computer with the same project sturcture. Relative paths can also used for any files, including to source R scripts.</p>
-</div>
-</div>
-</div>
-</section>
+<p>This will work on any computer with the same project structure. Relative paths can also used for any files, including to source R scripts.</p>
+<p>This is the core of reproducibility!</p>
 <section id="script-style" class="level2">
 <h2 class="anchored" data-anchor-id="script-style">Script style</h2>
 <div class="callout callout-style-default callout-important callout-titled" title="Exercice">
@@ -443,7 +487,7 @@ Solution
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercice
+<span class="screen-reader-only">Important</span>Exercice
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -455,7 +499,7 @@ Exercice
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>nh2007<span class="sc">$</span>id<span class="ot">&lt;-</span><span class="fu">factor</span>(nh2007<span class="sc">$</span>id)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>nh2007<span class="sc">$</span>gender<span class="ot">&lt;-</span><span class="fu">factor</span>(nh2007<span class="sc">$</span>gender)</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span>
@@ -466,15 +510,15 @@ Exercice
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>model<span class="fl">.1</span>a <span class="ot">&lt;-</span> <span class="fu">glm</span>(asthma <span class="sc">~</span> barium <span class="sc">+</span> age_screening <span class="sc">+</span> gender,<span class="at">data=</span>nh2007)</span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>model.<span class="fl">1.</span>b <span class="ot">&lt;-</span> <span class="fu">glm</span>(heart_failure <span class="sc">~</span> barium <span class="sc">+</span>age_screening<span class="sc">+</span>gender, <span class="at">data =</span> nh2007)</span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>model.<span class="fl">1.</span>c<span class="ot">&lt;-</span><span class="fu">glm</span>(coronary_heart_disease <span class="sc">~</span>barium <span class="sc">+</span> age_screening <span class="sc">+</span> gender,<span class="at">data=</span>nh2007)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>lead2a <span class="ot">&lt;-</span> <span class="fu">glm</span>(asthma<span class="sc">~</span>lead <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>lead2a <span class="ot">&lt;-</span> <span class="fu">glm</span>(asthma<span class="sc">~</span>lead <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution
+<span class="screen-reader-only">Tip</span>Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -493,12 +537,12 @@ Solution
 <p>First, we can use <code>styler</code> Rstudio addin to reformat the whole code. Look for the <code>Addins</code> menu in Rstudio toolbar and search for <code>styler</code> addon. Click on <code>Style active file</code>:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="..\img/rstudio-styler.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="../img/rstudio-styler.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 <p>The code will look much better:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>nh2007<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="fu">factor</span>(nh2007<span class="sc">$</span>id)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>nh2007<span class="sc">$</span>gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(nh2007<span class="sc">$</span>gender)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span>
@@ -513,42 +557,63 @@ Solution
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>model<span class="fl">.1</span>a <span class="ot">&lt;-</span> <span class="fu">glm</span>(asthma <span class="sc">~</span> barium <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007)</span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>model.<span class="fl">1.</span>b <span class="ot">&lt;-</span> <span class="fu">glm</span>(heart_failure <span class="sc">~</span> barium <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007)</span>
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>model.<span class="fl">1.</span>c <span class="ot">&lt;-</span> <span class="fu">glm</span>(coronary_heart_disease <span class="sc">~</span> barium <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007)</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>lead2a <span class="ot">&lt;-</span> <span class="fu">glm</span>(asthma <span class="sc">~</span> lead <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>lead2a <span class="ot">&lt;-</span> <span class="fu">glm</span>(asthma <span class="sc">~</span> lead <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>We can further change the models names to make them more consitent and informative:</p>
+<p>Your code is now consistent and follows tidyverse style guidelines. Notice how much easier it is to read! This is why reproducible practices matter— others (and your future self) will thank you.</p>
+<p>We can further change the models names to make them more consistent and informative:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>model_barium_asthma <span class="ot">&lt;-</span> <span class="fu">glm</span>(asthma <span class="sc">~</span> barium <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>model_barium_asthma <span class="ot">&lt;-</span> <span class="fu">glm</span>(asthma <span class="sc">~</span> barium <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>model_barium_hf <span class="ot">&lt;-</span> <span class="fu">glm</span>(heart_failure <span class="sc">~</span> barium <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>model_barium_chd <span class="ot">&lt;-</span> <span class="fu">glm</span>(coronary_heart_disease <span class="sc">~</span> barium <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>model_lead_asthma <span class="ot">&lt;-</span> <span class="fu">glm</span>(asthma <span class="sc">~</span> lead <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>model_lead_asthma <span class="ot">&lt;-</span> <span class="fu">glm</span>(asthma <span class="sc">~</span> lead <span class="sc">+</span> age_screening <span class="sc">+</span> gender, <span class="at">data =</span> nh2007)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>This steps is actually optionnal as we will see how to avoid this in the second activity. Now the script should work and is a cleaner. Instead of saving the script as a new one we can save the modifications in git: let’s do a second comit!</p>
+<p>This step is actually optional as we will see how to avoid this in the second activity. Now the script should work and is cleaner. Instead of saving the script as a new one we can save the modifications in git: let’s do a <strong>second commit</strong>!</p>
+<div class="callout-info" title="Git Commit #2: Apply Code Style">
+<p><strong>Important</strong>: Save your styled script now!</p>
+<p>In Gitnuro:</p>
+<ol type="1">
+<li>You should see <code>starting_script.R</code> as an <strong>unstaged file</strong></li>
+<li>Click on the file to see all your changes (green = additions, red = deletions)</li>
+<li><strong>Stage all</strong> files</li>
+<li>Write a commit message: <code>"Apply tidyverse style guide"</code> or <code>"Clean up code formatting"</code></li>
+<li><strong>Click Commit</strong></li>
+</ol>
+<p>You now have 2 commits in your history!</p>
+</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="..\img/meme_commit.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="../img/meme_commit.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-<p>First save the script, then switch to Gitnuro window: <code>starting_script.r</code> should appear as unstaged file and you can see the modification you just made to the file by clicking on it. If you like the modifications, you can add the modified script to the staged area (see <a href="#you-first-commit">You first commit</a>). Add a commit message like “Apply tidyverse style guide” and commit. In the history you will see that you second commit has been added on top of the first one.</p>
-<p>Notice that if you right click on the first commit you have many options like: navigate in your history, change the copy of the files you are working on, revert change, etc. This is outside of the topic of this workshop, but you can read more about it on the following page: <a href="https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things" class="uri">https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things</a></p>
-</section>
 </section>
 <section id="create-a-function" class="level1">
 <h1>Create a function</h1>
-<p>Let’s move on the final step of this exercice. As we notice, many steps in this script are repetitives. This is probably fine for this small script, but not so much when you will have 1000+ lines to modify.</p>
+<p>Let’s move on to the final step of this exercise. As we notice, many steps in this script are repetitives. This is probably fine for this small script, but not so much when you will have 1000+ lines to modify.</p>
 <p>Form lines 41 to 76, the script is doing some simple summary statistics. We can create 3 functions to simplify theses lines:</p>
 <ul>
 <li>one function for the qualitative variables</li>
 <li>one function for the quantitative variables</li>
 <li>one function which will decide which function to apply.</li>
 </ul>
+<div class="callout-info" title="Section 3: Writing Functions">
+<p><strong>Progress</strong>: Section 3 of 3 | <strong>Time</strong>: 20 min</p>
+<p>Now you’ll create your first function!</p>
+<p><strong>Your goals this section:</strong></p>
+<ul>
+<li>Write <code>compute_table()</code> for categorical variables</li>
+<li>Write <code>compute_numeric()</code> for numeric variables</li>
+<li>Write <code>compute_descriptive_stats()</code> that uses both</li>
+<li>Understand how functions reduce errors and save time</li>
+</ul>
+</div>
 <p><strong>Question</strong>: Look at the provided R code. What patterns or repetitive tasks do you notice?</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution
+<span class="screen-reader-only">Tip</span>Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -561,61 +626,65 @@ Solution
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-important callout-titled" title="Exercice">
+<div class="callout callout-style-default callout-important callout-titled" title="Exercise">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercice
+<span class="screen-reader-only">Important</span>Exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p><strong>Exercise</strong>: Write a function to compute a frequency table with NA values included.</p>
 <p>To find the steps that you need to put in the body of the function, you can first try to do a frequency table on one variable of the dataset. When it’s working, copy paste the steps in the function’s body and replace the variable names with <code>variable</code> instead. Before testing the function, you need to run the lines with the function definition to load the function in R memory.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Testing the table function </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Testing the table function </span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(nh2007<span class="sc">$</span>gender, <span class="at">useNA =</span> <span class="st">"always"</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>compute_table <span class="ot">&lt;-</span> <span class="cf">function</span>(variable) {</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Steps to do on variable</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution
+<span class="screen-reader-only">Tip</span>Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the function</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the function</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>compute_table <span class="ot">&lt;-</span> <span class="cf">function</span>(variable) {</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return frequency table as a dataframe</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>(variable, <span class="at">useNA =</span> <span class="st">"always"</span>)</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function with gender variable</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_table</span>(<span class="at">variable =</span> nh2007<span class="sc">$</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_table</span>(<span class="at">variable =</span> nh2007<span class="sc">$</span>gender)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
+</div>
+<div class="callout-success">
+<p><strong>First function created!</strong></p>
+<p>Your <code>compute_table()</code> function is working. You should see a frequency table with counts. This is the building block for your more complex functions!</p>
 </div>
 <p>Good we have the first function, created, let’s move to the second one!</p>
-<div class="callout callout-style-default callout-important callout-titled" title="Exercice">
+<div class="callout callout-style-default callout-important callout-titled" title="Exercise">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercice
+<span class="screen-reader-only">Important</span>Exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -623,19 +692,19 @@ Exercice
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution
+<span class="screen-reader-only">Tip</span>Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>compute_numeric <span class="ot">&lt;-</span> <span class="cf">function</span>(variable) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>compute_numeric <span class="ot">&lt;-</span> <span class="cf">function</span>(variable) {</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compute the statistics</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  mean_value <span class="ot">&lt;-</span> <span class="fu">mean</span>(variable, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  sd_value <span class="ot">&lt;-</span> <span class="fu">sd</span>(variable, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
@@ -650,48 +719,49 @@ Solution
 <span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the function</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_numeric</span>(nh2007<span class="sc">$</span>age_screening)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_numeric</span>(nh2007<span class="sc">$</span>age_screening)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>In this case, we need to return multiple results. To do so, all the results need to be regrouped in a list or a dataframe because functions can only return one object.</p>
+<p>Your <code>compute_numeric()</code> function is working. Now you have a tool to analyze any numeric variable quickly. Imagine doing this analysis on 50 variables— functions save hours of work!</p>
 </div>
 </div>
 </div>
-<p>To join together the two functions, we need additional helpers. Within a fucntion we can use logic operators to perform operation only when a statement is true. <code>if (statement) {}</code> is particulary usefull to test variable type using one of the following code:</p>
+<p>To join together the two functions, we need additional helpers. Within a function we can use logic operators to perform operations only when a statement is true. <code>if (statement) {}</code> is particularly useful to test variable type using one of the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(variable)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(variable)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.factor</span>(variable)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.logical</span>(variable)</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">is.logical</span>(nh2007<span class="sc">$</span>age_screening)) {<span class="fu">compute_numeric</span>(nh2007<span class="sc">$</span>age_screening) }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">is.logical</span>(nh2007<span class="sc">$</span>age_screening)) {<span class="fu">compute_numeric</span>(nh2007<span class="sc">$</span>age_screening) }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-default callout-important callout-titled" title="Exercice">
+<div class="callout callout-style-default callout-important callout-titled" title="Exercise">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercice
+<span class="screen-reader-only">Important</span>Exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Exercise</strong>: Join together the two functions in one function that can handle both categorical and numerical variables.</p>
+<p><strong>Exercise</strong>: Join together the two functions in another function that can handle both categorical and numerical variables.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution
+<span class="screen-reader-only">Tip</span>Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>compute_descriptive_stats <span class="ot">&lt;-</span> <span class="cf">function</span>(variable) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>compute_descriptive_stats <span class="ot">&lt;-</span> <span class="cf">function</span>(variable) {</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function to call if the variable is numeric</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.numeric</span>(variable)) {</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    statistics <span class="ot">&lt;-</span> <span class="fu">compute_numeric</span>(variable)</span>
@@ -707,14 +777,15 @@ Solution
 <span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the function</span></span>
 <span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>age_screening)</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>gender)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>Your <code>compute_descriptive_stats()</code> automatically chooses the right analysis for any variable type.</p>
 </div>
 </div>
 </div>
 <p>Now we can rewrite the previous lines like that:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>gender)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>gender)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>education)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>education_child)</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>asthma)</span>
@@ -723,14 +794,17 @@ Solution
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>creatinine)</span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>lead)</span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>barium)</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>cadmium)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_stats</span>(nh2007<span class="sc">$</span>cadmium)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="extending-functions" class="level2">
 <h2 class="anchored" data-anchor-id="extending-functions">Extending functions</h2>
-<p>Is quite easy to modify the functions we created an to add fucntion to do more sutff! For example, we can for each variable, create plots to describe the distribution of them using ggplot2.</p>
-<p>This new function create plots for each type of variable: a histogram for the numeric variables and a barplot for the discrete variables.</p>
+<p>Is quite easy to modify the functions we created and to add functions to do more sutff! For example, we can for each variable, create plots to describe the distribution of them using ggplot2.</p>
+<div class="callout-info" title="Running Low on Time?">
+<p>The section below (<strong>Extending functions</strong>) is helpful but optional. If you’re short on time, you can skip directly to <a href="#before-break">Before break</a>. You already have the 3 core functions!</p>
+</div>
+<p>This new function creates plots for each type of variable: a histogram for the numeric variables and a barplot for the discrete variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Descriptive univariate graphs</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Descriptive univariate graphs</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>compute_descriptive_graph <span class="ot">&lt;-</span> <span class="cf">function</span>(variable) {</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Histogram</span></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.numeric</span>(variable)) {</span>
@@ -751,12 +825,12 @@ Solution
 <span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_graph</span>(nh2007<span class="sc">$</span>creatinine)</span>
 <span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_graph</span>(nh2007<span class="sc">$</span>lead)</span>
 <span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_graph</span>(nh2007<span class="sc">$</span>barium)</span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_graph</span>(nh2007<span class="sc">$</span>cadmium)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_graph</span>(nh2007<span class="sc">$</span>cadmium)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>The little <code>p</code> is needed at the end of the function to return the graph. If you remove it you will see that nothing will be return. This is because a function return the last output from it’s body.</p>
+<p>The little <code>p</code> is needed at the end of the function to return the graph. If you remove it you will see that nothing will be returned. This is because a function returns the last output from its body.</p>
 <p>You can add this function the starting script, and also update the lines 72-75:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(nh2007<span class="sc">$</span>creatinine)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(nh2007<span class="sc">$</span>creatinine)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(nh2007<span class="sc">$</span>lead)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(nh2007<span class="sc">$</span>barium)</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(nh2007<span class="sc">$</span>cadmium)</span>
@@ -766,15 +840,15 @@ Solution
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_graph</span>(nh2007<span class="sc">$</span>creatinine)</span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_graph</span>(nh2007<span class="sc">$</span>lead)</span>
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_graph</span>(nh2007<span class="sc">$</span>barium)</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_graph</span>(nh2007<span class="sc">$</span>cadmium)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_descriptive_graph</span>(nh2007<span class="sc">$</span>cadmium)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-default callout-important callout-titled" title="Exercice">
+<div class="callout callout-style-default callout-important callout-titled" title="Exercise">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercice
+<span class="screen-reader-only">Important</span>Exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -785,263 +859,299 @@ Exercice
 </section>
 <section id="before-break" class="level1">
 <h1>Before break</h1>
-<p>The <code>starting_script.R</code> is starting to be messy, with a mix of fucntion and lines to execute, we need to tidy that up! Move all the new functions (compute_table, compute_numeric, compute_descriptive_stats, compute_descriptive_graph) to a file in the R folder named “descriptive_stats.R”.</p>
+<div class="callout-success" title="Final Checkpoint: Refactor &amp; Save">
+<p><strong>Progress</strong>: Section 3 Complete! | <strong>Time</strong>: Final 5 min</p>
+<p>Almost done! Now you’ll organize your code and make a final commit.</p>
+</div>
+<p>The <code>starting_script.R</code> is starting to be messy, with a mix of functions and lines to execute, we need to tidy that up! Move all the new functions (compute_table, compute_numeric, compute_descriptive_stats, compute_descriptive_graph) to a file in the R folder named “descriptive_stats.R”.</p>
 <p>Add the following line at the top of <code>starting_script.R</code> to source all the function in <code>R/descriptive_stats.R</code> each time the script is run:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># As we are working in a project R studio, know where to look</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># As we are working in a project R studio, know where to look</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/descriptive_stats.R"</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A safer way is to use the `here` package</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"R/descriptive_stats.R"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"R/descriptive_stats.R"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout-info" title="Git Commit #3: Refactor &amp; Create Functions">
+<p><strong>Final commit of Activity 1!</strong></p>
+<p>In Gitnuro:</p>
+<ol type="1">
+<li>You should see <code>starting_script.R</code> and a new <code>R/descriptive_stats.R</code> file</li>
+<li><strong>Stage all</strong> files</li>
+<li>Write a commit message: <code>"Create descriptive statistics functions"</code> or <code>"Refactor: separate functions from main script"</code></li>
+<li><strong>Click Commit</strong></li>
+</ol>
+<p>You now have 3 commits documenting your workflow!</p>
 </div>
 <p>Save the change in git by creating a commit with the newly created functions and modifications done in the starting script.</p>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/PH3MqaMrdSU" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p>Not that we can clearly see which line have been deleted or created by just clicking on a file!</p>
+<p>Note that we can clearly see which lines have been deleted or created by just clicking on a file!</p>
+<section id="congratulations" class="level2">
+<h2 class="anchored" data-anchor-id="congratulations">🎉 Congratulations!</h2>
+<p>You’ve completed Activity 1!</p>
+<p><strong>What you accomplished:</strong></p>
+<ul>
+<li>Organized your project folder for reproducibility</li>
+<li>Fixed code style using tidyverse guidelines</li>
+<li>Created 3 functions using the DRY principle</li>
+<li>Made 3 meaningful commits to git history</li>
+<li>Learned how version control documents your work</li>
+</ul>
 <hr>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="..\img/meme_break.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="../img/meme_break.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 
 
 </section>
+</section>
+</div>
+</div>
+</div>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ste-tuf\.github\.io\/mpce-reproducible-research\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ste-tuf\.github\.io\/mpce-reproducible-research\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        return container.innerHTML
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1049,185 +1159,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
