@@ -5,7 +5,7 @@ date: 2025-02-12
 
 # Software
 
-## R (Version 4.3.0 or Later):
+## R (Version 4.5 or Later):
 
 -   **Windows:** Download the R installer from the [CRAN
     website](https://cran.r-project.org/bin/windows/base/). Follow the
@@ -20,7 +20,7 @@ date: 2025-02-12
     in your terminal:
 
     ``` bash
-     sudo apt-get install r-base r-base-dev # Optional but recommended
+     sudo apt-get install r-base r-base-dev
     ```
 
 -   For help during the installation, refer to the [R Installation and
@@ -37,7 +37,7 @@ installation instructions provided.
 For alternative IDEs like Visual Studio Code, download and install
 according to your preferences.
 
-## Git and Git GUI (Version \>= 2.40.0):
+## Git and Gitnuro (Version \>= 2.40.0):
 
 ### Git
 
@@ -63,15 +63,12 @@ documentation.
 
 ### Graphic User Interface (GUI)
 
-Git can be use directly as a command line program directly from a terminal. This
-is usefull to automate stuff but not that user friendly. Therefore many software 
-profice a nice graphic interfacte to manage and vizualise your git repository. 
+Git can be used directly as a command line program directly from a terminal. This
+is useful to automate stuff but not that user friendly. Therefore many software 
+provide a nice graphic interface to manage and visualize your git repository.
 
-On Windows git-gui, the default GUI, can be installed at the same time as git.
-RStudio, VSCode also have a pane dedicated to Git which doesn't need any installation.
-
-For this workshop, we will use Git-nuro, a free and open-source GUT which is available on any OS. 
-Go to this page [https://gitnuro.com/](https://gitnuro.com/), download and install it. 
+For this workshop, we will use Gitnuro, a free and open-source GUI which is available on any OS.
+Go to this page [https://gitnuro.com/](https://gitnuro.com/), download and install it.
 
 ::: {.callout-tip}
 **Note:** Make sure that at least one GUI software is installed and working before 
@@ -100,13 +97,14 @@ requirements for better experience during the workshop.
 # Data
 
 Data used in the workshop is a sample of the NHANES study in particular 2007 and 2009 waves,
-including demographic, medical and various exposure variables. Two dataset need to be donwloaded: 
+including demographic, medical and various exposure variables. Two datasets need to be downloaded:
 
 - [`nh2007.Rdata`](../data/nh2007.Rdata) 
 - [`nh2009.Rdata`](../data/nh2009.Rdata)
 
-If you wish to recreate the data by yourself, please have a look at the script in `data-raw/nhanes.R` in the Github repository.
+If you wish to recreate the data by yourself, please have a look at the script in `data-raw/nhanes.R` in the GitHub repository.
 
 # Scripts
 
-Please download the initail script of the workshop: [`starting_script.R`](../R/starting_script.R)
+Please download the initial script of the workshop: [`starting_script.R`](../R/starting_script.R)
+

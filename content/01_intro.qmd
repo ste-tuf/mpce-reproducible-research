@@ -17,7 +17,7 @@ slide-format: revealjs
 
 # General context 
 
-The ultimate aim of this workshop is to give you the key to make data analysis projects tha: 
+The ultimate aim of this workshop is to give you the key to make data analysis projects that: 
 
 - are self-contained (within a single folder)
 - have a record of changes made to the files with git
@@ -27,6 +27,6 @@ The ultimate aim of this workshop is to give you the key to make data analysis p
 
 This is will: 
 
-- improve transparency of your reseach projects
+- improve transparency of your research projects
 - make it easier to share both with your research team but also public, funding agency and other researcher
 - facilitate the assessment of the quality of your work including peer review.

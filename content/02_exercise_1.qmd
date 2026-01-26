@@ -18,7 +18,7 @@ execute:
 
 # Goal
 
-At the end of this exercice you should have a project folder created for
+At the end of this exercise you should have a project folder created for
 the analysis. The folder should contains a git repository, a `script/`
 folder containing the starting script (`starting_script.R`) and a `R/`
 folder containing `descriptive_stats.R` with 3 functions.
@@ -40,7 +40,7 @@ check them again and make sure that you already have git installed:
 -   [`nh2009.Rdata`](../data/nh2009.Rdata)
 -   [`starting_script.R`](../R/starting_script.R)
 
-::: callout-info
+::: {callout-info}
 If you wish to recreate the NHANES data by yourself, please have a look
 at the script in `data-raw/nhanes.R` in the workshop's GitHub repository
 :::
@@ -49,11 +49,11 @@ The first step is to create a folder to gather all the project files.
 You can call it `NHANES/`, `mpce-reproducibility/` or `workshop/` it
 does not matter. Copy the files and move to this folder.
 
-Next we should intialize `git` within the project folder.
+Next we should initialize `git` within the project folder.
 
 ## Initialize git repository
 
-To do that, we will use Gitnuro (see preworkshop instructions). Open
+To do that, we will use **Gitnuro** (see pre-workshop instructions). Open
 Gitnuro, click on `Start a local repository` and select the folder you
 just created above.
 
@@ -68,17 +68,17 @@ The interface is divided in several parts:
 
 1.  the main area which show two things:
 
--   the history of the repository comit
+-   the history of the repository commit
 -   the content of a selected file with it's modifications
 
 2.  The staged ares which list the files in the staged area and ready to
     commit
 3.  The unstaged area show the files in your working folder and unstaged
-4.  The comit message where you have tot entre the comit message before
+4.  The commit message where you have to enter the commit message before
     commiting (saving) the staged files
 
 We can keep this windows open and we will return to it as we advance
-throught the workshop and need to commit (save) modifcations.
+through the workshop and need to commit (save) modifications.
 
 Before adding things, it's a god idea to configure you credentials
 (especially if you are working within a team). Click on the bottom left
@@ -96,7 +96,7 @@ Studio project.
 
 ## Create a Rstudio project
 
-Now let's open RStudio to also initiate a Rproject. Click on "*New
+Now let's open RStudio to also initiate a R Studio project. Click on "*New
 project*" in the project menu on the top right corner. Then select
 "*Project in existing directory*" and indicate the path of the workshop
 folder. The project should open itself.
@@ -105,7 +105,7 @@ Each RStudio project can be configured. You can either click on the
 `.Rproj` file within RStudio or click on "*Project option*" in the
 "*Tools*" menu.
 
-It's usally better to turn off the saving of the workspace to `.Rdata`
+It's usually better to turn off the saving of the workspace to `.Rdata`
 as this prevent old data from previous computations to be loaded
 automatically each time you open the project which can cause a lot of
 issues. It's always better to rerun the scripts form scratch.
@@ -129,7 +129,7 @@ by creating folders and files within the project folder.
         folder. It can contain a list of files that git should ignore.
         Open it in RStudio and add the following lines:
 
-```markdown       
+` text
 # History files
 .Rhistory
 .Rapp.history
@@ -147,16 +147,16 @@ by creating folders and files within the project folder.
 # R Environment Variables
 .Renviron
 
-# R Specific file 
-*.Rdata 
-```
+# R Specific file
+*.Rdata
+`
 
 This will prevent git from following the modification of these files
 that are only temporary and not related to the analysis.
 
 The folder should look like that:
 
-``` text
+` text
 Project
 ├── .git/ <-- Git repository stored here (eg data about changes), hidden folder
 ├── R/
@@ -169,20 +169,22 @@ scripts/
 ├── .gitignore 
 ├── Project.Rproj
 └── README.md
-```
+`
 
-::: callout-info
+::: {callout-info}
 All the steps above can be done within the command line or terminal,
 using git command line namely Git Bash.
+:::
 
-``` bash
+
+` bash
 cd your_project_folder
 git init
 
 # GIT bash
 git config --global user.name "First Last"
 git config --global user.email "first.last@example.com
-```
+`
 :::
 
 # You first commit
@@ -190,7 +192,7 @@ git config --global user.email "first.last@example.com
 It's time to save in Git the initial state of the project. Switch to the
 Gitnuro window. All the files and folders should appears in the unstage
 part of the windows. The script is no under the folder `script/`, we can
-see the `README.md` file and the `.Rdata` files are not apearing as we
+see the `README.md` file and the `.Rdata` files are not appearing as we
 added them to the files to ignore.
 
 You can click on any file to show their content. All the lines are green
@@ -203,7 +205,7 @@ Prepare the commit by adding a commit message like: "Initial commit" or
 "Create project". Then click on the commit button.
 
 Congratulation all the modifications are now saved 🥳. We can see that a
-new line has apear in the center, containing the details of this first
+new line has appeared in the center, containing the details of this first
 commit.
 
 ![](/img/meme_commit.jpg){fig-align="center"}
@@ -234,14 +236,14 @@ loading of the data within the project directory?
 ::: {.callout-tip title="Solution" collapse="true"}
 Since we have setup RStudio and we are working within a project and the
 working directory is the project folder. Therefore we can just specify
-the path to load the data as a relative pathe (e.g. path within the
+the path to load the data as a relative path (e.g. path within the
 project):
 
 ```{r}
 load("data/nh2007.Rdata")
 ```
 
-This will work on any computer with the same project sturcture. Relative
+This will work on any computer with the same project structure. Relative
 paths can also used for any files, including to source R scripts.
 :::
 
@@ -319,7 +321,7 @@ model_lead_asthma <- glm(asthma ~ lead + age_screening + gender, data = nh2007)
 This steps is actually optionnal as we will see how to avoid this in the
 second activity. Now the script should work and is a cleaner. Instead of
 saving the script as a new one we can save the modifications in git:
-let's do a second comit!
+let's do a second commit!
 
 ![](/img/meme_commit.jpg){fig-align="center"}
 
@@ -339,7 +341,7 @@ workshop, but you can read more about it on the following page:
 
 # Create a function
 
-Let's move on the final step of this exercice. As we notice, many steps
+Let's move on to the final step of this exercise. As we notice, many steps
 in this script are repetitives. This is probably fine for this small
 script, but not so much when you will have 1000+ lines to modify.
 
@@ -425,9 +427,9 @@ results need to be regrouped in a list or a dataframe because functions
 can only return one object.
 :::
 
-To join together the two functions, we need additional helpers. Within a fucntion
-we can use logic operators to perform operation only when a statement is true.
-`if (statement) {}` is particulary usefull to test variable type using one 
+To join together the two functions, we need additional helpers. Within a function
+we can use logic operators to perform operations only when a statement is true.
+`if (statement) {}` is particularly useful to test variable type using one 
 of the following code:
 
 ```{r}
@@ -485,11 +487,11 @@ compute_descriptive_stats(nh2007$cadmium)
 
 ## Extending functions
 
-Is quite easy to modify the functions we created an to add fucntion to do more 
+Is quite easy to modify the functions we created and to add functions to do more 
 sutff! For example, we can for each variable, create plots to describe the 
 distribution of them using ggplot2. 
 
-This new function create plots for each type of variable: a histogram for the
+This new function creates plots for each type of variable: a histogram for the
 numeric variables and a barplot for the discrete variables.
 
 ```{r}
@@ -519,8 +521,8 @@ compute_descriptive_graph(nh2007$cadmium)
 ```
 
 The little `p` is needed at the end of the function to return the graph. If
-you remove it you will see that nothing will be return. This is because
-a function return the last output from it's body.
+you remove it you will see that nothing will be returned. This is because
+a function returns the last output from its body.
 
 You can add this function the starting script, and also update the
 lines 72-75: 
@@ -547,7 +549,7 @@ previously.
 
 # Before break
 
-The `starting_script.R` is starting to be messy, with a mix of fucntion and 
+The `starting_script.R` is starting to be messy, with a mix of functions and 
 lines to execute, we need to tidy that up! Move all the new functions (compute_table, compute_numeric, compute_descriptive_stats, compute_descriptive_graph)
 to a file in the R folder named "descriptive_stats.R".
 
@@ -567,7 +569,7 @@ modifications done in the starting script.
 
 {{< video https://www.youtube.com/embed/PH3MqaMrdSU >}}
 
-Not that we can clearly see which line have been deleted or created by just 
+Not that we can clearly see which lines have been deleted or created by just 
 clicking on a file!
 
 
