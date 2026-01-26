@@ -1,6 +1,6 @@
 ---
 title: "Pre-workshop instructions"
-date: 2025-02-12
+date: 2026-02-03
 ---
 
 # Software
@@ -107,4 +107,11 @@ If you wish to recreate the data by yourself, please have a look at the script i
 # Scripts
 
 Please download the initial script of the workshop: [`starting_script.R`](../R/starting_script.R)
+
+# Set up the project
+
+Go through the first section of the hand-on exercise 1 where you can setup the
+course folder and populate it with a RStudio project and a git repository.
+
+[Hands-On Activity 1 - Set up you project](02_exercise_1.qmd)
 

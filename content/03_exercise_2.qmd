@@ -1,6 +1,6 @@
 ---
 title: "Hands-on Activity 2"
-date: 2025-02-12
+date: 2026-02-03
 slide-format: revealjs
 ---
 
@@ -222,7 +222,7 @@ only the computation functions,  `compute_table()` and
 happening in `compute_descriptive_stats()`, it is only calling the
 appropriate compute function for each type of variable.
 
-::: callout-tip
+::: {.callout-tip}
 We have done some modification to our function  it's a good idea to commit the changes
 so you can revert to the previous version of the function if needed.
 
@@ -721,4 +721,5 @@ You can check the following files to see the final files of the project:
 
 ------------------------------------------------------------------------
 
-![](/img/meme_final.png){fig-align="center"}
+![](img/meme_final.png){fig-align="center")
+
