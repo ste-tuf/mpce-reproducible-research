@@ -298,6 +298,8 @@ paths can also used for any files, including to source R scripts.
 
 This is the core of reproducibility!
 
+:::
+
 ## Script style
 
 ::: {.callout-important title="Exercice"}
