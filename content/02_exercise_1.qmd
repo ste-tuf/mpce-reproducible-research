@@ -65,7 +65,7 @@ check them again and make sure that you already have git initialized:
 
 - Git repository initialized in your project folder
 - RStudio project created (`.Rproj` file)
-- Data files: [`nh2007.Rdata`](../data/nh2007.Rdata), [`nh2009.Rdata`](../data/nh2009.Rdata)
+- Data files: [`nh2007.RData`](../data/nh2007.RData), [`nh2009.RData`](../data/nh2009.RData)
 - Script: [`starting_script.R`](../R/starting_script.R)
 - Folder structure created: `data/`, `scripts/`, `R/`
 :::
@@ -74,8 +74,8 @@ You should have downloaded the dataset and the script for this workshop
 if you followed the preworkshop instructions. If you didn't please go
 check them again and make sure that you already have git installed:
 
--   [`nh2007.Rdata`](../data/nh2007.Rdata)
--   [`nh2009.Rdata`](../data/nh2009.Rdata)
+-   [`nh2007.RData`](../data/nh2007.RData)
+-   [`nh2009.RData`](../data/nh2009.RData)
 -   [`starting_script.R`](../R/starting_script.R)
 
 ::: {.callout-info}
@@ -197,8 +197,8 @@ Project
 ├── .git/ <-- Git repository stored here (eg data about changes), hidden folder
 ├── R/
 ├── data/
-|   ├──  nh2007.Rdata
-|   └──   nh2009.Rdata
+|   ├──  nh2007.RData
+|   └──   nh2009.RData
 scripts/
 |   ├──starting_script.R
 |   └──  README.md
@@ -275,7 +275,7 @@ The first 3 lines look like that:
 library(tidyverse)
 
 setwd("C:/folder/nhanes-analysis/")
-nh2007 <- load("C:/folder/nhanes-analysis/nh2007.Rdata")
+nh2007 <- load("C:/folder/nhanes-analysis/nh2007.RData")
 ```
 
 ::: {.callout-important title="Exercise"}
@@ -290,7 +290,7 @@ the path to load the data as a relative path (e.g. path within the
 project):
 
 ```{r}
-load("data/nh2007.Rdata")
+load("data/nh2007.RData")
 ```
 
 This will work on any computer with the same project structure. Relative

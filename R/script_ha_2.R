@@ -80,7 +80,7 @@ compute_descriptive_graph <- function(variable) {
 
 library(tidyverse)
 
-nh2007 <- load("data/nh2007.Rdata")
+nh2007 <- load("data/nh2007.RData")
 
 # Data management ---------------------------------------------------------
 nh2007$id <- factor(nh2007$id)
