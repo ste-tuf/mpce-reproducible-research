@@ -99,8 +99,8 @@ requirements for better experience during the workshop.
 Data used in the workshop is a sample of the NHANES study in particular 2007 and 2009 waves,
 including demographic, medical and various exposure variables. Two datasets need to be downloaded:
 
-- [`nh2007.Rdata`](../data/nh2007.Rdata) 
-- [`nh2009.Rdata`](../data/nh2009.Rdata)
+- [`nh2007.RData`](../data/nh2007.RData) 
+- [`nh2009.RData`](../data/nh2009.RData)
 
 If you wish to recreate the data by yourself, please have a look at the script in `data-raw/nhanes.R` in the GitHub repository.
 

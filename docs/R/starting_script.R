@@ -1,7 +1,7 @@
 library(tidyverse)
 
 setwd("C:/folder/nhanes-analysis/")
-load("C:/folder/nhanes-analysis/nh2007.Rdata")
+load("C:/folder/nhanes-analysis/nh2007.RData")
 
 
 # Demographic variables: id, gender, age_screening, education, education_child, marital_status

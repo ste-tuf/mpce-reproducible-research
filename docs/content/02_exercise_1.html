@@ -296,15 +296,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Git repository initialized in your project folder</li>
 <li>RStudio project created (<code>.Rproj</code> file)</li>
-<li>Data files: <a href="../data/nh2007.Rdata"><code>nh2007.Rdata</code></a>, <a href="../data/nh2009.Rdata"><code>nh2009.Rdata</code></a></li>
+<li>Data files: <a href="../data/nh2007.RData"><code>nh2007.RData</code></a>, <a href="../data/nh2009.RData"><code>nh2009.RData</code></a></li>
 <li>Script: <a href="../R/starting_script.R"><code>starting_script.R</code></a></li>
 <li>Folder structure created: <code>data/</code>, <code>scripts/</code>, <code>R/</code></li>
 </ul>
 </div>
 <p>You should have downloaded the dataset and the script for this workshop if you followed the preworkshop instructions. If you didn’t please go check them again and make sure that you already have git installed:</p>
 <ul>
-<li><a href="../data/nh2007.Rdata"><code>nh2007.Rdata</code></a></li>
-<li><a href="../data/nh2009.Rdata"><code>nh2009.Rdata</code></a></li>
+<li><a href="../data/nh2007.RData"><code>nh2007.RData</code></a></li>
+<li><a href="../data/nh2009.RData"><code>nh2009.RData</code></a></li>
 <li><a href="../R/starting_script.R"><code>starting_script.R</code></a></li>
 </ul>
 <div class="callout-info">
@@ -407,8 +407,8 @@ Tip
 ├── .git/ &lt;-- Git repository stored here (eg data about changes), hidden folder
 ├── R/
 ├── data/
-|   ├──  nh2007.Rdata
-|   └──   nh2009.Rdata
+|   ├──  nh2007.RData
+|   └──   nh2009.RData
 scripts/
 |   ├──starting_script.R
 |   └──  README.md
@@ -455,7 +455,7 @@ scripts/
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/folder/nhanes-analysis/"</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>nh2007 <span class="ot">&lt;-</span> <span class="fu">load</span>(<span class="st">"C:/folder/nhanes-analysis/nh2007.Rdata"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>nh2007 <span class="ot">&lt;-</span> <span class="fu">load</span>(<span class="st">"C:/folder/nhanes-analysis/nh2007.RData"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled" title="Exercise">
 <div class="callout-header d-flex align-content-center">
@@ -484,7 +484,7 @@ scripts/
 <div class="callout-body-container callout-body">
 <p>Since we have setup RStudio and we are working within a project and the working directory is the project folder. Therefore we can just specify the path to load the data as a relative path (e.g.&nbsp;path within the project):</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/nh2007.Rdata"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/nh2007.RData"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This will work on any computer with the same project structure. Relative paths can also used for any files, including to source R scripts.</p>
 <p>This is the core of reproducibility!</p>
